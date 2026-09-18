@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopify Navigation Menus"
+  short_description: "Audit and build native Shopify navigation menus"
+  default_prompt: "Use $shopify-navigation-menus to audit and configure Shopify header and footer menus."
