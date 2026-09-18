@@ -1,0 +1,1 @@
+如果CLI要打开页面，尽可能在SunBrowser打开
