@@ -1,0 +1,1 @@
+请切换我的Shopify CLI账户，如果要弹出浏览器请在SunBrowser弹出
