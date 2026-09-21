@@ -14,10 +14,9 @@ https://github.com/zls233/Shopify-Template
 
 执行前读取并确认以下变量：
 
-- 项目名称：`{{PROJECT_NAME}}`
+
 - Shopify 店铺：`{{SHOPIFY_STORE}}`
 - 目标网站：`{{TARGET_SITE_URL}}`
-- Draft Theme ID（如果已经存在）：`{{DRAFT_THEME_ID}}`
 
 如果某个变量为空，不要使用示例值或猜测其他店铺。先检查当前工作区、Git remote 和已配置的环境文件；仍然无法确认时，停在该步骤并说明缺少什么。
 
