@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopify Catalog & Collections"
+  short_description: "Build auditable Shopify taxonomy and collections"
+  default_prompt: "Use $shopify-catalog-collections to classify products and create verified automated collections."
