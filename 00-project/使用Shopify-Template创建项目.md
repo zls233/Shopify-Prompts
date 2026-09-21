@@ -14,9 +14,12 @@ https://github.com/zls233/Shopify-Template
 
 执行前读取并确认以下变量：
 
-
+- 原站品牌名：`{{SOURCE_BRAND_NAME}}`
 - Shopify 店铺：`{{SHOPIFY_STORE}}`
 - 目标网站：`{{TARGET_SITE_URL}}`
+- Draft Theme ID（如果已经存在）：`{{DRAFT_THEME_ID}}`
+
+项目名默认使用原站品牌名 `{{SOURCE_BRAND_NAME}}`。如果用户明确指定了其他项目名，以用户指定值为准；否则不要使用域名、Shopify 店铺名或通用的 `Shopify-Theme` 作为项目名。原站品牌名必须从目标网站、reference 或用户提供的信息中确认，不能根据域名或示例值猜测。
 
 如果某个变量为空，不要使用示例值或猜测其他店铺。先检查当前工作区、Git remote 和已配置的环境文件；仍然无法确认时，停在该步骤并说明缺少什么。
 
@@ -26,7 +29,7 @@ https://github.com/zls233/Shopify-Template
 2. 如果工作区为空，使用 GitHub 的 `Shopify-Template` 作为起点，保留完整目录结构、`AGENTS.md`、README、Theme 骨架和检查脚本。
 3. 如果工作区已经是一个 Shopify 项目，不要直接覆盖用户文件。先比较当前项目和模板，只补缺失的基础文件，并保留用户已有的主题、脚本、环境配置和未提交改动。
 4. 不要把模板中的示例店铺、Theme ID、token、密码、商品 ID 或分类名称复制到新项目。
-5. 初始化完成后，为新项目设置自己的 Git remote 和项目名称；不要把新项目的改动推回模板仓库。
+5. 初始化完成后，以原站品牌名创建项目目录、`package.json` 的项目名称和 GitHub 仓库名（除非用户另有指定），设置新项目自己的 Git remote；不要把新项目的改动推回模板仓库。
 
 模板本身是轻量起点，不要在初始化阶段新增：
 
@@ -144,4 +147,3 @@ npm run test:smoke
 - 尚未完成的登录、授权、环境配置或用户确认步骤
 
 初始化完成后，项目才可以进入页面采集、Theme 复刻、商品数据导入、分类导航配置或定制开发阶段。
-
