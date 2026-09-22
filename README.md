@@ -7,7 +7,7 @@
 ```text
 Shopify-Prompts/
 ├── 00-project/
-│   └── 使用Shopify-Template创建项目.md
+│   └── 创建项目.md
 ├── 01-reference/
 │   └── 页面爬取.md
 ├── 02-theme/
@@ -49,7 +49,7 @@ Shopify-Prompts/
 ### 项目初始化
 
 0. **使用 Shopify-Template 创建项目**
-   使用 `00-project/使用Shopify-Template创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，配置本地环境文件，校验目标 store/scopes，并确认 Draft Theme、SunBrowser 和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
+   使用 `00-project/创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，按预期操作规划并申请 scopes，核对目标 store、项目应用身份与实际授权，并确认 Draft Theme、SunBrowser 和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
 
 ### 页面复刻
 
