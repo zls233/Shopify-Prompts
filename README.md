@@ -7,7 +7,8 @@
 ```text
 Shopify-Prompts/
 ├── 00-project/
-│   └── 创建项目.md
+│   ├── 创建项目.md
+│   └── 建站授权准备.md
 ├── 01-reference/
 │   └── 页面爬取.md
 ├── 02-theme/
@@ -49,7 +50,10 @@ Shopify-Prompts/
 ### 项目初始化
 
 0. **使用 Shopify-Template 创建项目**
-   使用 `00-project/创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，按预期操作规划并申请 scopes，核对目标 store、项目应用身份与实际授权，并确认 Draft Theme、SunBrowser 和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
+   使用 `00-project/创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并确认 Draft Theme、SunBrowser 和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
+
+0.5. **建站资源授权准备**
+   预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `00-project/建站授权准备.md`，一次申请建站权限包并核对目标店铺、应用身份和实际获批 scopes。后续任务复核并复用，不重复创建应用；认证过期或权限变化时再重新授权。
 
 ### 页面复刻
 
@@ -81,6 +85,8 @@ Shopify-Prompts/
 
 9. **创建分类和导航**  
    使用 `03-catalog/创建分类.md` 根据商品属性和目标网站结构创建 Collections、Menus 和相关 Shopify 原生内容结构。
+
+   补齐真实内容页面时，使用 `02-theme/pages/页面补齐.md` 创建 Pages / Blogs / Articles；它同样以 `00-project/建站授权准备.md` 为授权前置步骤。
 
 ### 项目定制
 
