@@ -53,7 +53,7 @@ Shopify-Prompts/
    使用 `00-project/创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并确认 Draft Theme、SunBrowser 和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
 
 0.5. **建站资源授权准备**
-   预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `00-project/建站授权准备.md`，一次申请建站权限包并核对目标店铺、应用身份和实际获批 scopes。后续任务复核并复用，不重复创建应用；认证过期或权限变化时再重新授权。
+   预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `00-project/建站授权准备.md`。对店铺自有资源，模板的 `connect:shopify` 会复用 CLI 已保存的授权，缺失或权限不足时申请完整建站权限包并读回核对；App 自有资源使用所属项目 App 的授权。授权通过后继续原任务，不重复创建应用。
 
 ### 页面复刻
 
