@@ -66,15 +66,25 @@ For each proposed collection define:
 
 Match existing collections by handle first. Compare normalized rules before deciding whether an update is needed. Do not create duplicate handles or title-only duplicates.
 
+For a source/reference collection, save the source handles and target handles separately. Compute:
+
+```text
+missing = source - target
+extra = target - source
+same_count_but_different_members = source != target && count(source) == count(target)
+```
+
+Do not treat equal counts as a successful match. A product may belong to more than one category, so expected membership is calculated independently for every collection rather than assigning one exclusive category per product.
+
 ## 5. Mutation Procedure
 
-1. Generate payload files; do not hand-edit hundreds of API requests.
+1. Generate payload files; do not hand-edit hundreds of API requests. Default to dry-run and write an audit checkpoint before the first mutation.
 2. Validate uniqueness of product and collection GIDs.
 3. Run a smoke mutation on one reversible, representative record.
 4. Read that record back and independently verify it.
 5. Execute the remaining rows through Shopify bulk operations when appropriate.
-6. Save operation IDs and JSONL results.
-7. Parse both top-level GraphQL errors and payload `userErrors`.
+6. Save operation IDs and JSONL results. Each row must include stable GID/handle, attempt number, status, user errors, and timestamp so a network interruption can resume safely.
+7. Parse both top-level GraphQL errors and payload `userErrors`. A successful CLI process is not proof that every row or the final collection membership succeeded.
 
 Bulk completion means the operation ran, not that every row succeeded. Count result rows and inspect each payload.
 
@@ -85,6 +95,7 @@ After writes, query all products and collections again. Re-run the same determin
 - product total and classified total
 - collection planned/found/missing
 - expected versus actual product count per collection
+- expected versus actual member handles per collection, including `missing` and `extra`
 - rule mismatches
 - empty collections
 - duplicate handles
@@ -110,10 +121,11 @@ Give the user a short checklist with exact object counts. When the user reports 
 Keep these facts separate:
 
 1. Collection exists.
-2. Collection rules match products.
-3. Collection is published to a sales channel.
-4. Products are published to the same channel.
-5. The storefront is publicly accessible and the theme renders the route.
+2. Collection rules match the intended predicates.
+3. Collection member handles match the expected set.
+4. Collection is published to a sales channel.
+5. Products are published to the same channel.
+6. The storefront is publicly accessible and the theme renders the route.
 
 A storefront redirect to `/password` is not a Collection 404. Inspect redirect history and Shopify headers before diagnosing publication failure.
 

@@ -28,12 +28,12 @@ Never redo a user-completed manual step. Record it as an external prerequisite a
 3. Normalize products by stable Shopify GID and handle. Report duplicate handles, duplicate SKUs, missing values, statuses, and existing taxonomy fields.
 4. Draft taxonomy rules from title, product type, tags, vendor, description, and existing metafields. Rules must be explainable and deterministic.
 5. Produce a plan before writing: each product's preserved tags, managed tags, classification evidence, and target collections.
-6. Validate a small sample across ambiguous and representative categories.
+6. Validate a small sample across ambiguous and representative categories. Allow a product to match multiple categories; do not collapse cross-category evidence into one winner.
 7. Update products without removing unrelated existing tags. Prefer namespaced tags such as `department:cosmetics`, `category:lips`, and `subcategory:lip-oils`.
 8. Create or update automated collections by handle. Never create a duplicate merely because the title differs in capitalization.
-9. Read back all products and collections. Recompute expected membership independently and compare expected versus actual counts.
+9. Read back all products and collections. Recompute expected membership independently and compare expected versus actual member handles, not only counts.
 10. Hand off sales-channel publication to the user when it is faster or requires interactive Admin work. Do not block the taxonomy audit on this step.
-11. Save an execution audit with successful rows, failed rows, mismatches, empty collections, skipped manual steps, and rerun instructions.
+11. Save an execution audit with source/target snapshots, successful rows, failed rows, retries, skipped rows, missing/extra handles, rule mismatches, empty collections, skipped manual steps, and rerun instructions.
 
 Read [references/catalog-collections-workflow.md](references/catalog-collections-workflow.md) before executing mutations.
 
@@ -48,6 +48,9 @@ Read [references/catalog-collections-workflow.md](references/catalog-collections
 - Parse every mutation response and every `userErrors` entry.
 - Verify with a fresh Admin API read, not only mutation success output.
 - Treat storefront publication separately from Collection existence and rule correctness.
+- Treat these as separate read-back claims: Collection exists, rules match, members match, Collection is published, products are published, and storefront route is accessible.
+- For a source-driven membership correction, use a dry-run plan and a stable exclusion namespace when a temporary `TAG NOT_EQUALS` rule is needed. Record owner, reason, created date, affected handles, and cleanup condition; never hide catalog errors in Liquid or JavaScript.
+- Every bulk mutation must be resumable and idempotent. Before retrying after TLS, 429, 5xx, or process interruption, read back the affected rows and continue only from unresolved work.
 - Never write inventory, price, barcode, SKU, or sales-channel state unless the user explicitly keeps that item in scope.
 
 ## Stop Conditions
