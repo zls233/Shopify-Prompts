@@ -17,6 +17,7 @@ Shopify-Prompts/
 │   ├── 像素级精修.md
 │   └── pages/
 │       ├── 首页.md
+│       ├── 商品列表.md
 │       └── 商品详情页.md
 ├── 03-catalog/
 │   ├── 爬取商品SKU.md
@@ -86,7 +87,7 @@ Shopify-Prompts/
    依次使用 `02-theme/页面粗调.md` 和 `02-theme/像素级精修.md`，对照原站的桌面与移动端截图和交互逐轮验证。
 
 9. **页面专项修复**
-   视觉审计发现首页、商品页或 Footer 的具体差异时，才使用 `02-theme/pages/` 下对应的专项 Prompt。
+   视觉审计发现首页、商品列表、商品详情页或 Footer 的具体差异时，才使用 `02-theme/pages/` 下对应的专项 Prompt。
 
 ### 项目定制
 
