@@ -26,11 +26,12 @@ PUBLIC_URL={{PUBLIC_URL_OPTIONAL}}
 ## 一、读取项目规则并确认身份
 
 1. 读取 `AGENTS.md`、`00-project/建站授权准备.md`、`05-qa/交付评估.md` 以及本项目的 Theme Access 配置说明。确认当前项目允许使用 Theme Access 执行主题操作。
-2. 区分两类身份：
+2. 先确认 Shopify CLI / Admin 浏览器使用的是用户自己的 Shopify Partner 账户，并且该账户已获得 `{{SHOPIFY_STORE}}` 的 Partner / Collaborator 权限。不得使用原店铺所有者账号发布。
+3. 区分两类身份：
    - Theme CLI 使用 `SHOPIFY_CLI_THEME_TOKEN`，只用于主题列表、推送、发布和拉回。
    - Admin GraphQL 使用 `shopify store auth` / `shopify store execute` 或项目明确配置的 Admin App，只用于店铺、商品、出版状态和权限核验。
-3. 不要打印、保存或提交 token、密码、授权 code、Cookie 或完整授权 URL。只报告凭据是否存在及验证结果。
-4. 记录本次操作的目标店铺、执行身份、API 版本、目标 Theme ID、当前时间和发布前后角色；不得记录敏感凭据。
+4. 不要打印、保存或提交 token、密码、授权 code、Cookie 或完整授权 URL。只报告凭据是否存在及验证结果。
+5. 记录本次操作的目标店铺、Partner 账户、执行身份、API 版本、目标 Theme ID、当前时间和发布前后角色；不得记录敏感凭据。
 
 ## 二、发布前只读核验
 

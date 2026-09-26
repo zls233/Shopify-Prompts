@@ -2,6 +2,10 @@
 
 用于 Shopify 店铺搭建、页面采集、主题复刻与精调、商品数据抓取、清洗与导入、分类配置、项目定制和交付验收的 Prompt 集合。
 
+## Shopify 账户与店铺授权规则
+
+所有项目统一使用当前操作者自己的 Shopify Partner 账户进行 CLI、Admin 和开发操作。开始目标店铺工作前，必须由目标店铺通过 Partner / Collaborator access 授予该账户权限；Partner 登录成功不等于已获得店铺访问权。不得直接使用原店铺所有者账号，也不得用其代办授权。每条 CLI / API 命令都显式指定目标 `*.myshopify.com` 店铺，并分别记录 Partner 账户、店铺授权、Admin API 身份和 Theme Access 状态。
+
 ## 目录结构
 
 ```text
