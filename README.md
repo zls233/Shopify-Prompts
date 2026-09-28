@@ -37,9 +37,9 @@ Shopify-Prompts/
 │   ├── 03-Cookie.md
 │   └── 04-粘性顶栏.md
 ├── 05-qa/
+│   ├── 01-交付评估.md
 │   ├── 02-发布主题到Live.md
-│   ├── 03-设置商家地址并开放店铺.md
-│   └── 01-交付评估.md
+│   └── 03-设置商家地址并开放店铺.md
 ├── tools/
 │   ├── 切换CLI账户.md
 │   └── 指定SunBrowser.md
