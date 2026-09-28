@@ -15,7 +15,13 @@ Shopify-Prompts/
 │   └── 02-建站授权准备.md
 ├── 01-reference/
 │   └── 01-页面爬取.md
-├── 02-theme/
+├── 02-catalog/
+│   ├── 01-爬取商品SKU.md
+│   ├── 02-商品CSV数据清洗.md
+│   ├── 03-导入商品.md
+│   ├── 04-创建分类.md
+│   └── shopify-catalog-collections/
+├── 03-theme/
 │   ├── 01-开始复刻.md
 │   ├── 02-页面粗调.md
 │   ├── 03-像素级精修.md
@@ -25,12 +31,6 @@ Shopify-Prompts/
 │       ├── 03-商品列表.md
 │       ├── 04-商品详情页.md
 │       └── 05-底栏.md
-├── 03-catalog/
-│   ├── 01-爬取商品SKU.md
-│   ├── 02-商品CSV数据清洗.md
-│   ├── 03-导入商品.md
-│   ├── 04-创建分类.md
-│   └── shopify-catalog-collections/
 ├── 04-customization/
 │   ├── 01-打折.md
 │   ├── 02-功能削减.md
@@ -69,35 +69,35 @@ Shopify-Prompts/
    使用 `01-reference/01-页面爬取.md` 分析目标网站的信息架构，自动选择具有代表性的首页、集合页、商品页、内容页等页面，并保存 Desktop / Mobile 截图、SingleFile、页面结构和交互参考。
 
 2. **抓取商品数据**
-   使用 `03-catalog/01-爬取商品SKU.md` 分析 sitemap、Collection、公开接口和商品页，获取商品、Variants、SKU、价格、图片等数据，并输出原始数据、规范化数据、Shopify CSV 和审计结果。
+   使用 `02-catalog/01-爬取商品SKU.md` 分析 sitemap、Collection、公开接口和商品页，获取商品、Variants、SKU、价格、图片等数据，并输出原始数据、规范化数据、Shopify CSV 和审计结果。
 
 3. **清洗 Shopify CSV**
-   使用 `03-catalog/02-商品CSV数据清洗.md` 检查 Handle、Variant、Option、SKU、图片、价格等字段，修复无法导入或商品分组错误的问题。
+   使用 `02-catalog/02-商品CSV数据清洗.md` 检查 Handle、Variant、Option、SKU、图片、价格等字段，修复无法导入或商品分组错误的问题。
 
 4. **导入商品**
-   使用 `03-catalog/03-导入商品.md` 将验证后的商品数据导入目标 Shopify 店铺。全量导入前先使用少量商品验证结构和结果。
+   使用 `02-catalog/03-导入商品.md` 将验证后的商品数据导入目标 Shopify 店铺。全量导入前先使用少量商品验证结构和结果。
 
 5. **创建分类和导航**
-   使用 `03-catalog/04-创建分类.md` 根据商品属性和目标网站结构创建 Collections、Menus 和相关 Shopify 原生内容结构。
+   使用 `02-catalog/04-创建分类.md` 根据商品属性和目标网站结构创建 Collections、Menus 和相关 Shopify 原生内容结构。
 
 6. **补齐内容资源**
-   原站有内容路径时，使用 `02-theme/pages/01-页面补齐.md` 创建 Pages / Blogs / Articles；它同样以授权准备为前置步骤。
+   原站有内容路径时，使用 `03-theme/pages/01-页面补齐.md` 创建 Pages / Blogs / Articles；它同样以授权准备为前置步骤。
 
 ### 页面复刻
 
 7. **开始复刻主题**
-   使用 `02-theme/01-开始复刻.md`，根据 reference 和已经导入的真实商品数据实现 Shopify Theme，先同步至 unpublished Draft Theme。
+   使用 `03-theme/01-开始复刻.md`，根据 reference 和已经导入的真实商品数据实现 Shopify Theme，先同步至 unpublished Draft Theme。
 
 8. **页面粗调与像素级精修**
-   依次使用 `02-theme/02-页面粗调.md` 和 `02-theme/03-像素级精修.md`，对照原站的桌面与移动端截图和交互逐轮验证。
+   依次使用 `03-theme/02-页面粗调.md` 和 `03-theme/03-像素级精修.md`，对照原站的桌面与移动端截图和交互逐轮验证。
 
 9. **页面专项修复**
-   视觉审计发现首页、商品列表、商品详情页或 Footer 的具体差异时，才使用 `02-theme/pages/` 下对应的专项 Prompt。
+   视觉审计发现首页、商品列表、商品详情页或 Footer 的具体差异时，才使用 `03-theme/pages/` 下对应的专项 Prompt。
 
 ### 项目定制
 
 10. **业务和视觉调整**  
-    自动流程固定执行 `04-customization/01-打折.md`、`功能削减.md` 和 `Cookie.md`；不执行独立 `LOGO.md`。仅在原站确有粘性顶栏时执行 `粘性顶栏.md`。四折以原站当前售价为基准，须核验所有 Variant 的实际价格。
+    自动流程固定执行 `04-customization/01-打折.md`、`04-customization/02-功能削减.md` 和 `04-customization/03-Cookie.md`；不执行独立 `LOGO.md`。仅在原站确有粘性顶栏时执行 `04-customization/04-粘性顶栏.md`。四折以原站当前售价为基准，须核验所有 Variant 的实际价格。
 
 ### 交付验收
 
