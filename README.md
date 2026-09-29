@@ -4,7 +4,7 @@
 
 ## Shopify 账户与店铺授权规则
 
-所有项目统一使用当前操作者自己的 Shopify Partner 账户进行 CLI、Admin 和开发操作。开始目标店铺工作前，必须由目标店铺通过 Partner / Collaborator access 授予该账户权限；Partner 登录成功不等于已获得店铺访问权。不得直接使用原店铺所有者账号，也不得用其代办授权。每条 CLI / API 命令都显式指定目标 `*.myshopify.com` 店铺，并分别记录 Partner 账户、店铺授权、Admin API 身份和 Theme Access 状态。
+所有项目统一使用当前操作者自己的 Shopify Partner 账户进行 CLI、Admin 和开发操作。开始目标店铺工作前，必须由目标店铺通过 Partner / Collaborator access 授予该账户权限；Partner 登录成功不等于已获得店铺访问权。不得直接使用原店铺所有者账号，也不得用其代办授权。每条 CLI / API 命令都显式指定目标 `*.myshopify.com` 店铺，并分别记录 Partner 账户、店铺授权、Themes 权限与 Admin API 执行身份。主题开发统一使用已授权的 Partner 账户登录 Shopify CLI，不再要求 Theme Access token。
 
 ## 目录结构
 
@@ -59,7 +59,7 @@ Shopify-Prompts/
 ### 项目初始化
 
 1. **使用 Shopify-Template 创建项目**
-   使用 `01-project/01-创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并在 GitHub 的 `Remix-Information` Organization 下创建或复用对应的 **Private 仓库**，核实组织归属和私有可见性后再推送。没有该组织的创建权限时暂停并请求授权，不要改建在个人账户或其他组织。随后确认 Draft Theme、Shopify Partners/CLI 授权和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
+   使用 `01-project/01-创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并在 GitHub 的 `Remix-Information` Organization 下创建或复用对应的 **Private 仓库**，核实组织归属和私有可见性后再推送。没有该组织的创建权限时暂停并请求授权，不要改建在个人账户或其他组织。随后确认 Draft Theme、Shopify Partners/CLI 登录、目标店铺 Themes 权限及基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
 
 2. **建站资源授权准备**
    预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `01-project/02-建站授权准备.md`。对店铺自有资源，模板的 `connect:shopify` 会复用 CLI 已保存的授权，缺失或权限不足时申请完整建站权限包并读回核对；App 自有资源使用所属项目 App 的授权。授权通过后继续原任务，不重复创建应用。
