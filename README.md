@@ -59,7 +59,7 @@ Shopify-Prompts/
 ### 项目初始化
 
 1. **使用 Shopify-Template 创建项目**
-   使用 `01-project/01-创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并确认 Draft Theme、Shopify Partners/CLI 授权和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
+   使用 `01-project/01-创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并在 GitHub 的 `Remix-Information` Organization 下创建或复用对应的 **Private 仓库**，核实组织归属和私有可见性后再推送。没有该组织的创建权限时暂停并请求授权，不要改建在个人账户或其他组织。随后确认 Draft Theme、Shopify Partners/CLI 授权和基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
 
 2. **建站资源授权准备**
    预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `01-project/02-建站授权准备.md`。对店铺自有资源，模板的 `connect:shopify` 会复用 CLI 已保存的授权，缺失或权限不足时申请完整建站权限包并读回核对；App 自有资源使用所属项目 App 的授权。授权通过后继续原任务，不重复创建应用。
