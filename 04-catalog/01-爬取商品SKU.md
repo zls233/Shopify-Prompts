@@ -1,3 +1,13 @@
+# 4-1 阶段入口
+
+## FAST 阶段总控（4-1，默认）
+
+将本文件作为**整个 04-catalog 阶段**的单一入口：① 按本文完成全量范围内商品/SKU/Variant/媒体/分类成员抓取，保存 expectedHandles、快照和失败清单；② **自动按 `04-catalog/02-商品CSV数据清洗.md`** 校验并生成不覆盖原始数据的 CSV，逐项对账，禁止静默漏商品/编造数据；③ 复核 `01-project/02-建站授权准备.md`，**自动按 `04-catalog/03-导入商品.md`** 做 dry-run、样本验证、已授权全量幂等导入与远端完整 Handle/Variant/媒体读回，保护既有商品状态，Online Store publication 另按明确授权与读回规则处理；④ **自动按 `04-catalog/04-创建分类.md`** 配置/核验 Collections、Menus、真实分类成员和必要筛选，保存 missing/extra；⑤ 仅在 CSV、权限、导入错误或分类对账异常时单独调用 4-2/4-3/4-4 处理失败项。**只有 CSV 或少数样本、未真实导入与对账时不得标记 4-1 通过。**
+
+执行时读取 `EXECUTION_RULES.md` 和相关子 Prompt，**在同一轮执行所有必要工作并验证结果**，而不是只给计划、等下一条编号；记录当前项目 `PROJECT_MEMORY.md`、状态、证据和最小恢复步骤。子 Prompt 用于细节操作和定向排障，FAST 不等于跳过必要验收。
+
+---
+
 
 分析 {{REFERENCE_SITE_URL}} 的 sitemap、collection、公开商品数据接口和商品页，获取所有可公开访问的商品与 SKU，并生成可导入 Shopify 的 CSV。
 

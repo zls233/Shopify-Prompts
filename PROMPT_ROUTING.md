@@ -5,6 +5,19 @@ matching file in this repository's `Shopify-Prompts` collection. Do not invent
 a new task from the number and do not reinterpret a catalog prompt as a QA or
 release prompt.
 
+## FAST 阶段编号（默认）
+
+| 入口 | 包含的必要工作 |
+|---|---|
+| `1-1` | 01 项目初始化 + 适用 1-2 授权 |
+| `2-1` | 02 全阶段 reference 采集和校验 |
+| `4-1` | 04 抓取、4-2 清洗、4-3 导入、4-4 分类 |
+| `3-1` | 03 必要 Theme、素材、内容、Draft QA；精修按需 |
+| `5-1` | 05 打折、5-2 功能削减、5-3 Cookie、条件 5-4 |
+| `6-1` | 06 交付评估与修复，获独立授权才 6-2/6-3，公开后 6-4 |
+
+每个入口在**同一轮**完成必要子任务、真实核验与证据，不必逐个发送子编号；用户点名 `4-2` 等仍只执行该专项。FAST 不授予 Live 发布或关闭密码保护权限。参见 `EXECUTION_RULES.md`。
+
 ## Resolution
 
 1. Normalize `运行` plus optional spaces, backticks, and punctuation.
