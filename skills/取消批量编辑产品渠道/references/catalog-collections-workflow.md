@@ -55,6 +55,17 @@ Ambiguous products use `reviewRequired: true`; do not silently force them into a
 
 ## 4. Collection Plan
 
+For reference-site parity, start from every Header/Mega Menu/mobile category destination. Save a dated source snapshot and fetch every membership page. Resolve source-to-target handle mappings and compare exact sets:
+
+```text
+missing = source - target
+extra = target - source
+```
+
+Equal counts or checking only already imported products is insufficient. Separate current source members, missing imports, historical target products and explicit exclusions. Product categories may overlap; New Arrivals, Best Sellers and Sale need their own source evidence. Do not silently archive/delete historical products or expand Sale solely because project prices were discounted.
+
+User-requested membership parity does not require identical product order unless ordering is in scope. Keep an existing manual collection when appropriate and report automated future classification separately. Classification changes are shared store data, including their effect on Live.
+
 For each proposed collection define:
 
 - stable handle
@@ -85,6 +96,7 @@ After writes, query all products and collections again. Re-run the same determin
 - product total and classified total
 - collection planned/found/missing
 - expected versus actual product count per collection
+- expected versus actual member handles per collection, including missing and extra members
 - rule mismatches
 - empty collections
 - duplicate handles
@@ -103,9 +115,13 @@ Prefer a user handoff when Shopify Admin provides a safer or much faster control
 - assign inventory quantities or inventory locations
 - remove storefront password protection
 
-Give the user a short checklist with exact object counts. When the user reports completion, mark the item `manual-complete` and continue. Do not repeat it through the API unless the user explicitly asks for API verification.
+Give the user a short checklist with exact object counts. When the user reports completion, mark the item `manual-complete` and continue. Do not replay the mutation. Read-only API verification within the active task is still appropriate before relying on resource or publication state.
 
 ## 8. Storefront Interpretation
+
+Inspect each retained navigation link and every distinct collection on desktop/mobile, including real card media, sorting/filtering/pagination and relevant variant/cart behavior. Check native data and backend filter configuration before changing theme controls. Missing or blocked flows remain unresolved, not passed; record coverage, source/target differences, checkpoints and the next resume action.
+
+An operator's existing Partners authorization can support an authenticated Draft preview or Theme Editor storefront iframe. Reuse it instead of requiring SunBrowser or starting a new account login. Record that authenticated rendering and unauthenticated public access are separate facts.
 
 Keep these facts separate:
 

@@ -33,6 +33,8 @@ do not reconstruct the Prompt from memory or infer a task from the number.
 ## Execution
 
 After resolving the file, read and execute its Prompt in the current project.
+Read `EXECUTION_RULES.md` as the shared execution and completion contract.
+Briefly record the exact identifier, selected path, and task before executing.
 Resolve the target store, reference URL, theme roles, and credentials from the
 current project memory and environment, not from an example in the Prompt.
 Apply that Prompt's authorization, Draft/Live, dry-run, and verification rules.

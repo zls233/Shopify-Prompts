@@ -39,6 +39,14 @@ Read [references/catalog-collections-workflow.md](references/catalog-collections
 
 ## Required Invariants
 
+- For reference-site parity, enumerate every desktop/mobile navigation category and audit full paginated source and target handle sets. Record missing and extra members; imported-catalog intersection or equal counts is not whole-catalog parity.
+- Respect the requested ordering scope. Membership parity does not require identical ordering unless the user asks for it; category layout and interactions remain separate verification.
+- Record current source snapshot, historical imports, explicit exclusions, unresolved rows, and resume checkpoints. A small successful sample or blocked storefront flow is not completion.
+- Native collections, tags, menus and filter configuration are shared store data and may affect Live even when theme edits stay in Draft.
+- Preserve existing manual collections when appropriate, and report snapshot membership and future automated classification separately.
+- Resolve missing color/size filters through real data, native filters and existing backend configuration; reuse installation authorization and never fabricate filter values.
+- Reuse the operator's authorized Partners/CLI identity and browser. SunBrowser is optional only when the user requests it; authenticated preview is not public-access evidence.
+
 - Fetch every page; never infer the catalog from the first page.
 - Preserve user-owned tags and metafields unless removal is explicitly requested.
 - Do not invent classification when evidence is insufficient. Put ambiguous products in a review queue.

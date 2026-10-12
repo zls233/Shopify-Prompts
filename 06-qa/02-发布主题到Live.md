@@ -1,8 +1,8 @@
 # Shopify 主题发布到 Live
 
-请直接完成主题发布前检查、发布和发布后验证，不要只提供操作步骤。Live 发布是高风险操作；除非本 Prompt 的发布授权变量明确填写为“是”，否则只做只读检查，不得发布。
+请直接完成主题发布前检查、发布和发布后验证，不要只提供操作步骤。先读取 `EXECUTION_RULES.md`。用户在当前会话已明确要求发布本项目、本次范围的 Live 时，将仍有效的授权记入 `PUBLISH_AUTHORIZED=是`，不重复确认同一动作；历史版本已完成的发布记录不授权新版本，没有有效授权时只做只读检查。
 
-本 Prompt 的“发布”专指把 unpublished Theme 切换为 Live。若用户只说“推送 Live”并且上下文是已 QA 的少量主题文件，应先确认操作类型：限定文件同步不执行 `theme publish`，也不把现有 Live Theme 切换为另一主题。明确授权文件同步时，重新读取目标店铺当前 Live ID，拉回指定文件核对差异，只对批准文件使用 `theme push --allow-live --nodelete` 和逐文件 `--only`；之后重新列出主题、拉回逐字节比对，并验证公开桌面/移动端受影响页面。保留仍未解决的商品、内容和 Cookie 跟踪问题，不能将“文件已上线”报告成“已可交付”。
+本 Prompt 的“发布”专指把 unpublished Theme 切换为 Live。若用户只说“推送 Live”并且上下文是已 QA 的少量主题文件，按上下文区分操作类型：限定文件同步不执行 `theme publish`，也不把现有 Live Theme 切换为另一主题。明确授权文件同步时，重新读取目标店铺当前 Live ID，拉回指定文件核对差异，只对批准文件使用 `theme push --allow-live --nodelete` 和逐文件 `--only`；之后重新列出主题、拉回文件核对（自动格式化 JSON 按语义比较），并验证公开桌面/移动端受影响页面。保留仍未解决的商品、内容和 Cookie 跟踪问题，不能将“文件已上线”报告成“已可交付”。
 
 ## 输入
 
@@ -19,8 +19,8 @@ PUBLIC_URL={{PUBLIC_URL_OPTIONAL}}
 填写规则：
 
 - `SHOPIFY_STORE` 必须是准确的 `*.myshopify.com` 域名，不得从旧报告、`.env` 或当前 Admin 标签推定。
-- `TARGET_THEME_ID` 必须是已经完成 QA 的 unpublished Draft Theme ID。若为空，不得根据名称猜测或直接选择第一个未发布主题。
-- `PUBLISH_AUTHORIZED` 只有明确填写“是”时才允许发布；“否”、空白或其他值都按只读模式处理。
+- `TARGET_THEME_ID` 必须是已经完成 QA 的 unpublished Draft Theme ID。用户已明确指定待发布的开发主题时，按下方 Development 候选准备流程获得可发布 ID；其他情况下为空时不得根据名称猜测或直接选择第一个未发布主题。
+- `PUBLISH_AUTHORIZED` 从用户明确填写值或本项目当前有效的发布指令解析；值为“否”或缺少授权证据时按只读模式处理。保留授权范围与依据，文件同步授权不扩大为切换主题授权。
 - `PUBLIC_URL` 为空时，根据发布后读回的店铺域名确定，不要凭历史记录猜测。
 
 ## 一、读取项目规则并确认身份
@@ -41,6 +41,8 @@ PUBLIC_URL={{PUBLIC_URL_OPTIONAL}}
 shopify theme list --store {{SHOPIFY_STORE}} --json
 ```
 
+若本次已授权、已指定且已验收的目标角色是 `development`，先执行下方候选准备，再重新列出主题并对准确的 unpublished 候选执行本节检查；不能在转换前把 Development 当成合格 unpublished，或跳过候选复验。
+
 必须从这次最新返回中确认：
 
 - 返回店铺与 `{{SHOPIFY_STORE}}` 完全一致。
@@ -59,9 +61,15 @@ shopify theme list --store {{SHOPIFY_STORE}} --json
 - Online Store publication 状态
 - 关键商品、Collection、Menu 和 Pages 是否已达到本项目交付要求
 
-如果目标主题仍在处理、主题列表读回不一致、店铺身份不一致、授权身份不明或发布前 QA 有未解决的阻断问题，停止，不得发布。
+如果目标主题仍在处理、主题列表读回不一致、店铺身份不一致、授权身份不明或发布前 QA 有未解决的阻断问题，停止发布步骤，继续可独立完成的候选准备/修复和验证工作。
 
 ## 三、发布授权闸门
+
+### Development 候选准备
+
+如果用户已授权发布的已验收主题是 `development`，而 CLI 不允许直接发布该角色，不停止在这个限制上：从已验证的本地版本/远端开发主题及其设置准备一个具名的 unpublished 候选，显式指定同一 store 和 theme path，不覆盖当前 Live。
+
+记录开发主题 ID、候选 ID、代码版本和设置来源；拉回候选文件核对 Liquid/CSS/JS/媒体哈希与 JSON 语义，验证资源引用、真实数据和 Desktop/Mobile 页面，完成后把准确候选 ID 设为 `TARGET_THEME_ID`。开发主题的旧 QA 不自动覆盖候选。候选不完整、原设置缺失或复验失败时不得发布；保留原 Development 和 Live。
 
 ### `PUBLISH_AUTHORIZED` 不是“准备发布”
 
@@ -110,6 +118,7 @@ shopify theme list --store {{SHOPIFY_STORE}} --json
 - 目标主题 `processing` 已结束，或明确记录仍在处理中。
 - 当前 Live Theme 的名称和 ID 与发布命令目标一致。
 - 没有误发布其他 Theme。
+- 本次候选相关文件与已验收版本一致；JSON 自动格式化采用语义比较。只上传成功或角色切换成功不能代替文件与页面核验。
 
 如果角色没有切换，不能报告“已上线”；保留发布命令输出和读回结果，停止后续公开验收。
 

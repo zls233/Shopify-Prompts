@@ -2,6 +2,8 @@
 
 用于 Shopify 店铺搭建、页面采集、主题复刻与精调、商品数据抓取、清洗与导入、分类配置、项目定制和交付验收的 Prompt 集合。
 
+所有阶段共用 [EXECUTION_RULES.md](EXECUTION_RULES.md)：按实际编号执行、复用当前项目与授权、全量数据对账、逐分类/逐页原站对照、共享数据与 Draft/Live 边界、分层验收和中断续做。2026-10-12 根据最近五个项目聊天更新，具体依据见 [项目经验记录](references/project-lessons-2026-10-12.md)。
+
 ## Shopify 账户与店铺授权规则
 
 所有项目统一使用当前操作者自己的 Shopify Partner 账户进行 CLI、Admin 和开发操作。开始目标店铺工作前，必须由目标店铺通过 Partner / Collaborator access 授予该账户权限；Partner 登录成功不等于已获得店铺访问权。不得直接使用原店铺所有者账号，也不得用其代办授权。每条 CLI / API 命令都显式指定目标 `*.myshopify.com` 店铺，并分别记录 Partner 账户、店铺授权、Themes 权限与 Admin API 执行身份。主题开发统一使用已授权的 Partner 账户登录 Shopify CLI，不再要求 Theme Access token。
@@ -45,6 +47,11 @@ Shopify-Prompts/
 ├── tools/
 │   ├── 切换CLI账户.md
 │   └── 指定SunBrowser.md
+├── references/
+│   └── project-lessons-2026-10-12.md
+├── EXECUTION_RULES.md
+├── PROMPT_ROUTING.md
+├── AGENTS.md
 ├── README.md
 └── .gitignore
 ```
@@ -52,6 +59,8 @@ Shopify-Prompts/
 ## 使用方式
 
 手动使用时，按当前任务进入对应目录，选择 Markdown 文件，将其中的 Prompt 复制到 AI 编程工具中，并替换文档中用 `{{...}}` 标记的变量。向代理发送编号指令时，代理直接读取并执行对应文件。
+
+执行时同时提供本仓库规则和当前项目记忆。收到“继续”或“重试”先从已验证进度恢复；样本成功不等于全量完成，目录为空或页面验收阻塞不计入通过。公开 storefront、认证预览、主题文件和共享商品/内容数据分别判断，不能只凭上传成功宣称可交付。
 
 手动使用时可以按任务选取 Prompt；`Shopify Agent` 的自动流程采用下方的串行顺序，并在每步验收后继续。
 

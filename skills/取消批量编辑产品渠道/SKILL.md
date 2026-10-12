@@ -31,13 +31,21 @@ Never redo a user-completed manual step. Record it as an external prerequisite a
 6. Validate a small sample across ambiguous and representative categories.
 7. Update products without removing unrelated existing tags. Prefer namespaced tags such as `department:cosmetics`, `category:lips`, and `subcategory:lip-oils`.
 8. Create or update automated collections by handle. Never create a duplicate merely because the title differs in capitalization.
-9. Read back all products and collections. Recompute expected membership independently and compare expected versus actual counts.
+9. Read back all products and collections. Recompute expected membership independently and compare expected versus actual member handles, not only counts.
 10. Hand off sales-channel publication to the user when it is faster or requires interactive Admin work. Do not block the taxonomy audit on this step.
 11. Save an execution audit with successful rows, failed rows, mismatches, empty collections, skipped manual steps, and rerun instructions.
 
 Read [references/catalog-collections-workflow.md](references/catalog-collections-workflow.md) before executing mutations.
 
 ## Required Invariants
+
+- For reference-site parity, enumerate every desktop/mobile navigation category and audit full paginated source and target handle sets. Record missing and extra members; imported-catalog intersection or equal counts is not whole-catalog parity.
+- Respect the requested ordering scope. Membership parity does not require identical ordering unless the user asks for it; category layout and interactions remain separate verification.
+- Record current source snapshot, historical imports, explicit exclusions, unresolved rows, and resume checkpoints. A small successful sample or blocked storefront flow is not completion.
+- Native collections, tags, menus and filter configuration are shared store data and may affect Live even when theme edits stay in Draft.
+- Preserve existing manual collections when appropriate, and report snapshot membership and future automated classification separately.
+- Resolve missing color/size filters through real data, native filters and existing backend configuration; reuse installation authorization and never fabricate filter values.
+- Reuse the operator's authorized Partners/CLI identity and browser. SunBrowser is optional only when the user requests it; authenticated preview is not public-access evidence.
 
 - Fetch every page; never infer the catalog from the first page.
 - Preserve user-owned tags and metafields unless removal is explicitly requested.
