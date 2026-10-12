@@ -4,6 +4,10 @@
 
 所有阶段共用 [EXECUTION_RULES.md](EXECUTION_RULES.md)：按实际编号执行、复用当前项目与授权、全量数据对账、逐分类/逐页原站对照、共享数据与 Draft/Live 边界、分层验收和中断续做。2026-10-12 根据最近五个项目聊天更新，具体依据见 [项目经验记录](references/project-lessons-2026-10-12.md)。
 
+## Checkout 范围与验收
+
+从现在起，**不再复刻参考网站的结账、支付和订单确认页面**。Shopify 主题仍须完成商品规格选择、Add to Cart、Cart 以及 Cart 内真实有效的 Checkout 按钮；自有支付系统作为独立集成范围，不能用假页面模拟。发布并开放店铺后，用 `06-qa/04-购物车与结账入口测试.md` 在桌面/移动端真实加购并进入预定的结账界面，停在该界面，不支付、不下单。
+
 ## Shopify 账户与店铺授权规则
 
 所有项目统一使用当前操作者自己的 Shopify Partner 账户进行 CLI、Admin 和开发操作。开始目标店铺工作前，必须由目标店铺通过 Partner / Collaborator access 授予该账户权限；Partner 登录成功不等于已获得店铺访问权。不得直接使用原店铺所有者账号，也不得用其代办授权。每条 CLI / API 命令都显式指定目标 `*.myshopify.com` 店铺，并分别记录 Partner 账户、店铺授权、Themes 权限与 Admin API 执行身份。主题开发统一使用已授权的 Partner 账户登录 Shopify CLI，不再要求 Theme Access token。
@@ -43,7 +47,8 @@ Shopify-Prompts/
 ├── 06-qa/
 │   ├── 01-交付评估.md
 │   ├── 02-发布主题到Live.md
-│   └── 03-设置商家地址并开放店铺.md
+│   ├── 03-设置商家地址并开放店铺.md
+│   └── 04-购物车与结账入口测试.md
 ├── tools/
 │   ├── 切换CLI账户.md
 │   └── 指定SunBrowser.md
@@ -76,6 +81,7 @@ Shopify-Prompts/
 - `运行4-1` -> `04-catalog/01-爬取商品SKU.md`
 - `运行5-1` -> `05-customization/01-打折.md`
 - `运行6-1` -> `06-qa/01-交付评估.md`
+- `运行6-4` -> `06-qa/04-购物车与结账入口测试.md`
 
 带有 `pages` 等明确后缀的完整编号优先于宽泛的阶段编号。找不到唯一匹配文件时必须报告候选，不得猜测或改跑其他 Prompt。
 
@@ -135,6 +141,10 @@ Shopify-Prompts/
 
 15. **发布与公开验证**
     使用 `06-qa/02-发布主题到Live.md`，仅在项目绑定的专用店铺、Draft Theme 和商品发布状态全部核对后，发布明确指定的 Draft Theme。发布后重新读回 Live Theme 角色，并用无登录态请求验证公开页面。若仍存在 Private Mode，再按 `06-qa/03-设置商家地址并开放店铺.md` 处理；认证或外部限制无法自动完成时暂停。
+
+16. **最终购物车 → Checkout 冒烟测试**
+    运行 `06-qa/04-购物车与结账入口测试.md`，在已公开的 Live 店铺选择可售商品、加购、进入购物车、点击结账并确认真实结账界面加载。分别测试 Desktop/Mobile。未能真实进入时记录 `failed / blocked / not_run`，不将 Checkout 按钮存在当作成功。
+
 
 ## 工具说明
 
