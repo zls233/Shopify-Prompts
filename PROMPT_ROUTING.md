@@ -20,6 +20,7 @@ release prompt.
    - `运行4-1` -> `04-catalog/01-爬取商品SKU.md`
    - `运行5-1` -> `05-customization/01-打折.md`
    - `运行6-1` -> `06-qa/01-交付评估.md`
+   - `运行6-4` -> `06-qa/04-购物车与结账入口测试.md`
 3. For any other identifier, resolve the numeric path directly using zero
    padding and the filename prefix. For example, `3-pages-2` means
    `03-theme/pages/02-*.md`.
