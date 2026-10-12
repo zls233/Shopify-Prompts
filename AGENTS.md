@@ -19,3 +19,5 @@ For continuations, recover the selected Prompt and verified progress from the
 current project. Do not rerun completed imports or treat old task numbers,
 sample data, successful uploads, or empty-catalog checks as full completion.
 Apply the execution rules to bundled skills as well as numbered Prompts.
+
+Do not replicate reference-site checkout/payment/order-confirmation pages. Preserve the actual Cart → Checkout action for the project's approved checkout destination. After publishing and public storefront verification, run `06-qa/04-购物车与结账入口测试.md`; stop upon reaching the checkout page without entering user/payment information or submitting an order.
