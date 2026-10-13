@@ -1,5 +1,22 @@
 # Shopify Prompts
 
+## 统一展示与默认页面范围（新版）
+
+- 全站 Announcement Bar：唯一英文文案 **`Free Shipping`**，无需复刻原站营销公告，且不因此擅改实际 Shopify 运费设置。
+- Footer 固定两栏八条可用信息链接（**没有任何社媒或其它页脚栏目**）：
+
+| CUSTOMER CARE | ORDER INFO |
+|---|---|
+| Privacy Policy | About Us |
+| Return Policy | Contact Us |
+| Shipping Policy | Terms Of Purchase |
+| Service Policy | Terms Of Use |
+
+- 这八个页面可以统一简洁实现，必须是正确的真实 Shopify Policy/Page 和获批准内容；不再 1:1 复刻源站复杂静态页。FAQ、Stores、Blog、Journal、Article、Warranty、Size Guide、独立 Editorial/Campaign 等默认 excluded，除非本项目明确要求或保留核心导航有已确认依赖。
+- **此范围从 FAST 2-1 参考采集阶段就生效**，3-1 不补多余页面，5-1 负责清理，6-1 不以缺失超范围页面扣分。详细唯一规范见 [功能削减与范围清单](05-customization/02-%E5%8A%9F%E8%83%BD%E5%89%8A%E5%87%8F.md)。
+
+
+
 > **默认六步 FAST：`1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1`。** 每个大阶段只需运行第一个 Prompt，自动完成必要子任务；仅遇问题时单独运行后续编号。
 
 用于 Shopify 店铺搭建、页面采集、主题复刻与精调、商品数据抓取、清洗与导入、分类配置、项目定制和交付验收的 Prompt 集合。
@@ -132,7 +149,7 @@ Shopify-Prompts/
    使用 `04-catalog/04-创建分类.md` 根据商品属性和目标网站结构创建 Collections、Menus 和相关 Shopify 原生内容结构。
 
 8. **补齐内容资源**
-   原站有内容路径时，使用 `03-theme/pages/06-页面补齐.md` 创建 Pages / Blogs / Articles；它同样以授权准备为前置步骤。
+   默认只使用 `03-theme/pages/06-页面补齐.md` 补齐固定八个 Footer 信息链接缺失的 Shopify Policies/Pages；不再自动批量复刻 Blog/Article/Stores 等额外独立页面。需有真实内容与有效授权。
 
 ### 页面复刻
 

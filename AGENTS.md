@@ -1,5 +1,9 @@
 # Shopify Prompt Routing
 
+**Default storefront scope:** Before reference capture, theme, content pages, footer or QA, read `05-customization/02-功能削减.md` as the only scope authority. Announcement Bar is always one `Free Shipping` message. Footer has precisely CUSTOMER CARE (Privacy Policy, Return Policy, Shipping Policy, Service Policy) and ORDER INFO (About Us, Contact Us, Terms Of Purchase, Terms Of Use), with no social entries, Newsletter or extra columns. All eight labels must target real approved Policy/Page content; never fabricate legal copy, contact details or shipping promises. Other independent FAQ/Stores/Blogs/Articles/Editorial pages are excluded unless the current project specifically requires them. Keep Home/PLP/PDP/Cart and real checkout-entry QA mandatory. Stage prompts must not re-introduce broader legacy source-site content. Update the project memory with any explicit exception.
+
+
+
 Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `4-1`, `3-1`, `5-1`, and `6-1` are complete phase entry points. Read their subordinate Prompt instructions and execute, validate, and record all necessary work in the same run; do not ask the user to issue each following substep. Run subordinate prompts separately only for actual failures, special precision, or explicit `FULL` mode. `4-1` includes CSV cleanup, full import and collections; `3-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes final QA and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model: choose GPT-6.1-Sol XHigh in Codex beforehand. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
 
 
