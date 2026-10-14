@@ -1,5 +1,12 @@
 # Shopify Prompt 执行与完成规则
 
+## Favicon 必需交接规则（所有新项目适用）
+- FAST 2-1 采集源站真实 favicon，保存 `references/_shared/icons/favicon.<ext>`、`favicon.json`（真实来源、MIME、尺寸、哈希、状态）；FAST 3-1 让目标 Draft Theme 真正加载该图标，FAST 6-1 检查浏览器及远端实际呈现。
+- 不混淆 favicon、Header Logo 与 Apple Touch Icon；不可把 HTML 错误响应、默认占位图或未经核实的图标标记成功。遇不兼容格式可制作兼容 PNG，保留原件。
+- 先审查主题现有 favicon settings；Shopify `image_picker` 不能直接引用 Theme assets，如需设置则用合法店铺 Files 引用；另一方案是在主题 head 使用 `asset_url` 声明图标，禁止生成互相冲突的 link。
+- 仅在已授权 Draft 内修改主题；店铺 Files 为共享资源，Live 仍需独立授权与验证。记录 `verified / failed / blocked / not_run`，并通过真实浏览器和 Network 核验。
+
+
 ## 新版公告栏、Footer 和页面收缩规则（全阶段适用）
 
 **新版默认范围（高优先级）：**遵循 `05-customization/02-功能削减.md`：公告栏唯一 `Free Shipping`，Footer 固定 CUSTOMER CARE（Privacy Policy / Return Policy / Shipping Policy / Service Policy）和 ORDER INFO（About Us / Contact Us / Terms Of Purchase / Terms Of Use）两栏八链接，**不复刻原站 Footer 且不保留任何社媒或多余 Footer 栏目**。这八个信息资源需真实内容和有效链接，但无需逐页原站视觉复刻。FAQ、Stores、Blog、Journal、Article、独立 Editorial/Campaign 等默认 `excluded`，只有项目明确确认的额外路径才处理。本文其它宽泛的“原站全部复制”、额外内容页面示例与旧 Footer 指令若冲突，以此规则为准。
