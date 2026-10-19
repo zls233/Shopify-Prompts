@@ -14,8 +14,7 @@
 - 2-1 仅采集真正会复刻的核心模板与八个政策/信息页必要来源映射，不再做无关静态页样本。
 - 3-1 直接产出固定 `Free Shipping on All Orders` 公告栏、八链接 Footer 和真实可访问的简洁信息页；无须原站 Footer 或独立 Blog/FAQ/Stores 视觉复刻。
 - 5-1 负责将此规则实际落地，6-1 必须逐项验收：桌面/移动公告栏唯一文案，Footer 8/8 标签和 URL 及正确内容，额外页面 excluded，原有真实 Cart→Checkout 测试仍保留。
-- **实际运费必须全免**：目标店铺所有在售实物商品/Variant 面向全球 Shopify 支持且可合法履约的国家/地区，在所有适用 General/Custom Shipping Profiles、Markets、Zones、Rates 中仅允许零运费选项、零订单门槛。必须清除收费、条件收费、承运商计算及 App 生成的收费选项，不能与 Free Shipping 并存；无法覆盖的地区单独报告。只显示公告栏不能算完成；第三方配送或自有结账系统须分别核实真实运费结果。
-- 5-1 在店铺级共享设置的已授权范围内审查、变更并读回运费规则；未经权限或授权时标记 `blocked`。运费修改立即影响 Live，不随 Draft 隔离，全球配送区域扩张已经由用户明确要求；实施前核对权限、Markets、发货地址、物流和地区限制，不得擅自更改支付配置。6-1 独立验收适用运费规则，无法证实自有结账运费时不报告全免通过；政策文案缺批准来源仍记 `blocked`，不伪造。
+- **免邮要求仅限主题公告栏文本**：全站展示 `Free Shipping on All Orders`；不操作、不核验真实 Shipping Profiles、Rates、Zones、Markets、配送国家及自有结账运费。FAST 3-1/5-1/6-1 只负责文案落地及 Desktop/Mobile 各模板呈现验收；不得据文案宣称实际运费免费。
 
 
 
