@@ -5,6 +5,10 @@ matching file in this repository's `Shopify-Prompts` collection. Do not invent
 a new task from the number and do not reinterpret a catalog prompt as a QA or
 release prompt.
 
+## AUTOPILOT 总入口
+
+`运行0-1` → `00-autopilot/01-全流程自动执行.md`；在同一任务自动串行完成现有六个 FAST 阶段，遵守各阶段验收、断点续跑和授权边界。
+
 ## FAST 阶段编号（默认）
 
 | 入口 | 包含的必要工作 |
@@ -22,6 +26,7 @@ release prompt.
 
 1. Normalize `运行` plus optional spaces, backticks, and punctuation.
 2. Match the full identifier before applying any fallback:
+   - `运行0-1` -> `00-autopilot/01-全流程自动执行.md`
    - `运行2-1` -> `02-reference/01-页面爬取.md`
    - `运行3-1` -> `03-theme/01-开始复刻.md`
    - `运行3-pages-1` -> `03-theme/pages/01-首页.md`
