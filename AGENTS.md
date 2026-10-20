@@ -4,6 +4,8 @@
 
 
 
+For end-to-end unattended stage orchestration, `运行0-1` resolves to `00-autopilot/01-全流程自动执行.md`. It runs the six existing FAST phase entry points sequentially with verification, checkpoint/resume and explicit authorization boundaries; it never grants Live publication or store opening authority.
+
 Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `4-1`, `3-1`, `5-1`, and `6-1` are complete phase entry points. Read their subordinate Prompt instructions and execute, validate, and record all necessary work in the same run; do not ask the user to issue each following substep. Run subordinate prompts separately only for actual failures, special precision, or explicit `FULL` mode. `4-1` includes CSV cleanup, full import and collections; `3-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes mandatory `06-qa/05-全站入口NotFound扫描与修复.md` link audit/fix/retest on the authorized Draft and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model: choose GPT-6.1-Sol XHigh in Codex beforehand. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
 
 
