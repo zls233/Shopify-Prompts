@@ -24,6 +24,12 @@
 
 `运行0-1` 只从 `00-autopilot/01-全流程自动执行.md` 进入，自动依次运行 `1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1`，维护项目内持久化状态并核验后续跑；对子任务失败有限重试及定向修复，关键依赖/权限阻塞时停止依赖链。总控本身不新增发布 Live、关闭 Private Mode、修改支付或付款授权。详见该总控文件。
 
+## Storefront Password 自动获取（初始化阶段）
+
+- FAST 1-1 必须检查目标店铺的前台密码保护状态，优先尝试真正受支持的 Shopify CLI / Admin API 读取方式；仅能读取启用状态时，使用当前已授权 Shopify Admin 浏览器自动进入 Online Store → Preferences / Store access 读取现有密码，不要求用户手动复制。
+- 将当前店铺域名和密码写入项目根目录被忽略的 `.env`：`SHOPIFY_STORE_DOMAIN`、`SHOPIFY_STOREFRONT_PASSWORD`；幂等更新这两个键，保留其他环境变量。不能把密码写入 Git、Prompt、报告、终端日志或 URL，也不能因此修改 Password protection 设置。
+- 读取后用受保护前台验证结果；未启用记录 `not_required` 并清理陈旧密码，受权限或 UI 阻塞记录 `blocked`，继续不依赖密码的工作。Storefront Password 不代替 Partner/CLI 或 Admin API 认证。
+
 ## 默认 FAST / 可选 FULL 阶段模式
 
 - **默认 `EXECUTION_MODE=FAST`**：大阶段只运行首个 Prompt，即 `运行1-1 → 运行2-1 → 运行4-1 → 运行3-1 → 运行5-1 → 运行6-1`。每一入口应在同一次任务读取实际子 Prompt、完成必要子任务和核验，不能只创建脚本、生成计划或要求用户依次手动调用 4-2/4-3。FAST 省人工触发，不省数据清洗、商品全量导入、分类、主题基本质量、定制和最终测试。
