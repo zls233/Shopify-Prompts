@@ -2,7 +2,7 @@
 
 请直接完成主题发布前检查、发布和发布后验证，不要只提供操作步骤。先读取 `EXECUTION_RULES.md`。用户在当前会话已明确要求发布本项目、本次范围的 Live 时，将仍有效的授权记入 `PUBLISH_AUTHORIZED=是`，不重复确认同一动作；历史版本已完成的发布记录不授权新版本，没有有效授权时只做只读检查。
 
-本 Prompt 的“发布”专指把 unpublished Theme 切换为 Live。发布不等于购物链路已通过；在公开店铺可访问后须运行 `06-qa/04-购物车与结账入口测试.md`，真实测试商品加购、购物车和进入本项目配置的结账界面，不复刻源站结账页面、不付款、不下单。若用户只说“推送 Live”并且上下文是已 QA 的少量主题文件，按上下文区分操作类型：限定文件同步不执行 `theme publish`，也不把现有 Live Theme 切换为另一主题。明确授权文件同步时，重新读取目标店铺当前 Live ID，拉回指定文件核对差异，只对批准文件使用 `theme push --allow-live --nodelete` 和逐文件 `--only`；之后重新列出主题、拉回文件核对（自动格式化 JSON 按语义比较），并验证公开桌面/移动端受影响页面。保留仍未解决的商品、内容和 Cookie 跟踪问题，不能将“文件已上线”报告成“已可交付”。
+本 Prompt 的“发布”专指把 unpublished Theme 切换为 Live。发布不等于购物链路已通过；在公开店铺可访问后须运行 `06-qa/6-4-购物车与结账入口测试.md`，真实测试商品加购、购物车和进入本项目配置的结账界面，不复刻源站结账页面、不付款、不下单。若用户只说“推送 Live”并且上下文是已 QA 的少量主题文件，按上下文区分操作类型：限定文件同步不执行 `theme publish`，也不把现有 Live Theme 切换为另一主题。明确授权文件同步时，重新读取目标店铺当前 Live ID，拉回指定文件核对差异，只对批准文件使用 `theme push --allow-live --nodelete` 和逐文件 `--only`；之后重新列出主题、拉回文件核对（自动格式化 JSON 按语义比较），并验证公开桌面/移动端受影响页面。保留仍未解决的商品、内容和 Cookie 跟踪问题，不能将“文件已上线”报告成“已可交付”。
 
 ## 输入
 
@@ -25,7 +25,7 @@ PUBLIC_URL={{PUBLIC_URL_OPTIONAL}}
 
 ## 一、读取项目规则并确认身份
 
-1. 读取 `AGENTS.md`、`01-project/02-建站授权准备.md`、`06-qa/01-交付评估.md` 以及本项目的 Partners/CLI 授权记录。确认当前 Partner 账户已获得目标店铺 Themes 权限，并实际通过 CLI 列出主题。
+1. 读取 `AGENTS.md`、`01-project/1-2-建站授权准备.md`、`06-qa/6-1-交付评估.md` 以及本项目的 Partners/CLI 授权记录。确认当前 Partner 账户已获得目标店铺 Themes 权限，并实际通过 CLI 列出主题。
 2. 先确认 Shopify CLI / Admin 浏览器使用的是用户自己的 Shopify Partner 账户，并且该账户已获得 `{{SHOPIFY_STORE}}` 的 Partner / Collaborator 权限。不得使用原店铺所有者账号发布。
 3. 区分两类身份：
    - Theme CLI 复用已登录的 Partner 账户和目标店铺 Themes 权限，用于主题列表、推送、发布和拉回；不传 Theme Access token。

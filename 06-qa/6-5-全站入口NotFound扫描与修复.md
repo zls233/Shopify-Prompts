@@ -1,13 +1,13 @@
 # 6-5 全站入口 Not Found 扫描、集中修复与复测
 
-你现在的任务：在**当前明确指定的 Shopify 店铺和目标 Theme** 上，自动发现范围内所有用户可点击入口，集中定位 Not Found / 404 / 错误跳转 / 无效目标，按根因批量修复，再重新完整扫描。**不要只列建议，也不要用隐藏错误或跳转首页伪装成功。**先读 `EXECUTION_RULES.md`、`05-customization/02-功能削减.md`、`PROJECT_MEMORY.md`（若存在）。
+你现在的任务：在**当前明确指定的 Shopify 店铺和目标 Theme** 上，自动发现范围内所有用户可点击入口，集中定位 Not Found / 404 / 错误跳转 / 无效目标，按根因批量修复，再重新完整扫描。**不要只列建议，也不要用隐藏错误或跳转首页伪装成功。**先读 `EXECUTION_RULES.md`、`05-customization/5-2-功能削减.md`、`PROJECT_MEMORY.md`（若存在）。
 
 ## 边界与前置
 
 - 先核对店铺 `*.myshopify.com`、当前 Shopify Partner/App 身份、实际权限、商品与 Online Store 发布情况；必须实际运行 `shopify theme list --store <store>.myshopify.com --json`，记录本次 Draft/Live Theme ID 和角色，不复用历史 ID。
 - 默认检查和修改**获授权的 Draft Theme**，不因此发布 Live、关闭密码保护或覆盖 Live。只在本项目已有明确、仍有效的 Live 修改授权下修复 Live。修改 Shopify 共享的 Menus、Products、Collections、Pages、Policies 时先识别对 Live 的影响，并遵守既有权限与变更范围；不擅造政策正文。
 - 在 Draft 预览中保留正确的 preview/theme 参数及密码会话；请求不能误落到当前 Live。Draft Preview 测试结果不可冒充公开 Live。需公开验证时使用独立无登录态会话，无法访问则记 `blocked`。
-- 以 `05-customization/02-功能削减.md` 为范围源：Home、Header/桌面和移动菜单、Mega Menu、Logo、公告栏中实际存在的可点击入口、Hero/CTA、Collection/PLP、Product/PDP、卡片、筛选/排序/分页、搜索（适用时）、Cart、Footer 固定八条信息链接及本项目明确批准的其它页面。排除 Account/Login、Newsletter、Social、Gift Card、Blog/Article/FAQ 等默认已删除的功能和原站 Checkout/支付/订单确认页面；**已排除功能如仍显示入口，应按功能削减规范移除，而不是为其补建假页面**。Cart → Checkout 保留真实入口，由 `6-4` 单独验证到结账页即止，绝不提交订单或支付。
+- 以 `05-customization/5-2-功能削减.md` 为范围源：Home、Header/桌面和移动菜单、Mega Menu、Logo、公告栏中实际存在的可点击入口、Hero/CTA、Collection/PLP、Product/PDP、卡片、筛选/排序/分页、搜索（适用时）、Cart、Footer 固定八条信息链接及本项目明确批准的其它页面。排除 Account/Login、Newsletter、Social、Gift Card、Blog/Article/FAQ 等默认已删除的功能和原站 Checkout/支付/订单确认页面；**已排除功能如仍显示入口，应按功能削减规范移除，而不是为其补建假页面**。Cart → Checkout 保留真实入口，由 `6-4` 单独验证到结账页即止，绝不提交订单或支付。
 
 ## 执行步骤：一次跑完
 
