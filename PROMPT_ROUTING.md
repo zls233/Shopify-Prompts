@@ -7,7 +7,7 @@ release prompt.
 
 ## AUTOPILOT 总入口
 
-`运行0-1` → `00-autopilot/01-全流程自动执行.md`；在同一任务自动串行完成现有六个 FAST 阶段，遵守各阶段验收、断点续跑和授权边界。
+`运行0-1` → `00-autopilot/0-1-全流程自动执行.md`；在同一任务自动串行完成现有六个 FAST 阶段，遵守各阶段验收、断点续跑和授权边界。
 
 ## FAST 阶段编号（默认）
 
@@ -26,23 +26,21 @@ release prompt.
 
 1. Normalize `运行` plus optional spaces, backticks, and punctuation.
 2. Match the full identifier before applying any fallback:
-   - `运行0-1` -> `00-autopilot/01-全流程自动执行.md`
-   - `运行2-1` -> `02-reference/01-页面爬取.md`
-   - `运行3-1` -> `03-theme/01-开始复刻.md`
-   - `运行3-pages-1` -> `03-theme/pages/01-首页.md`
-   - `运行3-pages-2` -> `03-theme/pages/02-顶栏与分类展开.md`
-   - `运行3-pages-3` -> `03-theme/pages/03-底栏.md`
-   - `运行3-pages-4` -> `03-theme/pages/04-商品列表.md`
-   - `运行3-pages-5` -> `03-theme/pages/05-商品详情页.md`
-   - `运行3-pages-6` -> `03-theme/pages/06-页面补齐.md`
-   - `运行4-1` -> `04-catalog/01-爬取商品SKU.md`
-   - `运行5-1` -> `05-customization/01-打折.md`
-   - `运行6-1` -> `06-qa/01-交付评估.md`
-   - `运行6-4` -> `06-qa/04-购物车与结账入口测试.md`
-   - `运行6-5` -> `06-qa/05-全站入口NotFound扫描与修复.md`
-3. For any other identifier, resolve the numeric path directly using zero
-   padding and the filename prefix. For example, `3-pages-2` means
-   `03-theme/pages/02-*.md`.
+   - `运行0-1` -> `00-autopilot/0-1-全流程自动执行.md`
+   - `运行2-1` -> `02-reference/2-1-页面爬取.md`
+   - `运行3-1` -> `03-theme/3-1-开始复刻.md`
+   - `运行3-pages-1` -> `03-theme/pages/3-pages-1-首页.md`
+   - `运行3-pages-2` -> `03-theme/pages/3-pages-2-顶栏与分类展开.md`
+   - `运行3-pages-3` -> `03-theme/pages/3-pages-3-底栏.md`
+   - `运行3-pages-4` -> `03-theme/pages/3-pages-4-商品列表.md`
+   - `运行3-pages-5` -> `03-theme/pages/3-pages-5-商品详情页.md`
+   - `运行3-pages-6` -> `03-theme/pages/3-pages-6-页面补齐.md`
+   - `运行4-1` -> `04-catalog/4-1-爬取商品SKU.md`
+   - `运行5-1` -> `05-customization/5-1-打折.md`
+   - `运行6-1` -> `06-qa/6-1-交付评估.md`
+   - `运行6-4` -> `06-qa/6-4-购物车与结账入口测试.md`
+   - `运行6-5` -> `06-qa/6-5-全站入口NotFound扫描与修复.md`
+3. For other identifiers, match the complete unpadded ID followed by `-` in the corresponding stage directory. For example, `3-pages-2` means `03-theme/pages/3-pages-2-*.md`. Never match only the trailing number.
 4. Require exactly one matching Markdown file. If there is no match or more
    than one match, stop and report the candidates; never guess.
 

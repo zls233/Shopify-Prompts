@@ -9,7 +9,7 @@
 
 ## 新版公告栏、Footer 和页面收缩规则（全阶段适用）
 
-**新版默认范围（高优先级）：**遵循 `05-customization/02-功能削减.md`：公告栏唯一 `Free Shipping on All Orders`，Footer 固定 CUSTOMER CARE（Privacy Policy / Return Policy / Shipping Policy / Service Policy）和 ORDER INFO（About Us / Contact Us / Terms Of Purchase / Terms Of Use）两栏八链接，**不复刻原站 Footer 且不保留任何社媒或多余 Footer 栏目**。这八个信息资源需真实内容和有效链接，但无需逐页原站视觉复刻。FAQ、Stores、Blog、Journal、Article、独立 Editorial/Campaign 等默认 `excluded`，只有项目明确确认的额外路径才处理。本文其它宽泛的“原站全部复制”、额外内容页面示例与旧 Footer 指令若冲突，以此规则为准。
+**新版默认范围（高优先级）：**遵循 `05-customization/5-2-功能削减.md`：公告栏唯一 `Free Shipping on All Orders`，Footer 固定 CUSTOMER CARE（Privacy Policy / Return Policy / Shipping Policy / Service Policy）和 ORDER INFO（About Us / Contact Us / Terms Of Purchase / Terms Of Use）两栏八链接，**不复刻原站 Footer 且不保留任何社媒或多余 Footer 栏目**。这八个信息资源需真实内容和有效链接，但无需逐页原站视觉复刻。FAQ、Stores、Blog、Journal、Article、独立 Editorial/Campaign 等默认 `excluded`，只有项目明确确认的额外路径才处理。本文其它宽泛的“原站全部复制”、额外内容页面示例与旧 Footer 指令若冲突，以此规则为准。
 
 - 2-1 仅采集真正会复刻的核心模板与八个政策/信息页必要来源映射，不再做无关静态页样本。
 - 3-1 直接产出固定 `Free Shipping on All Orders` 公告栏、八链接 Footer 和真实可访问的简洁信息页；无须原站 Footer 或独立 Blog/FAQ/Stores 视觉复刻。
@@ -22,7 +22,7 @@
 
 ## AUTOPILOT 端到端总控
 
-`运行0-1` 只从 `00-autopilot/01-全流程自动执行.md` 进入，自动依次运行 `1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1`，维护项目内持久化状态并核验后续跑；对子任务失败有限重试及定向修复，关键依赖/权限阻塞时停止依赖链。总控本身不新增发布 Live、关闭 Private Mode、修改支付或付款授权。详见该总控文件。
+`运行0-1` 只从 `00-autopilot/0-1-全流程自动执行.md` 进入，自动依次运行 `1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1`，维护项目内持久化状态并核验后续跑；对子任务失败有限重试及定向修复，关键依赖/权限阻塞时停止依赖链。总控本身不新增发布 Live、关闭 Private Mode、修改支付或付款授权。详见该总控文件。
 
 ## Storefront Password 自动获取（初始化阶段）
 
@@ -59,7 +59,7 @@
 - 确定源站快照时间、发现方式、全部分页、期望 handle/variant 清单及明确排除项。用稳定标识逐项对账，数量相同也可能成员不同。
 - 大批操作保存输入版本/哈希、store、执行身份、操作 ID、每批及每行结果。瞬时错误有限重试，重试前读回；只处理未解决项，权限、数据校验和 `userErrors` 不原样循环重试。
 - 报告 `expected / verified / missing / failed / blocked / excluded` 及具体 handle。有未解决的范围内商品时为部分完成或阻塞。源站实时目录与历史导入快照分开报告；只验证已导入交集不能称全站匹配。
-- 功能入口削减与数据导入范围分别判定，以用户当前任务和 `05-customization/02-功能削减.md` 为依据。不得静默漏导，也不得为凑数量把不支持的原生商品功能冒充成普通商品；Gift Card、库存、价格、SKU、规格有功能或证据缺口时列出限制。
+- 功能入口削减与数据导入范围分别判定，以用户当前任务和 `05-customization/5-2-功能削减.md` 为依据。不得静默漏导，也不得为凑数量把不支持的原生商品功能冒充成普通商品；Gift Card、库存、价格、SKU、规格有功能或证据缺口时列出限制。
 - `ACTIVE`、Online Store publication、媒体处理完成、实际可售和页面可访问分别验证。主题 ZIP/上传不会创建商品、分类、菜单、Pages、Blogs 或 Articles。
 
 ## 分类必须从实际导航验收
@@ -91,9 +91,9 @@
 
 ## 结账页面范围与最终冒烟测试
 
-- 不复刻原站的 Checkout/结账页面、支付输入/订单确认页面，不纳入 reference 采集、Theme 页面补齐、视觉 QA 或像素级修复；以 `05-customization/02-功能削减.md` 为统一范围依据。
+- 不复刻原站的 Checkout/结账页面、支付输入/订单确认页面，不纳入 reference 采集、Theme 页面补齐、视觉 QA 或像素级修复；以 `05-customization/5-2-功能削减.md` 为统一范围依据。
 - **购物车的 Checkout 按钮不可删除或改为假交互**；商品可售 Variant → Add to Cart → Cart → 项目真实配置的结账入口仍属于 Required。支付系统由项目另行集成，不能仅凭进入 Shopify 默认 Checkout 宣称自有支付已经接好。
-- 已发布且公开可访问后，固定执行 `06-qa/04-购物车与结账入口测试.md`，在 Desktop/Mobile 真实浏览器中逐步加购、核对购物车、点击结账并确认进入项目允许的结账界面。只能验证到界面，不填写资料、不付款、不创建订单。
+- 已发布且公开可访问后，固定执行 `06-qa/6-4-购物车与结账入口测试.md`，在 Desktop/Mobile 真实浏览器中逐步加购、核对购物车、点击结账并确认进入项目允许的结账界面。只能验证到界面，不填写资料、不付款、不创建订单。
 - 分别报告实际测试状态 `passed / failed / blocked / not_run`、店铺/Theme ID、Product/Variant、时间、脱敏的落点 URL 和浏览器证据；不可把 Theme 文件推送、按钮可见、Draft 预览或 HTTP 200 当作公开 Live 的结账入口验收。
 
 ## 交付与项目记忆
