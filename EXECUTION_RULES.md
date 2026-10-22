@@ -1,5 +1,13 @@
 # Shopify Prompt 执行与完成规则
 
+## 加购后的可见反馈（全站强制要求）
+
+- 用户在 PDP 或支持快速加购的商品卡片点击 Add to Cart，**Shopify 实际确认加购成功后**必须立即出现明确可见的购物车反馈：优先复用当前 Theme 的 Cart Drawer / Cart Notification / Mini Cart；若没有可靠的弹层，则直接导航至真实购物车页面。不得仅更新角标、按钮文字、隐藏状态或静默完成加购。
+- 弹层必须显示已加购商品、正确 Variant、数量和查看购物车/继续购物入口；购物车页面方案须直接展示真实购物车内容。不要虚构加购成功，也不要在请求失败时打开假成功提示；失败时展示可理解的错误信息并允许重试。
+- 防止重复点击产生重复请求；在请求中给出可见加载状态，成功后同步购物车数量/内容。Drawer/Modal 应支持移动端、键盘操作、关闭按钮、Escape 与焦点管理；失败后保持原页面可操作。不要破坏加购后的真实 Cart → Checkout 链路。
+- FAST 3-1 实现并在目标 Draft 浏览器里按 Desktop/Mobile 验证；FAST 6-1 在真实 PDP 和适用快速加购入口复验。验证必须包含成功反馈是否自动出现、内容是否真实、可关闭/继续购物/进入 Cart，以及加购失败的错误处理。只调用 cart API、改变角标或在代码中找到 drawer 组件不足以判定通过。
+
+
 ## Favicon 必需交接规则（所有新项目适用）
 - FAST 2-1 采集源站真实 favicon，保存 `references/_shared/icons/favicon.<ext>`、`favicon.json`（真实来源、MIME、尺寸、哈希、状态）；FAST 3-1 让目标 Draft Theme 真正加载该图标，FAST 6-1 检查浏览器及远端实际呈现。
 - 不混淆 favicon、Header Logo 与 Apple Touch Icon；不可把 HTML 错误响应、默认占位图或未经核实的图标标记成功。遇不兼容格式可制作兼容 PNG，保留原件。
