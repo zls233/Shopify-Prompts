@@ -1,6 +1,6 @@
 # 3-pages-6：八个 Footer 信息页面补齐
 
-本 Prompt 负责**当前允许范围内**缺失的信息页面/政策资源，绝不按参考站 sitemap 自动批量创建所有内容页。先读取 `EXECUTION_RULES.md`、`05-customization/02-功能削减.md` 和项目 `PROJECT_MEMORY.md`，确认 store、Partner/App 权限和真实资源状态。
+本 Prompt 负责**当前允许范围内**缺失的信息页面/政策资源，绝不按参考站 sitemap 自动批量创建所有内容页。先读取 `EXECUTION_RULES.md`、`05-customization/5-2-功能削减.md` 和项目 `PROJECT_MEMORY.md`，确认 store、Partner/App 权限和真实资源状态。
 
 ## 默认只补齐八个 Footer 链接
 
@@ -35,11 +35,11 @@ TARGET_PATHS={{TARGET_PATHS_OPTIONAL}}
 ## 完整任务
 
 1. 检查实际 Shopify Policies、Pages、现有 Footer Section/Menu，建八行映射 `label / resource ID / URL / content source / exists / verified`，只补缺失的、在范围内的真实资源。
-2. 先执行或复核 `01-project/02-建站授权准备.md`；必须验证目标 store、实际执行身份、Pages/政策需要的权限，未授权不得写入。Theme 默认仅同步到 Draft；原生 Page/Policy 属共享店铺资源，可能立即影响 Live。
+2. 先执行或复核 `01-project/1-2-建站授权准备.md`；必须验证目标 store、实际执行身份、Pages/政策需要的权限，未授权不得写入。Theme 默认仅同步到 Draft；原生 Page/Policy 属共享店铺资源，可能立即影响 Live。
 3. 政策、运费、退换、商家法律条款、公司历史、联系方式必须由目标商家真实配置或业务明确批准。不自行编造，也不复制源站法律文字冒充当前店铺政策。若没有可靠内容：记录具体缺项、`blocked` 与待批准负责人，不用空页或 lorem ipsum 伪装完成。
 4. 需要创建时优先复用现有 Shopify Policy/标准 Page，稳定 Handle，避免重复；通过可用 CLI/Admin API 写入后读回实际资源。CLI/API 不支持的 Policy 写入不要虚构 mutation，使用已授权 Admin UI 或记为阻塞。
 5. **不再逐页像素级复刻**八个信息页。采用统一、简单、可编辑、响应式的标题/正文 Shopify 模板，必要时复用一个标准 `page.json`；不用为 About/Contact 再做原站专属 Hero/Timeline/长图、为条款页制作多个独立 Theme 模板。
-6. 按 `03-theme/pages/03-底栏.md` 将八个真实 URL 绑定页脚；全部不能是 `#`、空链接、错误 404、首页兜底或文不对题。单独核对 Terms Of Purchase 与 Terms Of Use 的正文与链接。
+6. 按 `03-theme/pages/3-pages-3-底栏.md` 将八个真实 URL 绑定页脚；全部不能是 `#`、空链接、错误 404、首页兜底或文不对题。单独核对 Terms Of Purchase 与 Terms Of Use 的正文与链接。
 7. 在 Admin 读回以及 Desktop 1440px / Mobile 390px 浏览器逐条验证正确 URL、页面标题、内容、公开访问和 Header/Footer 的正常显示。Draft 预览不等于 Live 公开访问，分开汇报。
 8. 写入 `PROJECT_MEMORY.md`，记录八行最终结果、改动的真实 Page/Policy ID、源文本版本、权限、`verified / failed / blocked / not_run / excluded` 状态和恢复命令。
 

@@ -2,7 +2,7 @@
 
 ## 固定公告栏规则
 
-优先读取 `05-customization/02-功能削减.md`：全站公告栏显示 `Free Shipping on All Orders`，Footer 只保留固定两栏八个信息链接、无社媒；额外独立内容页默认 excluded。按范围实现/验收，不能借精修阶段恢复原站已排除页面。 此专项需将所有模板的 Announcement Bar 文案改为**唯一** `Free Shipping on All Orders`，不能沿用原站 SALE、倒计时、轮播、多语言促销或满额门槛；此要求仅修改 UI，禁止更改或核验任何实际运费配置，并检查首页/PLP/PDP、Desktop/Mobile 实际显示。
+优先读取 `05-customization/5-2-功能削减.md`：全站公告栏显示 `Free Shipping on All Orders`，Footer 只保留固定两栏八个信息链接、无社媒；额外独立内容页默认 excluded。按范围实现/验收，不能借精修阶段恢复原站已排除页面。 此专项需将所有模板的 Announcement Bar 文案改为**唯一** `Free Shipping on All Orders`，不能沿用原站 SALE、倒计时、轮播、多语言促销或满额门槛；此要求仅修改 UI，禁止更改或核验任何实际运费配置，并检查首页/PLP/PDP、Desktop/Mobile 实际显示。
 
 
 你现在需要完善当前 Shopify Theme 的顶栏（Announcement Bar、Header、主导航）及其分类展开层（Mega Menu / 下拉菜单 / 移动端分类导航）。目标是基于当前项目已采集的 reference 和目标原站，逐项校准结构、视觉、内容、链接和交互，尽可能与原站一致。不要重新设计，也不要只做一张静态截图。
@@ -18,9 +18,9 @@ DRAFT_THEME_ID={{DRAFT_THEME_ID}}
 TARGET_NAV_ITEMS={{TARGET_NAV_ITEMS}}
 ```
 
-`TARGET_NAV_ITEMS` 可填“全部”或指定一级分类。只修改这些分类涉及的顶栏、展开层及必要配置；不要顺手重做首页、商品列表、Footer 或无关商品数据。先读取 `05-customization/02-功能削减.md`，以它为功能排除的唯一权威清单；原站存在但项目明确排除的入口不加入。`05-customization/04-粘性顶栏.md` 只适用于原站确有对应滚动行为的情况，不要直接套用其具体层级假设。
+`TARGET_NAV_ITEMS` 可填“全部”或指定一级分类。只修改这些分类涉及的顶栏、展开层及必要配置；不要顺手重做首页、商品列表、Footer 或无关商品数据。先读取 `05-customization/5-2-功能削减.md`，以它为功能排除的唯一权威清单；原站存在但项目明确排除的入口不加入。`05-customization/5-4-粘性顶栏.md` 只适用于原站确有对应滚动行为的情况，不要直接套用其具体层级假设。
 
-实时核对目标店铺、执行身份、当前 Draft/Live Theme ID 和角色。默认只修改与同步到指定 unpublished Draft Theme，未经明确授权不修改或发布 Live。若需写入 Shopify Menus、Collections、Metaobjects 或内容资源，先复核 `01-project/02-建站授权准备.md` 的权限与资源归属；缺少权限时报告阻塞，不用前端硬编码绕过。保留工作区已有未提交改动。
+实时核对目标店铺、执行身份、当前 Draft/Live Theme ID 和角色。默认只修改与同步到指定 unpublished Draft Theme，未经明确授权不修改或发布 Live。若需写入 Shopify Menus、Collections、Metaobjects 或内容资源，先复核 `01-project/1-2-建站授权准备.md` 的权限与资源归属；缺少权限时报告阻塞，不用前端硬编码绕过。保留工作区已有未提交改动。
 
 ## 一、采集基准并审计现状
 
@@ -46,7 +46,7 @@ TARGET_NAV_ITEMS={{TARGET_NAV_ITEMS}}
 
 优先复用现有 Shopify Navigation Menu，使用 `section.settings.menu.links`、`link.links`、`link.object`、`link.url`、`link.title` 驱动可维护的分类层级；不要同时维护一份硬编码 JavaScript 导航树。菜单的层级、标题、顺序和 `resourceId` 应与真实 Shopify Collection/Page 对应。展开层独有的图片、文案与推广块优先沿用当前主题设置或已有 Metaobject 模式，只有确实需要商家维护且现有结构不足时才增设结构化资源。
 
-若商品分类、Collection 成员或 Menu 本身错误，按 `04-catalog/04-创建分类.md` 核对并修复数据归属，不用 Liquid 标题匹配或 CSS 隐藏错误项。确认 Collection 和目标商品分别已发布到 Online Store。站内内容页缺失时按 `03-theme/pages/06-页面补齐.md` 的资源流程处理，或将对应入口标记为交付阻塞；本轮未获内容资源授权时不得擅自创建。不要将链接指向 `#`、空 `href`、`javascript:void(0)`、首页兜底或已知 404。仅当原站确为非导航型展开按钮时，使用语义化 `button`，不要伪造链接。
+若商品分类、Collection 成员或 Menu 本身错误，按 `04-catalog/4-4-创建分类.md` 核对并修复数据归属，不用 Liquid 标题匹配或 CSS 隐藏错误项。确认 Collection 和目标商品分别已发布到 Online Store。站内内容页缺失时按 `03-theme/pages/3-pages-6-页面补齐.md` 的资源流程处理，或将对应入口标记为交付阻塞；本轮未获内容资源授权时不得擅自创建。不要将链接指向 `#`、空 `href`、`javascript:void(0)`、首页兜底或已知 404。仅当原站确为非导航型展开按钮时，使用语义化 `button`，不要伪造链接。
 
 ## 三、实现顶栏与展开层
 

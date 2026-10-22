@@ -1,6 +1,6 @@
 # 3-pages-3：固定八链接 Footer 专项
 
-你现在负责当前 Shopify 项目页脚。**不再复刻源站 Footer**，唯一依据是 `05-customization/02-功能削减.md`；先读取 `EXECUTION_RULES.md` 与 `PROJECT_MEMORY.md` 并确认目标店铺、Theme 角色、访问权限。
+你现在负责当前 Shopify 项目页脚。**不再复刻源站 Footer**，唯一依据是 `05-customization/5-2-功能削减.md`；先读取 `EXECUTION_RULES.md` 与 `PROJECT_MEMORY.md` 并确认目标店铺、Theme 角色、访问权限。
 
 ## 固定页面结构
 
@@ -18,7 +18,7 @@ Service Policy                Terms Of Use
 
 1. 检查现有 `sections/`、`snippets/`、`assets/`、`layout/theme.liquid`、当前 Footer Menu 与 Section Settings，列出所有多余栏目/社媒/订阅入口。清理对应渲染输出和 Footer 专属绑定，**不要只用 CSS 隐藏**；保留无关的 Shopify 数据和其他页面模块。
 2. 对每个标签建立实际映射：`visible label → target URL → Page/Policy type → approved content source → status`。优先使用目标店铺正确的现有 Shopify Policies/Pages。法律与服务条款、Contact 信息绝不编造；`Terms Of Purchase`、`Terms Of Use`、`Service Policy` 不得随意全部指向同一个文档。
-3. 目标资源缺失时按 `03-theme/pages/06-页面补齐.md` **仅处理固定八项中缺少的资源**。读取授权和真实内容来源；缺失批准正文则标记阻塞，不创建假政策骗过验收。
+3. 目标资源缺失时按 `03-theme/pages/3-pages-6-页面补齐.md` **仅处理固定八项中缺少的资源**。读取授权和真实内容来源；缺失批准正文则标记阻塞，不创建假政策骗过验收。
 4. 复用现有 Footer Section 优先，按 Shopify Menu、正确对象 URL 或可配置 Section Settings 绑定真实链接，不写死旧店铺域名，不用 `#`、`javascript:void(0)`、空 `href`、404 或主页兜底。确保 hover、focus-visible、键盘交互及站外链接安全属性。
 5. 默认仅更新正确 Draft Theme；远端读回后以 Desktop 1440px、Mobile 390px 真实浏览器检查 Home/PLP/PDP Footer，八项逐个点击核对内容、URL 和响应，不因按钮出现就称成功。
 6. 更新 `PROJECT_MEMORY.md`；输出 store、Draft Theme ID、修改文件清单、移除项、八行 URL/资源/状态表、截图/日志证据及剩余 blockers。未经明确授权不发布或改写 Live。
