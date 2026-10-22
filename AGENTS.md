@@ -1,5 +1,18 @@
 # Shopify Prompt Routing
 
+## 任务完成闭环（入口强制规则）
+
+本仓库已有详细执行规范，**以 `EXECUTION_RULES.md` 的“任务完成闭环”章节为唯一详细规则来源**；本节只负责在 Codex 进入仓库时强制加载与执行，不另建相互矛盾的验收标准。
+
+- 接到任何编号命令（含 FAST / FULL / AUTOPILOT）时，先读取 `PROMPT_ROUTING.md`、`EXECUTION_RULES.md`、目标编号 Prompt、适用的子 Prompt，以及当前实际项目的 `AGENTS.md` 和 `PROJECT_MEMORY.md`。不得只凭编号或历史摘要推断执行范围。
+- 在动手前将全部适用要求和验收条件展开为逐项任务清单，并持久化到**当前 Shopify 项目**的 `TASK_CHECKLIST.md`（如已有等价文件则沿用）。逐项保存状态、真实证据、缺口和下一步；不要将项目状态写进通用 Prompts 仓库。
+- 每个任务必须“执行 → 验证 → 定位差异 → 修复 → 复验”，直到适用项全部验证通过。创建脚本、下载部分素材、产生截图、检查 JSON、工具返回成功、上传主题或仅完成样本，都不能单独作为整阶段完成证明。
+- 遇到可修复失败，在现有授权范围内继续完成未解决项；对临时错误有限重试，对确定性错误调整处理方式，对批量任务只处理差集。不要一次失败就提前总结，也不要无变化地无限重试。
+- 如果某项因外部权限、登录、数据不可访问或其他真实依赖无法继续，先处理所有独立可执行项，再将其记为 `blocked` 并保留可复现证据和精确恢复入口。不可擅自发布 Live、修改支付、关闭密码保护或扩大测试权限以达到“完成”。
+- 最终核对“原始 Prompt 全部适用要求 ↔ 清单 ↔ 实际验证证据”。只有全部适用项为 `verified`，且其余项有明确依据为 `excluded`，才报告 `completed`。任何 `failed / blocked / not_run` 均不得冒充通过；真实报告 `partial` 或 `blocked`，并同步 `PROJECT_MEMORY.md`。
+- 对于“继续”“重试”或新会话，优先核验已保存证据和当前远端状态，接着处理剩余项；不得重复已完成的导入、授权操作或批量写入。FAST 只减少手动触发次数，不降低验收标准。
+
+
 **Default storefront scope:** Before reference capture, theme, content pages, footer or QA, read `05-customization/5-2-功能削减.md` as the only scope authority. Announcement Bar is always exactly one `Free Shipping on All Orders` message. This is a theme-display-only requirement: never change or audit actual shipping profiles, rates, zones, Markets, or custom-checkout shipping based on this banner request. Do not claim actual shipping fees are zero. Footer has precisely CUSTOMER CARE (Privacy Policy, Return Policy, Shipping Policy, Service Policy) and ORDER INFO (About Us, Contact Us, Terms Of Purchase, Terms Of Use), with no social entries, Newsletter or extra columns. All eight labels must target real approved Policy/Page content; never fabricate legal copy, contact details or shipping promises. Other independent FAQ/Stores/Blogs/Articles/Editorial pages are excluded unless the current project specifically requires them. Keep Home/PLP/PDP/Cart and real checkout-entry QA mandatory. Stage prompts must not re-introduce broader legacy source-site content. Update the project memory with any explicit exception.
 
 
