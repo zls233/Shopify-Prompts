@@ -1,5 +1,12 @@
 # Shopify Prompt Routing
 
+## 内容缺失自动补齐（默认行为）
+
+**不要因为原站没有相应页面、店铺没有现成文案或用户未事先提供稿件而停止。** 在本次指定的建站范围内，优先复用已存在的素材与资源；缺少 About Us、Contact Us、Footer 八个信息页或必要的非敏感 UI 文案时，Codex 应自主设计、撰写、创建、绑定并验证，不反复询问用户。适用详规见 `05-customization/5-2-功能削减.md` 和 `03-theme/pages/3-pages-6-页面补齐.md`。
+
+原创描述和文案可以合理补全缺失的展示内容；价格、商品属性、评论、商家法定身份、实际配送/退货条件、个人信息处理承诺等必须以真实数据为准。缺少具体业务事实时采用通用不作额外承诺的表达，把后续业务核定记录为备注，而非把页面技术实现整体标记 blocked。仍遵守既有 Draft/Live、写入权限、支付与凭据边界。
+
+
 ## 任务完成闭环（入口强制规则）
 
 本仓库已有详细执行规范，**以 `EXECUTION_RULES.md` 的“任务完成闭环”章节为唯一详细规则来源**；本节只负责在 Codex 进入仓库时强制加载与执行，不另建相互矛盾的验收标准。
@@ -13,7 +20,7 @@
 - 对于“继续”“重试”或新会话，优先核验已保存证据和当前远端状态，接着处理剩余项；不得重复已完成的导入、授权操作或批量写入。FAST 只减少手动触发次数，不降低验收标准。
 
 
-**Default storefront scope:** Before reference capture, theme, content pages, footer or QA, read `05-customization/5-2-功能削减.md` as the only scope authority. Announcement Bar is always exactly one `Free Shipping on All Orders` message. This is a theme-display-only requirement: never change or audit actual shipping profiles, rates, zones, Markets, or custom-checkout shipping based on this banner request. Do not claim actual shipping fees are zero. Footer has precisely CUSTOMER CARE (Privacy Policy, Return Policy, Shipping Policy, Service Policy) and ORDER INFO (About Us, Contact Us, Terms Of Purchase, Terms Of Use), with no social entries, Newsletter or extra columns. All eight labels must target real approved Policy/Page content; never fabricate legal copy, contact details or shipping promises. Other independent FAQ/Stores/Blogs/Articles/Editorial pages are excluded unless the current project specifically requires them. Keep Home/PLP/PDP/Cart and real checkout-entry QA mandatory. Stage prompts must not re-introduce broader legacy source-site content. Update the project memory with any explicit exception.
+**Default storefront scope:** Before reference capture, theme, content pages, footer or QA, read `05-customization/5-2-功能削减.md` as the only scope authority. Announcement Bar is always exactly one `Free Shipping on All Orders` message. This is a theme-display-only requirement: never change or audit actual shipping profiles, rates, zones, Markets, or custom-checkout shipping based on this banner request. Do not claim actual shipping fees are zero. Footer has precisely CUSTOMER CARE (Privacy Policy, Return Policy, Shipping Policy, Service Policy) and ORDER INFO (About Us, Contact Us, Terms Of Purchase, Terms Of Use), with no social entries, Newsletter or extra columns. All eight labels must target real, accessible Policy/Page resources. Reuse verified store content first; when missing, autonomously draft original, neutral, store-appropriate content and create/bind the missing pages without asking the user for copy. Keep unverified factual claims out of the copy; note any later merchant/legal review separately instead of blocking technical completion. Other independent FAQ/Stores/Blogs/Articles/Editorial pages are excluded unless the current project specifically requires them. Keep Home/PLP/PDP/Cart and real checkout-entry QA mandatory. Stage prompts must not re-introduce broader legacy source-site content. Update the project memory with any explicit exception.
 
 
 
