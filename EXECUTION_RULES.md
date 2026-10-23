@@ -34,6 +34,13 @@
 - 仅在已授权 Draft 内修改主题；店铺 Files 为共享资源，Live 仍需独立授权与验证。记录 `verified / failed / blocked / not_run`，并通过真实浏览器和 Network 核验。
 
 
+## 全分类商品前台对照（04/06 强制）
+
+- `4-4` 先依原站完整导航建立每个一级/二级/三级实际商品分类的源 URL → 目标 Collection 映射和全量成员对账。必须检查分类语义、交叉归属、专题集合（New Arrivals / Best Sellers / Sale）和 `missing / extra`；排列顺序无需一致，成员数量相等不等于归类正确。
+- 在主题可用后，FAST `6-1` **必须执行 `06-qa/6-6-首页导航逐分类商品对照与修复.md`**：从原站及目标站首页顶栏逐条点击所有分类，Desktop/Mobile 两端实测、遍历分页/无限加载、验证每个分类商品正常显示、无漏分错分或坏图/空卡，检查筛选/排序与真实成员；后台接口/静态检查/只验首页都不足以替代。
+- 发现错分/漏分或渲染故障，在已有权限内按根因修正原生 Collections/Tags/Metafields、菜单、商品发布、导入差集及 Draft Theme，远端读回并逐分类复验。共享数据可能影响 Live；不以此规则授权发布 Live Theme、删商品或更改支付。
+- 保存逐分类证据和 `verified / failed / blocked / not_run / excluded` 到项目 `TASK_CHECKLIST.md`、`PROJECT_MEMORY.md`，未完成不得汇报全部商品分类 QA 通过。`6-5` 只查入口有效性，不能替代 `6-6` 的分类内容语义检查。
+
 ## 新版公告栏、Footer 和页面收缩规则（全阶段适用）
 
 **新版默认范围（高优先级）：**遵循 `05-customization/5-2-功能削减.md`：公告栏唯一 `Free Shipping on All Orders`，Footer 固定 CUSTOMER CARE（Privacy Policy / Return Policy / Shipping Policy / Service Policy）和 ORDER INFO（About Us / Contact Us / Terms Of Purchase / Terms Of Use）两栏八链接，**不复刻原站 Footer 且不保留任何社媒或多余 Footer 栏目**。这八个信息资源需真实内容和有效链接，但无需逐页原站视觉复刻。FAQ、Stores、Blog、Journal、Article、独立 Editorial/Campaign 等默认 `excluded`，只有项目明确确认的额外路径才处理。本文其它宽泛的“原站全部复制”、额外内容页面示例与旧 Footer 指令若冲突，以此规则为准。
@@ -60,7 +67,7 @@
 ## 默认 FAST / 可选 FULL 阶段模式
 
 - **默认 `EXECUTION_MODE=FAST`**：大阶段只运行首个 Prompt，即 `运行1-1 → 运行2-1 → 运行4-1 → 运行3-1 → 运行5-1 → 运行6-1`。每一入口应在同一次任务读取实际子 Prompt、完成必要子任务和核验，不能只创建脚本、生成计划或要求用户依次手动调用 4-2/4-3。FAST 省人工触发，不省数据清洗、商品全量导入、分类、主题基本质量、定制和最终测试。
-- 阶段覆盖：1-1 包含适用的 1-2 授权；2-1 完成参考采集；4-1 包含 4-2 清洗、4-3 导入、4-4 分类；3-1 包含素材/内容/响应式/浏览器自检及明显问题修复（3-2/3-3/pages 为按需专项）；5-1 包含 5-2 功能削减、5-3 Cookie、条件 5-4；6-1 包含评估与定向修复、**获独立授权才**执行 6-2/6-3、公开后执行 6-4 真实结账入口测试。
+- 阶段覆盖：1-1 包含适用的 1-2 授权；2-1 完成参考采集；4-1 包含 4-2 清洗、4-3 导入、4-4 分类；3-1 包含素材/内容/响应式/浏览器自检及明显问题修复（3-2/3-3/pages 为按需专项）；5-1 包含 5-2 功能削减、5-3 Cookie、条件 5-4；6-1 包含 `6-5` 全站死链与 `6-6` 逐分类商品验收、评估与定向修复、**获独立授权才**执行 6-2/6-3、公开后执行 6-4 真实结账入口测试。
 - 用户显式 `EXECUTION_MODE=FULL` 或点名子编号时，按对应单文件详细流程运行；单独 `运行4-2` 不启动整个 4-1。遇问题只对具体失败部分使用专项 Prompt、有限重试，不重复导入或打折。每阶段读取当前项目 `PROJECT_MEMORY.md` 和远端证据，逐项保存 `verified / failed / blocked / excluded / not_run`、目标 store/身份/Theme ID、数据差集和恢复入口。
 - Theme 默认 Draft，共享商品/分类/价格必须有明确目标和资源权限；FAST/`运行6-1` **不授权**切换 Live、关闭 Private Mode、修改商家地址或支付配置。发布、公开访问、付款都是不同权限边界。
 - 用户需在 Codex 运行前自行选用 **GPT-6.1-Sol XHigh**；Prompt 本身不能切换底层模型/推理等级，使用模型名称不代表工作已完成。

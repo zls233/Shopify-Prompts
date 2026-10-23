@@ -18,7 +18,7 @@ release prompt.
 | `4-1` | 04 抓取、4-2 清洗、4-3 导入、4-4 分类 |
 | `3-1` | 03 必要 Theme、素材、内容、Draft QA；精修按需 |
 | `5-1` | 05 打折、5-2 功能削减、5-3 Cookie、条件 5-4 |
-| `6-1` | 06 交付评估与修复，获独立授权才 6-2/6-3，6-5 全站 Not Found 扫描修复，公开后 6-4 |
+| `6-1` | 06 交付评估与修复，获独立授权才 6-2/6-3，6-5 全站 Not Found 扫描修复、6-6 双站逐分类商品对照修复，公开后 6-4 |
 
 每个入口在**同一轮**完成必要子任务、真实核验与证据，不必逐个发送子编号；用户点名 `4-2` 等仍只执行该专项。FAST 不授予 Live 发布或关闭密码保护权限。参见 `EXECUTION_RULES.md`。
 
@@ -40,6 +40,7 @@ release prompt.
    - `运行6-1` -> `06-qa/6-1-交付评估.md`
    - `运行6-4` -> `06-qa/6-4-购物车与结账入口测试.md`
    - `运行6-5` -> `06-qa/6-5-全站入口NotFound扫描与修复.md`
+   - `运行6-6` -> `06-qa/6-6-首页导航逐分类商品对照与修复.md`
 3. For other identifiers, match the complete unpadded ID followed by `-` in the corresponding stage directory. For example, `3-pages-2` means `03-theme/pages/3-pages-2-*.md`. Never match only the trailing number.
 4. Require exactly one matching Markdown file. If there is no match or more
    than one match, stop and report the candidates; never guess.
