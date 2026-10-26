@@ -28,6 +28,15 @@
 
 
 ## Favicon 必需交接规则（所有新项目适用）
+
+## 品牌主 Logo → 第三方结账交接（所有新项目适用）
+
+- 2-1 从真实 Header 单独采集品牌 Logo 及证据；3-1 生成**可单独访问的品牌字标/Logo 图片**并建立 `docs/payment-branding-handoff.md`，6-1 验收文件、来源、有效 URL 与交接状态。Logo 与 favicon、导航推广图、商品图严格区分，禁止依赖“从页面第一张图自动猜 Logo”的回退机制。
+- 支付系统由第三方集成，主题侧交付独立图片和可信的**绝对 HTTPS URL**，优先经授权托管在 Shopify Files；若使用 Theme asset，必须在最终 Live 发布后重新解析 URL 并复验，不能硬编码旧店铺域名或 `/cdn/shop/t/<id>/`。未发布/未开放时明确记 `pending_live_url`，不能虚报公网可用。
+- 交接记录需包含品牌、Store、文件路径与来源、SHA-256、MIME/尺寸、适用背景、托管类型、URL/验证状态和交接方动作。未集成第三方支付不阻碍已完成的主题侧素材交付，但不能称支付页 Logo 已验收。
+- 若第三方结账实际已接入，6-4 在不付款的真实入口测试中增加 Logo 视觉和（可安全观察时）`store_logo` 等传参核对：**必须指向指定主 Logo**，不得为空、不得指向 `menu-*.jpg`、促销 banner 或商品图片。某项目混淆脚本的 `_z9` 为空曾触发错误回退，这只是案例，不把变量名当作跨店统一接口。支付脚本及映射由接入方负责；未明确授权时不改其代码、代理路径或配置。
+
+
 - FAST 2-1 采集源站真实 favicon，保存 `references/_shared/icons/favicon.<ext>`、`favicon.json`（真实来源、MIME、尺寸、哈希、状态）；FAST 3-1 让目标 Draft Theme 真正加载该图标，FAST 6-1 检查浏览器及远端实际呈现。
 - 不混淆 favicon、Header Logo 与 Apple Touch Icon；不可把 HTML 错误响应、默认占位图或未经核实的图标标记成功。遇不兼容格式可制作兼容 PNG，保留原件。
 - 先审查主题现有 favicon settings；Shopify `image_picker` 不能直接引用 Theme assets，如需设置则用合法店铺 Files 引用；另一方案是在主题 head 使用 `asset_url` 声明图标，禁止生成互相冲突的 link。
