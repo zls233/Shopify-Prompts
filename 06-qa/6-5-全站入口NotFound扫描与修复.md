@@ -1,6 +1,10 @@
-# 6-5 全站入口 Not Found 扫描、集中修复与复测
+# 6-5｜核心链接及变更差集 Not Found 检查（FAST / FULL）
 
-你现在的任务：在**当前明确指定的 Shopify 店铺和目标 Theme** 上，自动发现范围内所有用户可点击入口，集中定位 Not Found / 404 / 错误跳转 / 无效目标，按根因批量修复，再重新完整扫描。**不要只列建议，也不要用隐藏错误或跳转首页伪装成功。**先读 `EXECUTION_RULES.md`、`05-customization/5-2-功能削减.md`、`PROJECT_MEMORY.md`（若存在）。
+> 默认 FAST 按 `STAGE_COMPLETION_CONTRACT.md` v2：优先使用 Shopify Menus、Pages、Collections、商品 handle 和本次 changed files 生成全部核心入口数据清单；可批量程序检查的 URL 直接验证，浏览器只抽检重要实际用户路径与异常点。未改变且已有可信检查的入口不重复打开。修复后只重测失败差集；不必为每个通过 URL 单独截图。用户明确 FULL/全站逐链接 UI 测试时再执行旧的深度流程。不能声称只抽样的入口都经过浏览器验证。
+
+
+
+你现在的任务：在**当前明确指定的 Shopify 店铺和目标 Theme** 上，自动发现范围内所有用户可点击入口，集中定位 Not Found / 404 / 错误跳转 / 无效目标，按根因批量修复，再对受影响入口做差异复测。**不要只列建议，也不要用隐藏错误或跳转首页伪装成功。**先读 `EXECUTION_RULES.md`、`05-customization/5-2-功能削减.md`、`PROJECT_MEMORY.md`（若存在）。
 
 ## 边界与前置
 

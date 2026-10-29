@@ -1,6 +1,6 @@
 # Shopify-Prompts 编号路由与规范文件名
 
-**编号代表唯一命令。** `1-1,2-1,4-1,3-1,5-1,6-1` 为完整 FAST 阶段总入口，不是单一步骤；`0-1` 是完整建站总控。应先读 `STAGE_COMPLETION_CONTRACT.md`、`EXECUTION_RULES.md`，再读该阶段及适用子 Prompt。
+**编号代表唯一命令。** `1-1,2-1,4-1,3-1,5-1,6-1` 为完整 FAST 阶段总入口，不是单一步骤；`0-1` 是完整建站总控。应先读 `STAGE_COMPLETION_CONTRACT.md` v2 和当前阶段精简入口，再按需读取 `EXECUTION_RULES.md` 的相关部分与被实际执行的子 Prompt 小节；不在 FAST 起步全量读取所有归档/子 Prompt。
 
 | 命令 | 阶段职责 | 当前唯一入口路径 |
 |---|---|---|

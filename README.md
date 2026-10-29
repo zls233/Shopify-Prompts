@@ -1,5 +1,11 @@
 # Shopify Prompts
 
+## FAST 核心交付与精简入口（2026-10-29）
+
+默认 `FAST`：P0 核心问题要修；影响当前使用的 P1 要修；细节性 P2 与不影响核心交付的 P1 记录 deferred，达到核心可用即可 `completed_core`。仅用户明确 FULL 或精细验收时做全面截图、逐分类双站浏览、离线像素回放。商品全量导入目标、Active/9999、权限边界和真实购物链路不能因省时而跳过。执行规范是 `STAGE_COMPLETION_CONTRACT.md`。
+
+`2-1`、`3-1`、`6-1` 已改成短的 FAST 入口，过去的冗长指南保存在 `archive/full-guidance/`，仅 FULL/具体障碍按需打开；不用每次整篇加载。减少重复文件读取、模型上下文、冗余截图和多阶段重复 QA。
+
 ## 阶段文件规范命名
 
 中文名称已修改为“`编号-完整职责-阶段入口.md`”，0-1 为“总入口”，保持数字命令兼容；查看 `PROMPT_ROUTING.md` 唯一路由表。`4-1` 不只是爬取，还包括 CSV、导入、ACTIVE/9999 和分类；`3-1` 包括整段主题与 Draft 验收；`5-1` 是定制阶段，不只是打折。强制完整阶段执行和断点规则见 `STAGE_COMPLETION_CONTRACT.md`。固定八个页脚英文正文模板见 Shopify-Template `content/footer-pages/`。

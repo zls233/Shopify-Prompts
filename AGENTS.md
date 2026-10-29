@@ -2,7 +2,7 @@
 
 ## FAST 核心交付、商品 ACTIVE/9999、Footer 八页（新默认规则）
 
-先读取 `STAGE_COMPLETION_CONTRACT.md` 并遵守其完整阶段执行、批次断点、远端读回及商品默认值；在任一编号入口同轮完成所有适用子任务，遇真实 blocker 才按失败清单恢复。默认所有目标店铺商品 `ACTIVE`、可跟踪库存 9999；Footer 自动复用 Shopify-Template 八份页面内容模板。
+先读取 `STAGE_COMPLETION_CONTRACT.md` v2。FAST 先完成核心 P0/P1，非阻断 P1/P2 可 deferred；仅当有对应需要时读取子 Prompt 的适用章节，不在进入阶段时把全部长文件及所有专项一次性读入上下文。用批量与断点处理长任务；关键外部阻断时列失败清单，不无限重试。默认所有目标店铺商品 `ACTIVE`、可跟踪库存 9999；Footer 自动复用 Shopify-Template 八份页面内容模板。
 
 
 ## 内容缺失自动补齐（默认行为）
@@ -28,7 +28,7 @@ During FAST 1-1 initialization, automatically acquire an enabled store's current
 
 For end-to-end unattended stage orchestration, `运行0-1` resolves to `00-autopilot/0-1-全流程建站与断点续跑-总入口.md`. It runs the six existing FAST phase entry points sequentially with verification, checkpoint/resume and explicit authorization boundaries; it never grants Live publication or store opening authority.
 
-Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `4-1`, `3-1`, `5-1`, and `6-1` are complete phase entry points. Read their subordinate Prompt instructions and execute, validate, and record all necessary work in the same run; do not ask the user to issue each following substep. Run subordinate prompts separately only for actual failures, special precision, or explicit `FULL` mode. `4-1` includes CSV cleanup, full import and collections; `3-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes mandatory `06-qa/6-6-首页导航逐分类商品对照与修复.md` complete category comparison/fix/retest and `06-qa/6-5-全站入口NotFound扫描与修复.md` link audit/fix/retest on the authorized Draft and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model: choose GPT-6.1-Sol XHigh in Codex beforehand. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
+Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `4-1`, `3-1`, `5-1`, and `6-1` are complete phase entry points. Read only the relevant subordinate Prompt sections when the step is needed; perform and verify core scope in the same run; do not ask the user to issue each following substep. Run subordinate prompts separately only for actual failures, special precision, or explicit `FULL` mode. `4-1` includes CSV cleanup, full import and collections; `3-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes risk-based `6-6` programmatic catalog comparison plus sampled UI, and `6-5` core-link delta scan/fix/retest on the authorized Draft and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model or reasoning effort. For routine FAST tasks use an adequate efficient effort; reserve XHigh for complex bugs or deep architecture when needed, and respect the operator's chosen setting. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
 
 
 When the user says `运行2-1`, `运行3-pages-2`, or another numbered command,
