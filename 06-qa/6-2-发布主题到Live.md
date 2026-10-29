@@ -25,7 +25,7 @@ PUBLIC_URL={{PUBLIC_URL_OPTIONAL}}
 
 ## 一、读取项目规则并确认身份
 
-1. 读取 `AGENTS.md`、`01-project/1-2-建站授权准备.md`、`06-qa/6-1-交付评估.md` 以及本项目的 Partners/CLI 授权记录。确认当前 Partner 账户已获得目标店铺 Themes 权限，并实际通过 CLI 列出主题。
+1. 读取 `AGENTS.md`、`01-project/1-2-建站授权准备.md`、`06-qa/6-1-全站验收修复与交付-阶段入口.md` 以及本项目的 Partners/CLI 授权记录。确认当前 Partner 账户已获得目标店铺 Themes 权限，并实际通过 CLI 列出主题。
 2. 先确认 Shopify CLI / Admin 浏览器使用的是用户自己的 Shopify Partner 账户，并且该账户已获得 `{{SHOPIFY_STORE}}` 的 Partner / Collaborator 权限。不得使用原店铺所有者账号发布。
 3. 区分两类身份：
    - Theme CLI 复用已登录的 Partner 账户和目标店铺 Themes 权限，用于主题列表、推送、发布和拉回；不传 Theme Access token。
