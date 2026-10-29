@@ -1,66 +1,20 @@
-# Prompt Command Routing
+# Shopify-Prompts 编号路由与规范文件名
 
-When a user says `运行...`, treat the identifier as a command to execute the
-matching file in this repository's `Shopify-Prompts` collection. Do not invent
-a new task from the number and do not reinterpret a catalog prompt as a QA or
-release prompt.
+**编号代表唯一命令。** `1-1,2-1,4-1,3-1,5-1,6-1` 为完整 FAST 阶段总入口，不是单一步骤；`0-1` 是完整建站总控。应先读 `STAGE_COMPLETION_CONTRACT.md`、`EXECUTION_RULES.md`，再读该阶段及适用子 Prompt。
 
-## AUTOPILOT 总入口
+| 命令 | 阶段职责 | 当前唯一入口路径 |
+|---|---|---|
+| `运行0-1` | 全流程自动执行 | `00-autopilot/0-1-全流程建站与断点续跑-总入口.md` |
+| `运行1-1` | 项目初始化与授权 | `01-project/1-1-项目初始化与授权验证-阶段入口.md` |
+| `运行2-1` | 页面参考/媒体/交互采集 | `02-reference/2-1-原站页面参考与素材采集-阶段入口.md` |
+| `运行4-1` | 商品采集、清洗、导入和分类 | `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md` |
+| `运行3-1` | 主题复刻及 Draft 验收 | `03-theme/3-1-主题复刻与Draft验收-阶段入口.md` |
+| `运行5-1` | 折扣和站点定制 | `05-customization/5-1-价格折扣与站点定制-阶段入口.md` |
+| `运行6-1` | 全站验收及交付 | `06-qa/6-1-全站验收修复与交付-阶段入口.md` |
 
-`运行0-1` → `00-autopilot/0-1-全流程自动执行.md`；在同一任务自动串行完成现有六个 FAST 阶段，遵守各阶段验收、断点续跑和授权边界。
-
-## FAST 阶段编号（默认）
-
-| 入口 | 包含的必要工作 |
-|---|---|
-| `1-1` | 01 项目初始化 + 适用 1-2 授权 |
-| `2-1` | 02 全阶段 reference 采集和校验 |
-| `4-1` | 04 抓取、4-2 清洗、4-3 导入、4-4 分类 |
-| `3-1` | 03 必要 Theme、素材、内容、Draft QA；精修按需 |
-| `5-1` | 05 打折、5-2 功能削减、5-3 Cookie、条件 5-4 |
-| `6-1` | 06 交付评估与修复，获独立授权才 6-2/6-3，6-5 全站 Not Found 扫描修复、6-6 双站逐分类商品对照修复，公开后 6-4 |
-
-每个入口在**同一轮**完成必要子任务、真实核验与证据，不必逐个发送子编号；用户点名 `4-2` 等仍只执行该专项。FAST 不授予 Live 发布或关闭密码保护权限。参见 `EXECUTION_RULES.md`。
-
-## Resolution
-
-1. Normalize `运行` plus optional spaces, backticks, and punctuation.
-2. Match the full identifier before applying any fallback:
-   - `运行0-1` -> `00-autopilot/0-1-全流程自动执行.md`
-   - `运行2-1` -> `02-reference/2-1-页面爬取.md`
-   - `运行3-1` -> `03-theme/3-1-开始复刻.md`
-   - `运行3-pages-1` -> `03-theme/pages/3-pages-1-首页.md`
-   - `运行3-pages-2` -> `03-theme/pages/3-pages-2-顶栏与分类展开.md`
-   - `运行3-pages-3` -> `03-theme/pages/3-pages-3-底栏.md`
-   - `运行3-pages-4` -> `03-theme/pages/3-pages-4-商品列表.md`
-   - `运行3-pages-5` -> `03-theme/pages/3-pages-5-商品详情页.md`
-   - `运行3-pages-6` -> `03-theme/pages/3-pages-6-页面补齐.md`
-   - `运行4-1` -> `04-catalog/4-1-爬取商品SKU.md`
-   - `运行5-1` -> `05-customization/5-1-打折.md`
-   - `运行6-1` -> `06-qa/6-1-交付评估.md`
-   - `运行6-4` -> `06-qa/6-4-购物车与结账入口测试.md`
-   - `运行6-5` -> `06-qa/6-5-全站入口NotFound扫描与修复.md`
-   - `运行6-6` -> `06-qa/6-6-首页导航逐分类商品对照与修复.md`
-3. For other identifiers, match the complete unpadded ID followed by `-` in the corresponding stage directory. For example, `3-pages-2` means `03-theme/pages/3-pages-2-*.md`. Never match only the trailing number.
-4. Require exactly one matching Markdown file. If there is no match or more
-   than one match, stop and report the candidates; never guess.
-
-If the current Shopify project is outside this repository, locate the actual
-`Shopify-Prompts` checkout first. If it is unavailable, ask for its location;
-do not reconstruct the Prompt from memory or infer a task from the number.
-
-## Execution
-
-After resolving the file, read and execute its Prompt in the current project.
-Read `EXECUTION_RULES.md` as the shared execution and completion contract.
-Briefly record the exact identifier, selected path, and task before executing.
-Resolve the target store, reference URL, theme roles, and credentials from the
-current project memory and environment, not from an example in the Prompt.
-Apply that Prompt's authorization, Draft/Live, dry-run, and verification rules.
-The default action is execution, not explaining the Prompt or asking the user
-to copy it into another tool.
-
-An identifier with an explicit suffix takes precedence over the broad phase:
-`3-pages-1` must resolve to the homepage page Prompt, while `3-1` resolves to
-the general theme recreation Prompt. `4-1` always resolves to the catalog SKU
-crawl Prompt unless the user names a different file explicitly.
+- 输入 `运行4-1` 直接执行 `04-catalog` 整阶段，包含 4-2 CSV、4-3 批量导入/ACTIVE/9999、4-4 分类/菜单/对账；无需用户另发子步骤。
+- `3-1` 包含 3-2/3-3/3-4 及适用 `3-pages-*`；`5-1` 包含 5-2/5-3/条件 5-4；`6-1` 包含验收与 6-5/6-6，独立授权后才可执行 6-2/6-3/公开后的 6-4。
+- `0-1` 按 `1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1` 顺序。
+- 其它专项编号（`1-2,3-2,3-pages-1...`, `4-2,4-3,4-4,5-2,6-5,6-6` 等）按完整 ID + `-` 前缀在对应阶段目录找到**唯一文件**。不要把 `3-pages-2` 当成 `3-2`。
+- 此次改名仅修改中文描述，**命令编号、执行顺序及项目既有 checkpoint 都保留**。原中文文件名不再重复创建入口；不得因旧聊天中的路径引用而猜测新编号或创建重名 Markdown。基于上表解析命令，旧路径直接映射到同 ID 的新规范文件。
+- 每次执行在实际项目中记录目标 Store、参考站、Draft/Live、身份、输入哈希、验收矩阵与差集；对 403/授权/源站限制按规范停止对应支线，不能擅自绕过。默认实际执行，不是回复计划或让用户逐步发送编号。

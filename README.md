@@ -1,5 +1,10 @@
 # Shopify Prompts
 
+## 阶段文件规范命名
+
+中文名称已修改为“`编号-完整职责-阶段入口.md`”，0-1 为“总入口”，保持数字命令兼容；查看 `PROMPT_ROUTING.md` 唯一路由表。`4-1` 不只是爬取，还包括 CSV、导入、ACTIVE/9999 和分类；`3-1` 包括整段主题与 Draft 验收；`5-1` 是定制阶段，不只是打折。强制完整阶段执行和断点规则见 `STAGE_COMPLETION_CONTRACT.md`。固定八个页脚英文正文模板见 Shopify-Template `content/footer-pages/`。
+
+
 ## 统一展示与默认页面范围（新版）
 
 - 全站 Announcement Bar：唯一英文文案 **`Free Shipping`**，无需复刻原站营销公告，且不因此擅改实际 Shopify 运费设置。
@@ -96,12 +101,12 @@ Shopify-Prompts/
 
 常用映射：
 
-- `运行2-1` -> `02-reference/2-1-页面爬取.md`
-- `运行3-1` -> `03-theme/3-1-开始复刻.md`
+- `运行2-1` -> `02-reference/2-1-原站页面参考与素材采集-阶段入口.md`
+- `运行3-1` -> `03-theme/3-1-主题复刻与Draft验收-阶段入口.md`
 - `运行3-pages-1` -> `03-theme/pages/3-pages-1-首页.md`
-- `运行4-1` -> `04-catalog/4-1-爬取商品SKU.md`
-- `运行5-1` -> `05-customization/5-1-打折.md`
-- `运行6-1` -> `06-qa/6-1-交付评估.md`
+- `运行4-1` -> `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md`
+- `运行5-1` -> `05-customization/5-1-价格折扣与站点定制-阶段入口.md`
+- `运行6-1` -> `06-qa/6-1-全站验收修复与交付-阶段入口.md`
 - `运行6-4` -> `06-qa/6-4-购物车与结账入口测试.md`
 - `运行6-5` -> `06-qa/6-5-全站入口NotFound扫描与修复.md`
 
@@ -129,7 +134,7 @@ Shopify-Prompts/
 ### 项目初始化
 
 1. **使用 Shopify-Template 创建项目**
-   使用 `01-project/1-1-创建项目.md`，从公开的 Shopify-Template 仓库初始化新项目，并在 GitHub 的 `Remix-Information` Organization 下创建或复用对应的 **Private 仓库**，核实组织归属和私有可见性后再推送。没有该组织的创建权限时暂停并请求授权，不要改建在个人账户或其他组织。随后确认 Draft Theme、Shopify Partners/CLI 登录、目标店铺 Themes 权限及基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
+   使用 `01-project/1-1-项目初始化与授权验证-阶段入口.md`，从公开的 Shopify-Template 仓库初始化新项目，并在 GitHub 的 `Remix-Information` Organization 下创建或复用对应的 **Private 仓库**，核实组织归属和私有可见性后再推送。没有该组织的创建权限时暂停并请求授权，不要改建在个人账户或其他组织。随后确认 Draft Theme、Shopify Partners/CLI 登录、目标店铺 Themes 权限及基础检查状态。初始化阶段保持轻量，不提前建设通用同步框架或 CI/CD。
 
 2. **建站资源授权准备**
    预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `01-project/1-2-建站授权准备.md`。对店铺自有资源，模板的 `connect:shopify` 会复用 CLI 已保存的授权，缺失或权限不足时申请完整建站权限包并读回核对；App 自有资源使用所属项目 App 的授权。授权通过后继续原任务，不重复创建应用。
@@ -137,10 +142,10 @@ Shopify-Prompts/
 ### 参考与商品
 
 3. **采集页面参考**  
-   使用 `02-reference/2-1-页面爬取.md` 分析目标网站的信息架构，自动选择具有代表性的首页、集合页、商品页、内容页等页面，并保存 Desktop / Mobile 截图、SingleFile、页面结构和交互参考。
+   使用 `02-reference/2-1-原站页面参考与素材采集-阶段入口.md` 分析目标网站的信息架构，自动选择具有代表性的首页、集合页、商品页、内容页等页面，并保存 Desktop / Mobile 截图、SingleFile、页面结构和交互参考。
 
 4. **抓取商品数据**
-   使用 `04-catalog/4-1-爬取商品SKU.md` 分析 sitemap、Collection、公开接口和商品页，获取商品、Variants、SKU、价格、图片等数据，并输出原始数据、规范化数据、Shopify CSV 和审计结果。
+   使用 `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md` 分析 sitemap、Collection、公开接口和商品页，获取商品、Variants、SKU、价格、图片等数据，并输出原始数据、规范化数据、Shopify CSV 和审计结果。
 
 5. **清洗 Shopify CSV**
    使用 `04-catalog/4-2-商品CSV数据清洗.md` 检查 Handle、Variant、Option、SKU、图片、价格等字段，修复无法导入或商品分组错误的问题。
@@ -160,7 +165,7 @@ Shopify-Prompts/
    使用 `03-theme/3-4-原站素材复用.md`，先盘点原站的视频、图片、文本、图案、SVG、图标和矢量资源，建立来源到 Shopify Section / 资源的映射，再实现和验证素材一致性。缺失素材要记录为阻塞，不要用生成内容或占位图填充。
 
 10. **开始复刻主题**
-   使用 `03-theme/3-1-开始复刻.md`，根据 reference 和已经导入的真实商品数据实现 Shopify Theme，先同步至 unpublished Draft Theme。
+   使用 `03-theme/3-1-主题复刻与Draft验收-阶段入口.md`，根据 reference 和已经导入的真实商品数据实现 Shopify Theme，先同步至 unpublished Draft Theme。
 
 11. **页面粗调与像素级精修**
    依次使用 `03-theme/3-2-页面粗调.md` 和 `03-theme/3-3-像素级精修.md`，对照原站的桌面与移动端截图和交互逐轮验证。
@@ -171,12 +176,12 @@ Shopify-Prompts/
 ### 项目定制
 
 13. **业务和视觉调整**
-    自动流程固定执行 `05-customization/5-1-打折.md`、`功能削减.md` 和 `Cookie.md`；不执行独立 `LOGO.md`。仅在原站确有粘性顶栏时执行 `粘性顶栏.md`。四折以原站当前售价为基准，须核验所有 Variant 的实际价格。
+    自动流程固定执行 `05-customization/5-1-价格折扣与站点定制-阶段入口.md`、`功能削减.md` 和 `Cookie.md`；不执行独立 `LOGO.md`。仅在原站确有粘性顶栏时执行 `粘性顶栏.md`。四折以原站当前售价为基准，须核验所有 Variant 的实际价格。
 
 ### 交付验收
 
 14. **交付评估与修复**
-    使用 `06-qa/6-1-交付评估.md` 检查 Draft Theme、商品、分类、价格、导航、响应式和核心购物交互。同时自动执行 `06-qa/6-6-首页导航逐分类商品对照与修复.md`，从原站和本店首页顶栏逐个进入分类，核对真实展示、完整商品归属、错分漏分和分页（不要求商品排列一致），修复并逐分类复验；另执行 `06-qa/6-5-全站入口NotFound扫描与修复.md`，扫描 404/软 404/错误跳转并复测。关键问题自动定向修复并重验；仍未通过则暂停。
+    使用 `06-qa/6-1-全站验收修复与交付-阶段入口.md` 检查 Draft Theme、商品、分类、价格、导航、响应式和核心购物交互。同时自动执行 `06-qa/6-6-首页导航逐分类商品对照与修复.md`，从原站和本店首页顶栏逐个进入分类，核对真实展示、完整商品归属、错分漏分和分页（不要求商品排列一致），修复并逐分类复验；另执行 `06-qa/6-5-全站入口NotFound扫描与修复.md`，扫描 404/软 404/错误跳转并复测。关键问题自动定向修复并重验；仍未通过则暂停。
 
 15. **发布与公开验证**
     使用 `06-qa/6-2-发布主题到Live.md`，仅在项目绑定的专用店铺、Draft Theme 和商品发布状态全部核对后，发布明确指定的 Draft Theme。发布后重新读回 Live Theme 角色，并用无登录态请求验证公开页面。若仍存在 Private Mode，再按 `06-qa/6-3-设置商家地址并开放店铺.md` 处理；认证或外部限制无法自动完成时暂停。

@@ -1,5 +1,10 @@
 # Shopify Prompt Routing
 
+## 阶段完整交付、商品 ACTIVE/9999、Footer 八页（新默认规则）
+
+先读取 `STAGE_COMPLETION_CONTRACT.md` 并遵守其完整阶段执行、批次断点、远端读回及商品默认值；在任一编号入口同轮完成所有适用子任务，遇真实 blocker 才按失败清单恢复。默认所有目标店铺商品 `ACTIVE`、可跟踪库存 9999；Footer 自动复用 Shopify-Template 八份页面内容模板。
+
+
 ## 内容缺失自动补齐（默认行为）
 
 **不要因为原站没有相应页面、店铺没有现成文案或用户未事先提供稿件而停止。** 在本次指定的建站范围内，优先复用已存在的素材与资源；缺少 About Us、Contact Us、Footer 八个信息页或必要的非敏感 UI 文案时，Codex 应自主设计、撰写、创建、绑定并验证，不反复询问用户。适用详规见 `05-customization/5-2-功能削减.md` 和 `03-theme/pages/3-pages-6-页面补齐.md`。
@@ -28,9 +33,9 @@
 
 
 
-During FAST 1-1 initialization, automatically acquire an enabled store's current Storefront Password: try supported CLI/API read capabilities, then use the authenticated Shopify Admin browser UI when necessary. Save only to ignored project-root `.env` keys `SHOPIFY_STORE_DOMAIN` and `SHOPIFY_STOREFRONT_PASSWORD`, preserve existing entries, and verify access without logging the password. Do not change protection settings. An inaccessible UI is `blocked`, not permission to ask for a manual password. See `01-project/1-1-创建项目.md` and `EXECUTION_RULES.md`.
+During FAST 1-1 initialization, automatically acquire an enabled store's current Storefront Password: try supported CLI/API read capabilities, then use the authenticated Shopify Admin browser UI when necessary. Save only to ignored project-root `.env` keys `SHOPIFY_STORE_DOMAIN` and `SHOPIFY_STOREFRONT_PASSWORD`, preserve existing entries, and verify access without logging the password. Do not change protection settings. An inaccessible UI is `blocked`, not permission to ask for a manual password. See `01-project/1-1-项目初始化与授权验证-阶段入口.md` and `EXECUTION_RULES.md`.
 
-For end-to-end unattended stage orchestration, `运行0-1` resolves to `00-autopilot/0-1-全流程自动执行.md`. It runs the six existing FAST phase entry points sequentially with verification, checkpoint/resume and explicit authorization boundaries; it never grants Live publication or store opening authority.
+For end-to-end unattended stage orchestration, `运行0-1` resolves to `00-autopilot/0-1-全流程建站与断点续跑-总入口.md`. It runs the six existing FAST phase entry points sequentially with verification, checkpoint/resume and explicit authorization boundaries; it never grants Live publication or store opening authority.
 
 Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `4-1`, `3-1`, `5-1`, and `6-1` are complete phase entry points. Read their subordinate Prompt instructions and execute, validate, and record all necessary work in the same run; do not ask the user to issue each following substep. Run subordinate prompts separately only for actual failures, special precision, or explicit `FULL` mode. `4-1` includes CSV cleanup, full import and collections; `3-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes mandatory `06-qa/6-6-首页导航逐分类商品对照与修复.md` complete category comparison/fix/retest and `06-qa/6-5-全站入口NotFound扫描与修复.md` link audit/fix/retest on the authorized Draft and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model: choose GPT-6.1-Sol XHigh in Codex beforehand. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
 
@@ -46,7 +51,7 @@ ambiguity instead of guessing. Read the selected Prompt, then execute it in
 the current Shopify project using that project's `PROJECT_MEMORY.md` and the
 Prompt's store, authorization, Draft/Live, and verification requirements.
 
-For example, `4-1` is `04-catalog/4-1-爬取商品SKU.md`, while `3-pages-2` is
+For example, `4-1` is `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md`, while `3-pages-2` is
 `03-theme/pages/3-pages-2-顶栏与分类展开.md`. Do not substitute a previous audit or an
 inferred workflow for the selected file.
 

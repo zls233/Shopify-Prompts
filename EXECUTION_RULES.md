@@ -1,5 +1,10 @@
 # Shopify Prompt 执行与完成规则
 
+## 当前最高优先级阶段规则（2026-10-29）
+
+完整执行契约统一位于 [`STAGE_COMPLETION_CONTRACT.md`](STAGE_COMPLETION_CONTRACT.md)。本仓库旧的“商品默认 DRAFT/保留已有状态”等描述如与用户新增默认值冲突，以 **全店商品 ACTIVE + 每个可跟踪 Variant 在核验 Location 的 available=9999** 为准；仍将 Online Store publication 和 Live Theme 独立管理。页脚八份页面内容统一复用 Shopify-Template `content/footer-pages/`，先核实品牌/邮箱/域名，再 Admin 写入、读回、Desktop/Mobile 逐页验收。
+
+
 
 ## 缺失页面和文案自主完成（默认行为）
 
@@ -65,7 +70,7 @@
 
 ## AUTOPILOT 端到端总控
 
-`运行0-1` 只从 `00-autopilot/0-1-全流程自动执行.md` 进入，自动依次运行 `1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1`，维护项目内持久化状态并核验后续跑；对子任务失败有限重试及定向修复，关键依赖/权限阻塞时停止依赖链。总控本身不新增发布 Live、关闭 Private Mode、修改支付或付款授权。详见该总控文件。
+`运行0-1` 只从 `00-autopilot/0-1-全流程建站与断点续跑-总入口.md` 进入，自动依次运行 `1-1 → 2-1 → 4-1 → 3-1 → 5-1 → 6-1`，维护项目内持久化状态并核验后续跑；对子任务失败有限重试及定向修复，关键依赖/权限阻塞时停止依赖链。总控本身不新增发布 Live、关闭 Private Mode、修改支付或付款授权。详见该总控文件。
 
 ## Storefront Password 自动获取（初始化阶段）
 
