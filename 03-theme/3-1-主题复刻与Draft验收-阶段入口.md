@@ -6,6 +6,10 @@
 
 
 
+## FAST 主题完成门槛与效率优先（覆盖旧的无限精修指令）
+
+当前主交付是可正常使用的 Home/PLP/PDP/Cart、桌面/手机导航、真实商品规格/图集、加购后的可见购物车、固定八页 Footer 链接、必要的素材/Badge/Cookie。以重要按钮可用、核心区块正确、没有明显大面积错位为 `completed_core`；不因字体 1-2px、页面高度细差、过渡动画/滚动细节或已排除页面仍有差异而保持 `partial`。每类模板优先仅各对照一次桌面和手机，最多两轮有进展的视觉修复；若仍有细微差异列 `deferred`，停止无止境的 screenshot→微调→screenshot 循环。主要页面不可用、核心购物交互缺失、严重移动错位仍须修复。
+
 ## 阶段收敛与验收
 
 先验证最小主题架构、核心 Home/PLP/PDP/Cart、全部适用页面子任务与 Footer。完成数据/功能端闭环后，按已保存的页面参考逐项修复可证明的视觉差异；每轮只修真实未通过项并复验。不要在未列入范围的旧 Blog/Stores 等页面上无限打磨；无法取得精确源参考时如实记录证据边界，不用“再优化一些”代替阶段完成标准。
@@ -666,59 +670,9 @@ accordion
 
 ---
 
-# 十五、Visual QA
+# 十五、FAST Visual QA（轻量）
 
-这是必须执行的步骤。
-
-不能只写完代码然后结束。
-
-对每一个重要页面：
-
-1. 打开原网页。
-2. 打开 Shopify Theme Preview。
-3. 使用相同 viewport。
-4. 分别截图。
-5. 对比截图。
-6. 找到视觉差异。
-7. 修改 Theme。
-8. 再截图。
-9. 重复。
-
-至少执行：
-
-```text
-Home Desktop
-Home Mobile
-
-Product Desktop
-Product Mobile
-
-Collection Desktop
-Collection Mobile
-
-一个 Landing Page
-
-一个普通 Content Page
-```
-
-重点比较：
-
-```text
-页面总长度
-section 高度
-element position
-font
-spacing
-image size
-image crop
-header
-footer
-grid
-card
-button
-```
-
-不要在第一次实现后就认为任务完成。
+对 **Home / 一个代表性 PLP / 一个代表性 PDP / Cart**，在 Desktop 1440 与 Mobile 390 的当前 Draft 预览观察一次。优先复用当前有效截图和已保存交互证据；仅对出现明显大范围错误的区块补截图和第二轮修复。无需默认每个页面的首屏、中段、页尾三轮截图，也无需对已排除页面取证。最多两轮有进展的视觉精修；P2 差异入 deferred。用户显式 `FULL` 或要求像素级精修时按 3-3 执行。
 
 ---
 
@@ -822,59 +776,18 @@ JSON validation
 
 ---
 
-# 二十、完成标准
+# 二十、FAST 核心完成标准
 
-只有以下条件满足后才算完成：
-
-```text
-主要页面模板已经实现
-
-Home 与 reference 高度接近
-
-Product 与 reference 高度接近
-
-Collection 与 reference 高度接近
-
-Desktop 已验证
-
-Mobile 已验证
-
-Header / Mega Menu 可用
-
-Footer 可用
-
-Product variant 可用
-
-Product gallery 可用
-
-Collection filter / sort 可用
-
-主要交互可用
-
-图片和视频没有明显缺失
-
-Theme Check 没有阻塞性错误
-```
-
-“代码已经写完”不代表任务完成。
-
-“页面能打开”也不代表任务完成。
-
-完成标准是：
-
-**Shopify Theme Preview 与 {{TARGET_SITE_NAME}} reference 在主要页面、主要 viewport 和主要交互上达到尽可能高的视觉和行为一致性。**
+- Home、PLP、PDP、Cart 可打开且无明显崩坏；Header/Mega Menu、Footer、规格、图集、筛选/排序、Add to Cart → Cart 有正确实际反馈。
+- 桌面与手机各完成一轮代表性功能检查，Draft Theme 文件已推送并做必要的远端或真实浏览器读回，Theme Check 无阻断性错误。
+- 主要素材/折扣显示正确，明显视觉问题已修复；轻微像素、动效、额外尺寸和不在范围内的独立页面可列 `deferred`，仍报告 `completed_core`。
+- 若核心购买/导航或重大数据错误仍存在，则 `partial`；仅用户明确 FULL 或逐像素精修时要求 `completed_full`。
 
 ---
 
 # 二十一、生成 QA 记录
 
-创建：
-
-```text
-implementation-summary.md
-visual-qa.md
-reference-assets.json
-```
+优先复用现有项目记录，默认仅更新项目阶段摘要与已有 QA 记录；没有实际需要不强制新建三份重复报告。FULL 模式可按以下详细格式补充：
 
 `visual-qa.md` 至少记录：
 
@@ -892,9 +805,7 @@ Viewport
 是否已再次调整
 ```
 
-如果仍有明显差异，不要只记录差异然后结束。
-
-优先继续修改。
+如果仍有影响核心使用的明显差异就修复；非关键视觉细节列 deferred 后结束 FAST，不循环重复尝试。
 
 ---
 
@@ -936,4 +847,4 @@ reference-assets.json 路径
 
 核心原则始终只有一个：
 
-**不要做“类似 {{TARGET_SITE_NAME}} 的 Shopify 主题”，而是以采集文件和 {{TARGET_SITE_NAME}} 原网页为基准，尽可能 1:1 地把现有网站翻译成 Shopify Theme。**
+**不要做“类似 {{TARGET_SITE_NAME}} 的 Shopify 主题”，而是以采集文件和 {{TARGET_SITE_NAME}} 原网页为基准，优先在关键模板/购买交互上还原站点，不为不影响使用的微小视觉差异无限拖延 FAST 阶段。**
