@@ -1,5 +1,8 @@
 # 3-pages-3：固定八链接 Footer 专项
 
+> **Footer 文案复用：** 八页英文内容统一来自 `Shopify-Template/content/footer-pages/`，使用 `npm run footer:render`（真实品牌名、店铺 HTTPS URL、真实客服邮箱）生成 HTML；优先复用已存在的 Shopify Policy/Page，对缺失项幂等创建并读回，固定两栏八链接在 Draft Desktop/Mobile 逐项验收。内容技术生成不代表已通过法律/运营审阅，Page/Policy 为共享资源。
+
+
 你现在负责当前 Shopify 项目页脚。**不再复刻源站 Footer**，唯一依据是 `05-customization/5-2-功能削减.md`；先读取 `EXECUTION_RULES.md` 与 `PROJECT_MEMORY.md` 并确认目标店铺、Theme 角色、访问权限。
 
 ## 固定页面结构

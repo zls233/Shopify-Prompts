@@ -1,3 +1,9 @@
+# 4-2｜商品 CSV 数据清洗与全量对账（专项）
+
+> **商品默认值（2026-10-29）：** 当前用户要求目标 Shopify 店铺**所有已有及新建商品一律 ACTIVE**，所有可跟踪库存 Variant 在已核实的履约/销售 Location 的 `available` 绝对值为 **9999**。全量分页读回后方可验收；不把历史源站库存改写为 9999，不做 +9999 增量，不在未经核实的多地点重复设置库存。不可追踪项说明原因，Online Store publication 与 Live Theme 独立授权。详见 `STAGE_COMPLETION_CONTRACT.md`。
+
+最终用于本店铺导入的新商品必须输出 `Status=active`。如 Shopify CSV 含库存列，应符合 9999 目标，但库存以 4-3 在真实已核验 Location 的 Admin GraphQL 读回为准；原始源站库存仍按实留证。
+
 检查我提供的 Shopify 商品 CSV 是否可以直接导入。
 
 读取当前抓取审计与完整 handle/variant 清单；CSV 结构通过只代表可进入样本导入，不代表商品已存在或全量导入完成。

@@ -1,5 +1,8 @@
 # 3-pages-6：八个 Footer 信息页面补齐
 
+> **Footer 文案复用：** 八页英文内容统一来自 `Shopify-Template/content/footer-pages/`，使用 `npm run footer:render`（真实品牌名、店铺 HTTPS URL、真实客服邮箱）生成 HTML；优先复用已存在的 Shopify Policy/Page，对缺失项幂等创建并读回，固定两栏八链接在 Draft Desktop/Mobile 逐项验收。内容技术生成不代表已通过法律/运营审阅，Page/Policy 为共享资源。
+
+
 本 Prompt 负责**当前允许范围内**缺失的信息页面/政策资源，绝不按参考站 sitemap 自动批量创建所有内容页。先读取 `EXECUTION_RULES.md`、`05-customization/5-2-功能削减.md` 和项目 `PROJECT_MEMORY.md`，确认 store、Partner/App 权限和真实资源状态。
 
 ## 默认只补齐八个 Footer 链接

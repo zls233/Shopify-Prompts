@@ -1,5 +1,14 @@
-# 3-1 阶段入口
+# 3-1｜主题复刻与 Draft 端到端验收（完整阶段入口）
 
+> **执行前置（2026-10-29）：** 本文件为阶段总入口，请先读取 `STAGE_COMPLETION_CONTRACT.md`。阶段内适用子 Prompt 必须同一轮依次实际执行，按 `TASK_CHECKLIST.md` / `agent-evidence/stage-state.json` 维护完整范围、每批 checkpoint 和远端验收；样本通过后自动完成余量。不以计划/脚本/部分商品/主题 push 当作阶段结束，也不要求用户逐个下达子命令。只有硬阻断才以精确差集与恢复命令报告 partial/blocked。
+
+> **Footer 文案复用：** 八页英文内容统一来自 `Shopify-Template/content/footer-pages/`，使用 `npm run footer:render`（真实品牌名、店铺 HTTPS URL、真实客服邮箱）生成 HTML；优先复用已存在的 Shopify Policy/Page，对缺失项幂等创建并读回，固定两栏八链接在 Draft Desktop/Mobile 逐项验收。内容技术生成不代表已通过法律/运营审阅，Page/Policy 为共享资源。
+
+
+
+## 阶段收敛与验收
+
+先验证最小主题架构、核心 Home/PLP/PDP/Cart、全部适用页面子任务与 Footer。完成数据/功能端闭环后，按已保存的页面参考逐项修复可证明的视觉差异；每轮只修真实未通过项并复验。不要在未列入范围的旧 Blog/Stores 等页面上无限打磨；无法取得精确源参考时如实记录证据边界，不用“再优化一些”代替阶段完成标准。
 
 ## 必需原创内容补齐（FAST 3-1）
 
