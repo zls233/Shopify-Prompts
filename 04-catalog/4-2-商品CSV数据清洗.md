@@ -14,7 +14,7 @@
 - Handle 与多行 variant 分组
 - Option1/2/3 Name 和 Value
 - Variant SKU 缺失/重复及其源站证据，不为通过检查擅自改名或生成 SKU
-- Price 与 Compare At Price 是否有效
+- Price 与 Compare At Price 是否有效：按 `EXECUTION_RULES.md` 的全站 `.99` 强制规则规范化所有 Variant 的售价及存在的原价；使用精确十进制处理，并验证 `compare_at_price > price > 0`。保留原始值、目标值及异常差集；无真实原价依据时不得制造折扣。
 - Published / Status 是否冲突
 - Image Src、Image Position、Variant Image
 - Product Category、Product Type、Tags
