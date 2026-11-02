@@ -6,20 +6,20 @@
 
 ## FAST 简化采集与完成门槛（覆盖本文过度严格的旧验收）
 
-默认只保留实现当前范围必需的高代表性 Home/PLP/PDP/Cart 的桌面/移动参考、关键导航结构、真实 Logo/favicon 线索、重要图片/字体与主交互。先检查已存在有效素材，绝不重新从头下载。优先直接 DOM/HTML + 必要截图，不要求 SingleFile 离线像素级完美回放、每一屏位置的截图、所有动态状态或全站所有图片镜像。离线回放差异和非关键动态证据不足可记 `deferred`，不阻止 `completed_core`；核心页面不可读或关键导航缺失才属阻断。原站防护触发停止自动请求，保留可用结果；实际源站商品全目录抓取留给 4-1。
+默认只保留实现当前范围必需的高代表性 Home/PLP/PDP/Cart 的桌面/移动参考、关键导航结构、真实 Logo/favicon 线索、重要图片/字体与主交互。先检查已存在有效素材，绝不重新从头下载。优先直接 DOM/HTML + 必要截图，不要求 SingleFile 离线像素级完美回放、每一屏位置的截图、所有动态状态或全站所有图片镜像。离线回放差异和非关键动态证据不足可记 `deferred`，不阻止 `completed_core`；核心页面不可读或关键导航缺失才属阻断。原站防护触发停止自动请求，保留可用结果；实际源站商品全目录抓取留给 3-1。
 
 ## 必做：品牌主 Logo 采集（用于第三方结账交接，FAST 2-1）
 
 - 在源站的真实 Desktop/Mobile Header 识别品牌主标识（优先可复用的 SVG/PNG/WebP 原图；若页面仅以文字/内联 SVG 呈现，则保存真实 SVG 或可核验的字标构成证据）。记录实际显示颜色、透明底、宽高比，以及浅色/深色背景版本；对比导航菜单中的促销图、商品图，确保没有认错。
-- 保存到 `references/_shared/branding/`，形成 `checkout-logo-source.json`：`brand`、`source_page`、`source_url_or_dom`、`file`、`mime`、`viewBox_or_dimensions`、`sha256`、`background_variant`、`status`。若只有纯文本字标，记录原站文字、字体和外观证据，交给 3-1 生成实际图片素材。
+- 保存到 `references/_shared/branding/`，形成 `checkout-logo-source.json`：`brand`、`source_page`、`source_url_or_dom`、`file`、`mime`、`viewBox_or_dimensions`、`sha256`、`background_variant`、`status`。若只有纯文本字标，记录原站文字、字体和外观证据，交给 4-1 生成实际图片素材。
 - **主 Logo、favicon、导航促销图是不同资源**。不能拿 favicon、`menu-*.jpg`、banner、商品首图或整张 Header 截图充作支付页 Logo。源站 Logo 无法可靠取得时如实记录 `blocked`，继续其它独立采集项，不能把未知图标标为已验证。
-- 本步骤只采集品牌素材，不访问/复刻源站 Checkout，不修改任何支付系统。产物供 FAST 3-1 制作独立 Logo 文件，再交给未来的支付接入方。
+- 本步骤只采集品牌素材，不访问/复刻源站 Checkout，不修改任何支付系统。产物供 FAST 4-1 制作独立 Logo 文件，再交给未来的支付接入方。
 
 
 ## 必做：源站 Favicon 采集（FAST 2-1）
 - 访问目标原站首页，优先从最终渲染 DOM 的 `link[rel~="icon"]`、`link[rel="shortcut icon"]`、SVG/PNG/ICO 声明中发现 favicon；同时检查 Web App Manifest 的 icons，并将 `/favicon.ico` 仅作为兜底候选。相对 URL 使用源站页面基址解析；同域不同尺寸选清晰且实际被源站使用的版本，不得误用 Header Logo、Apple Touch Icon 或其它品牌图片替代，除非证据表明它就是网站 favicon。
 - 下载可公开获取的实际二进制文件到 `references/_shared/icons/favicon.<ext>`，保留原始文件并记录 `references/_shared/icons/favicon.json`：原网页、采集时间、原始 URL、rel/type/sizes、实际 MIME、像素尺寸或 SVG viewBox、文件 SHA-256、最终本地路径、选择依据、状态与失败原因。对于重定向、查询参数、SVG、ICO 多尺寸帧进行正确处理；禁止把 HTML 错误页保存成图标。SVG/ICO 若无法被目标主题直接使用，另外生成清晰的方形 PNG 兼容副本，保留原图，不要任意拉伸变形。
-- 验证本地文件可解码、内容不是空文件、不是通用占位/默认图标；找不到可信源站 favicon 时标记 `blocked` 并给出真实诊断，不能自动生成或冒充成功。将 favicon 发现和验证结果写入 `manifest.json` / `site-reference-summary.md` 供 3-1 使用。
+- 验证本地文件可解码、内容不是空文件、不是通用占位/默认图标；找不到可信源站 favicon 时标记 `blocked` 并给出真实诊断，不能自动生成或冒充成功。将 favicon 发现和验证结果写入 `manifest.json` / `site-reference-summary.md` 供 4-1 使用。
 - 本项属于 FAST 2-1 必需采集，不要求用户另行运行子 Prompt；已存在可验证、来源一致的文件则复用，不做无意义重复下载。
 
 
@@ -28,7 +28,7 @@
 
 ## FAST 阶段总控（2-1，默认）
 
-将本文件作为**整个 02-reference 阶段**的单一入口：发现完整范围内导航/模板/路径，选择高代表性首页、PLP、PDP、Cart 外观及内容页面，完成 Desktop/Mobile 截图、SingleFile/HTML、资产与响应式取证、manifest、本地回放和缺失项补抓。向 4-1 交接完整商品/分类发现入口，向 3-1 交接页面/媒体/交互映射。复用已有有效快照；不因仅采集代表性页面就声称全量商品采集，且不对源站执行加购/结账。
+将本文件作为**整个 02-reference 阶段**的单一入口：发现完整范围内导航/模板/路径，选择高代表性首页、PLP、PDP、Cart 外观及内容页面，完成 Desktop/Mobile 截图、SingleFile/HTML、资产与响应式取证、manifest、本地回放和缺失项补抓。向 3-1 交接完整商品/分类发现入口，向 4-1 交接页面/媒体/交互映射。复用已有有效快照；不因仅采集代表性页面就声称全量商品采集，且不对源站执行加购/结账。
 
 执行时读取 `EXECUTION_RULES.md` 和相关子 Prompt，**在同一轮执行所有必要工作并验证结果**，而不是只给计划、等下一条编号；记录当前项目 `PROJECT_MEMORY.md`、状态、证据和最小恢复步骤。子 Prompt 用于细节操作和定向排障，FAST 不等于跳过必要验收。
 
@@ -46,7 +46,7 @@ https://www.everlane.com
 
 **结账页面排除**：原站的 Checkout、支付页面、付款资料表单、订单确认页面不属于后续复刻范围；不进入、不截图、不归档这类页面，发现时标记 `excluded (checkout)`。保留商品页/购物车等允许的页面参考，本源站采集阶段继续禁止加购及结账操作；目标站的购物链路由 `06-qa/6-4-购物车与结账入口测试.md` 验证。
 
-同时读取 `EXECUTION_RULES.md`。代表页面去重只减少重复归档，不减少导航、内容路径或商品分类清单：保存完整入口/目的地列表，商品及分类成员的全量抓取交给 `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md`，不能把少量参考页当作全目录。
+同时读取 `EXECUTION_RULES.md`。代表页面去重只减少重复归档，不减少导航、内容路径或商品分类清单：保存完整入口/目的地列表，商品及分类成员的全量抓取交给 `03-catalog/3-1-商品采集清洗导入与分类-阶段入口.md`，不能把少量参考页当作全目录。
 
 每个参考页面保留从首屏到页尾的区块顺序和数量、文案/CTA、原始媒体 URL/宽高、实际显示框/裁切、字体及字重、Desktop/Mobile 素材。仅对当前范围内的核心 Home/PLP/PDP/Cart 与必要视觉变体取证；商品卡首图、悬停/滑动图与 PDP 图集单独记录，不默认是同一顺序。观察实际响应式断点并记录前后状态，待字体和可见懒加载图片完成后再截图。
 

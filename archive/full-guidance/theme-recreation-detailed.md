@@ -1,4 +1,4 @@
-# 3-1｜主题复刻与 Draft 端到端验收（完整阶段入口）
+# 4-1｜主题复刻与 Draft 端到端验收（完整阶段入口）
 
 > **执行前置（2026-10-29）：** 本文件为阶段总入口，请先读取 `STAGE_COMPLETION_CONTRACT.md`。阶段内适用子 Prompt 必须同一轮依次实际执行，按 `TASK_CHECKLIST.md` / `agent-evidence/stage-state.json` 维护完整范围、每批 checkpoint 和远端验收；样本通过后自动完成余量。不以计划/脚本/部分商品/主题 push 当作阶段结束，也不要求用户逐个下达子命令。只有硬阻断才以精确差集与恢复命令报告 partial/blocked。
 
@@ -14,12 +14,12 @@
 
 先验证最小主题架构、核心 Home/PLP/PDP/Cart、全部适用页面子任务与 Footer。完成数据/功能端闭环后，按已保存的页面参考逐项修复可证明的视觉差异；每轮只修真实未通过项并复验。不要在未列入范围的旧 Blog/Stores 等页面上无限打磨；无法取得精确源参考时如实记录证据边界，不用“再优化一些”代替阶段完成标准。
 
-## 必需原创内容补齐（FAST 3-1）
+## 必需原创内容补齐（FAST 4-1）
 
-若参考站缺少项目必需的页脚信息页、About/Contact 或当前必需模板的展示文案，Agent 直接以已核实的商品/店铺数据和项目视觉风格为基础自主起草并实现，不能因“原站没有页面/商家未提供批准文案”停在 blocked。八个 Footer 资源按 `03-theme/pages/3-pages-6-页面补齐.md` 创建真实 Page/Policy 并进行 Desktop/Mobile 读回与点击验收；只在没有对应资源写入权限或真实外部障碍时标为技术阻塞。不得将业务事实或法律内容审阅状态冒充技术验收，但无需等待用户提供可自动生成的普通文案。
+若参考站缺少项目必需的页脚信息页、About/Contact 或当前必需模板的展示文案，Agent 直接以已核实的商品/店铺数据和项目视觉风格为基础自主起草并实现，不能因“原站没有页面/商家未提供批准文案”停在 blocked。八个 Footer 资源按 `04-theme/pages/4-pages-6-页面补齐.md` 创建真实 Page/Policy 并进行 Desktop/Mobile 读回与点击验收；只在没有对应资源写入权限或真实外部障碍时标为技术阻塞。不得将业务事实或法律内容审阅状态冒充技术验收，但无需等待用户提供可自动生成的普通文案。
 
 
-## 商品卡片优惠标签（FAST 3-1 必做）
+## 商品卡片优惠标签（FAST 4-1 必做）
 
 保留源站的卡片整体设计，并在全站共用的商品卡片逻辑中增加醒目且常显的统一优惠 Badge。覆盖 Home、Collection/PLP、搜索、推荐/相关商品等所有实际使用的商品卡片；优先采用源站的促销配色/形状语言，但统一位置、尺寸、样式与文案，默认格式为 `60% OFF`。
 
@@ -28,14 +28,14 @@ Badge 仅依据当前展示商品/Variant 的真实 `price`、`compare_at_price`
 在 Draft 预览的 Desktop/Mobile 对有折扣、无折扣、不同折扣率及可用 Variant 的商品分别验证；修复跨模板样式差异或计算错误，记录实测证据。详细规则见 `EXECUTION_RULES.md`。
 
 
-## 加入购物车必须有可见反馈（FAST 3-1 必做）
+## 加入购物车必须有可见反馈（FAST 4-1 必做）
 
 在所有 PDP 和适用的商品卡片快速加购入口，点击 Add to Cart 后，等待 Shopify 真实加购成功，**自动打开购物车抽屉（优先）、购物车通知弹窗，或直接进入 Cart 页面**。不能静默加购、只更新顶部购物车数量或仅短暂改变按钮文字。优先沿用已实现的 Theme 购物车组件；没有稳定组件时使用真实 Cart 页面作为兜底，不需要为了此要求增加重型组件库。
 
 成功反馈应显示正确商品/规格与数量，并能继续购物或进入 Cart；加载和失败反馈必须清晰，避免重复提交。支持 Desktop/Mobile、键盘、Escape、关闭按钮及合理焦点管理，且不得影响真实 Checkout 入口。实现后在实际 Draft 预览分别完成一次真实加购，检查反馈自动出现、购物车内容同步、可关闭与继续购物；必要的交互修复在同一轮完成。详见 `EXECUTION_RULES.md`。
 
 
-## 必做：第三方支付页 Logo 素材交接（FAST 3-1）
+## 必做：第三方支付页 Logo 素材交接（FAST 4-1）
 
 - 读取 2-1 的 `references/_shared/branding/checkout-logo-source.json`，在当前 Shopify 主题中准备**独立于 Header Logo 与 favicon** 的透明背景品牌主 Logo 文件，建议命名 `assets/checkout-brand-logo.svg`（如格式或兼容性受限，可用 PNG）。若源站只有文字字标，基于已核验的字形、字体或真实品牌 SVG 制作，不允许用菜单推广图、商品图、banner 或 favicon 代替。
 - Logo 必须可直接作为单张图片交给结账接入方使用：保留合理留白和纵横比、在常见浅色背景上清晰可见；确有深色背景需求时另备深色版。检查文件存在、有效图像格式/MIME、尺寸或 viewBox、内容识别及 SHA-256。
@@ -45,21 +45,21 @@ Badge 仅依据当前展示商品/Variant 的真实 `price`、`compare_at_price`
 - 本步骤不需要支付系统已经上线；仅主题素材与交接清单可验证时即完成主题侧义务，支付页实显留待接入后另行验收。
 
 
-## 必做：原站 Favicon → Shopify 主题图标（FAST 3-1）
+## 必做：原站 Favicon → Shopify 主题图标（FAST 4-1）
 
 - 读取 2-1 产生的 `references/_shared/icons/favicon.json` 及对应原始文件，核实来源、格式、哈希和可解码性；缺失时回到原站按 2-1 规则补采，不得用 Header Logo 或 Shopify 默认 favicon 假装已完成。
 - 先检查当前主题 `config/settings_schema.json`、`config/settings_data.json` 和 `layout/theme.liquid` 的 favicon 实现。优先沿用当前主题兼容的图标设置，确保图标真正指向此次采集文件；如果主题使用 Shopify `image_picker`，须先通过已授权方式把图标上传到店铺 Files 并取得有效引用，再设置主题值；不要将 `assets/...` 路径硬写进 image_picker 的 `settings_data.json`。若主题没有 favicon 入口，可将兼容 PNG 放进 `assets/`，在 `<head>` 输出正确的 `rel="icon"` / MIME / `asset_url`，并防止旧默认图标同时输出。
 - 所有修改仅针对已核实身份的目标 Draft Theme；推送前后核对 store/Theme ID 和远端文件，未经明确授权不得修改 Live。若涉及店铺级 Files 上传，属于共享资源，记录该影响。不得设置第三方站点 URL 为最终图标依赖，优先由当前 Shopify 店铺托管。
 - 必须在实际 Draft 预览的 Home、PLP、PDP 中查看 `<head>` 的生效 icon、请求状态、MIME/非空图像与浏览器标签实际图标；记录源图哈希和 Shopify 对应资源，以及 `verified / failed / blocked`。浏览器图标缓存可以用无痕/新上下文或明确的缓存更新验证，不以仅看到设置值或上传成功代替实际呈现。
-- 这是 3-1 的必需工作，不必单独运行 3-4；如果图标来源可信且已经一致，直接验证并保留。
+- 这是 4-1 的必需工作，不必单独运行 4-4；如果图标来源可信且已经一致，直接验证并保留。
 
 
 **新版默认范围（高优先级）：**遵循 `05-customization/5-2-功能削减.md`：公告栏唯一 `Free Shipping`，Footer 固定 CUSTOMER CARE（Privacy Policy / Return Policy / Shipping Policy / Service Policy）和 ORDER INFO（About Us / Contact Us / Terms Of Purchase / Terms Of Use）两栏八链接，**不复刻原站 Footer 且不保留任何社媒或多余 Footer 栏目**。这八个信息资源需真实内容和有效链接，但无需逐页原站视觉复刻。FAQ、Stores、Blog、Journal、Article、独立 Editorial/Campaign 等默认 `excluded`，只有项目明确确认的额外路径才处理。本文其它宽泛的“原站全部复制”、额外内容页面示例与旧 Footer 指令若冲突，以此规则为准。
 
 
-## FAST 阶段总控（3-1，默认）
+## FAST 阶段总控（4-1，默认）
 
-将本文件作为**整个 03-theme 阶段**的单一入口，不能只做粗糙的主题骨架。读取真实 reference、商品与分类数据，完成原站素材复用（参见 `03-theme/3-4-原站素材复用.md`）、Design System、Header/Footer、Home/PLP/PDP、真实变体、加购/购物车、响应式及所需静态内容页（按 `03-theme/pages/3-pages-6-页面补齐.md` 和授权条件）。在 Draft Theme 完成 Theme Check、必要静态检查、Desktop/Mobile 浏览器与 reference 对照；发现明显失效交互、空链接、图片或排版差异时**在本轮直接修复并复验**。不默认单独跑 3-2/3-3/3-4 或 pages/01~05；只在总控验收发现复杂差异、专门要极致精度时调用专项 Prompt。保留 Draft ID/角色、源站差异及证据，不提前发布 Live。
+将本文件作为**整个 04-theme 阶段**的单一入口，不能只做粗糙的主题骨架。读取真实 reference、商品与分类数据，完成原站素材复用（参见 `04-theme/4-4-原站素材复用.md`）、Design System、Header/Footer、Home/PLP/PDP、真实变体、加购/购物车、响应式及所需静态内容页（按 `04-theme/pages/4-pages-6-页面补齐.md` 和授权条件）。在 Draft Theme 完成 Theme Check、必要静态检查、Desktop/Mobile 浏览器与 reference 对照；发现明显失效交互、空链接、图片或排版差异时**在本轮直接修复并复验**。不默认单独跑 4-2/4-3/4-4 或 pages/01~05；只在总控验收发现复杂差异、专门要极致精度时调用专项 Prompt。保留 Draft ID/角色、源站差异及证据，不提前发布 Live。
 
 执行时读取 `EXECUTION_RULES.md` 和相关子 Prompt，**在同一轮执行所有必要工作并验证结果**，而不是只给计划、等下一条编号；记录当前项目 `PROJECT_MEMORY.md`、状态、证据和最小恢复步骤。子 Prompt 用于细节操作和定向排障，FAST 不等于跳过必要验收。
 
@@ -316,7 +316,7 @@ scroll 后背景变化
 
 # 五、Footer（统一八链接，不再复刻原站 Footer）
 
-必须按 `03-theme/pages/3-pages-3-底栏.md` 实现标准 Footer：
+必须按 `04-theme/pages/4-pages-3-底栏.md` 实现标准 Footer：
 
 ```text
 CUSTOMER CARE                 ORDER INFO
@@ -608,7 +608,7 @@ templates/search.json
 
 # 十三、静态内容页面（默认只需八个 Footer 信息页面）
 
-只为固定 Footer 八个标签绑定目标店铺真实 Pages/Policies：Privacy Policy、Return Policy、Shipping Policy、Service Policy、About Us、Contact Us、Terms Of Purchase、Terms Of Use。按 `03-theme/pages/3-pages-6-页面补齐.md` 使用统一简洁的响应式模板，不再逐页原站视觉复刻；原站 FAQ、Stores、Blog、Journal、Article、Editorial、独立 Campaign 默认 excluded，除非本项目明确要求。
+只为固定 Footer 八个标签绑定目标店铺真实 Pages/Policies：Privacy Policy、Return Policy、Shipping Policy、Service Policy、About Us、Contact Us、Terms Of Purchase、Terms Of Use。按 `04-theme/pages/4-pages-6-页面补齐.md` 使用统一简洁的响应式模板，不再逐页原站视觉复刻；原站 FAQ、Stores、Blog、Journal、Article、Editorial、独立 Campaign 默认 excluded，除非本项目明确要求。
 
 如果范围内多个信息页共享同一种结构：
 
@@ -672,7 +672,7 @@ accordion
 
 # 十五、FAST Visual QA（轻量）
 
-对 **Home / 一个代表性 PLP / 一个代表性 PDP / Cart**，在 Desktop 1440 与 Mobile 390 的当前 Draft 预览观察一次。优先复用当前有效截图和已保存交互证据；仅对出现明显大范围错误的区块补截图和第二轮修复。无需默认每个页面的首屏、中段、页尾三轮截图，也无需对已排除页面取证。最多两轮有进展的视觉精修；P2 差异入 deferred。用户显式 `FULL` 或要求像素级精修时按 3-3 执行。
+对 **Home / 一个代表性 PLP / 一个代表性 PDP / Cart**，在 Desktop 1440 与 Mobile 390 的当前 Draft 预览观察一次。优先复用当前有效截图和已保存交互证据；仅对出现明显大范围错误的区块补截图和第二轮修复。无需默认每个页面的首屏、中段、页尾三轮截图，也无需对已排除页面取证。最多两轮有进展的视觉精修；P2 差异入 deferred。用户显式 `FULL` 或要求像素级精修时按 4-3 执行。
 
 ---
 

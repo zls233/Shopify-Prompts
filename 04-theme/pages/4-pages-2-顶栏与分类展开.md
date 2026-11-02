@@ -46,7 +46,7 @@ TARGET_NAV_ITEMS={{TARGET_NAV_ITEMS}}
 
 优先复用现有 Shopify Navigation Menu，使用 `section.settings.menu.links`、`link.links`、`link.object`、`link.url`、`link.title` 驱动可维护的分类层级；不要同时维护一份硬编码 JavaScript 导航树。菜单的层级、标题、顺序和 `resourceId` 应与真实 Shopify Collection/Page 对应。展开层独有的图片、文案与推广块优先沿用当前主题设置或已有 Metaobject 模式，只有确实需要商家维护且现有结构不足时才增设结构化资源。
 
-若商品分类、Collection 成员或 Menu 本身错误，按 `04-catalog/4-4-创建分类.md` 核对并修复数据归属，不用 Liquid 标题匹配或 CSS 隐藏错误项。确认 Collection 和目标商品分别已发布到 Online Store。站内内容页缺失时按 `03-theme/pages/3-pages-6-页面补齐.md` 的资源流程处理，或将对应入口标记为交付阻塞；本轮未获内容资源授权时不得擅自创建。不要将链接指向 `#`、空 `href`、`javascript:void(0)`、首页兜底或已知 404。仅当原站确为非导航型展开按钮时，使用语义化 `button`，不要伪造链接。
+若商品分类、Collection 成员或 Menu 本身错误，按 `03-catalog/3-4-创建分类.md` 核对并修复数据归属，不用 Liquid 标题匹配或 CSS 隐藏错误项。确认 Collection 和目标商品分别已发布到 Online Store。站内内容页缺失时按 `04-theme/pages/4-pages-6-页面补齐.md` 的资源流程处理，或将对应入口标记为交付阻塞；本轮未获内容资源授权时不得擅自创建。不要将链接指向 `#`、空 `href`、`javascript:void(0)`、首页兜底或已知 404。仅当原站确为非导航型展开按钮时，使用语义化 `button`，不要伪造链接。
 
 ## 三、实现顶栏与展开层
 

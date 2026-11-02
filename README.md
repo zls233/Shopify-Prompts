@@ -4,11 +4,11 @@
 
 默认 `FAST`：P0 核心问题要修；影响当前使用的 P1 要修；细节性 P2 与不影响核心交付的 P1 记录 deferred，达到核心可用即可 `completed_core`。仅用户明确 FULL 或精细验收时做全面截图、逐分类双站浏览、离线像素回放。商品全量导入目标、Active/9999、权限边界和真实购物链路不能因省时而跳过。执行规范是 `STAGE_COMPLETION_CONTRACT.md`。
 
-`2-1`、`3-1`、`6-1` 已改成短的 FAST 入口，过去的冗长指南保存在 `archive/full-guidance/`，仅 FULL/具体障碍按需打开；不用每次整篇加载。减少重复文件读取、模型上下文、冗余截图和多阶段重复 QA。
+`2-1`、`4-1`、`6-1` 已改成短的 FAST 入口，过去的冗长指南保存在 `archive/full-guidance/`，仅 FULL/具体障碍按需打开；不用每次整篇加载。减少重复文件读取、模型上下文、冗余截图和多阶段重复 QA。
 
 ## 阶段文件规范命名
 
-中文名称已修改为“`编号-完整职责-阶段入口.md`”，0-1 为“总入口”，保持数字命令兼容；查看 `PROMPT_ROUTING.md` 唯一路由表。`4-1` 不只是爬取，还包括 CSV、导入、ACTIVE/9999 和分类；`3-1` 包括整段主题与 Draft 验收；`5-1` 是定制阶段，不只是打折。强制完整阶段执行和断点规则见 `STAGE_COMPLETION_CONTRACT.md`。固定八个页脚英文正文模板见 Shopify-Template `content/footer-pages/`。
+阶段入口采用“`编号-完整职责-阶段入口.md`”，0-1 为“总入口”；当前编号以 `PROMPT_ROUTING.md` 为准（旧的 3/4 阶段编号已经互换），查看 `PROMPT_ROUTING.md` 唯一路由表。`3-1` 不只是爬取，还包括 CSV、导入、ACTIVE/9999 和分类；`4-1` 包括整段主题与 Draft 验收；`5-1` 是定制阶段，不只是打折。强制完整阶段执行和断点规则见 `STAGE_COMPLETION_CONTRACT.md`。固定八个页脚英文正文模板见 Shopify-Template `content/footer-pages/`。
 
 
 ## 统一展示与默认页面范围（新版）
@@ -24,7 +24,7 @@
 | Service Policy | Terms Of Use |
 
 - 这八个页面可以统一简洁实现，必须是正确的真实 Shopify Policy/Page 和获批准内容；不再 1:1 复刻源站复杂静态页。FAQ、Stores、Blog、Journal、Article、Warranty、Size Guide、独立 Editorial/Campaign 等默认 excluded，除非本项目明确要求或保留核心导航有已确认依赖。
-- **此范围从 FAST 2-1 参考采集阶段就生效**，3-1 不补多余页面，5-1 负责清理，6-1 不以缺失超范围页面扣分。详细唯一规范见 [功能削减与范围清单](05-customization/5-2-%E5%8A%9F%E8%83%BD%E5%89%8A%E5%87%8F.md)。
+- **此范围从 FAST 2-1 参考采集阶段就生效**，4-1 不补多余页面，5-1 负责清理，6-1 不以缺失超范围页面扣分。详细唯一规范见 [功能削减与范围清单](05-customization/5-2-%E5%8A%9F%E8%83%BD%E5%89%8A%E5%87%8F.md)。
 
 
 
@@ -42,56 +42,55 @@
 
 所有项目统一使用当前操作者自己的 Shopify Partner 账户进行 CLI、Admin 和开发操作。开始目标店铺工作前，必须由目标店铺通过 Partner / Collaborator access 授予该账户权限；Partner 登录成功不等于已获得店铺访问权。不得直接使用原店铺所有者账号，也不得用其代办授权。每条 CLI / API 命令都显式指定目标 `*.myshopify.com` 店铺，并分别记录 Partner 账户、店铺授权、Themes 权限与 Admin API 执行身份。主题开发统一使用已授权的 Partner 账户登录 Shopify CLI，不再要求 Theme Access token。
 
-## 目录结构
+## 目录结构（主要入口与阶段文件）
 
 ```text
 Shopify-Prompts/
+├── 00-autopilot/
+│   └── 0-1-全流程建站与断点续跑-总入口.md
 ├── 01-project/
-│   ├── 1-1-创建项目.md
+│   ├── 1-1-项目初始化与授权验证-阶段入口.md
 │   └── 1-2-建站授权准备.md
 ├── 02-reference/
-│   └── 2-1-页面爬取.md
-├── 03-theme/
-│   ├── 3-1-开始复刻.md
-│   ├── 3-2-页面粗调.md
-│   ├── 3-3-像素级精修.md
-│   ├── 3-4-原站素材复用.md
-│   └── pages/
-│       ├── 3-pages-1-首页.md
-│       ├── 3-pages-2-顶栏与分类展开.md
-│       ├── 3-pages-3-底栏.md
-│       ├── 3-pages-4-商品列表.md
-│       ├── 3-pages-5-商品详情页.md
-│       └── 3-pages-6-页面补齐.md
-├── 04-catalog/
-│   ├── 4-1-爬取商品SKU.md
-│   ├── 4-2-商品CSV数据清洗.md
-│   ├── 4-3-导入商品.md
-│   ├── 4-4-创建分类.md
+│   └── 2-1-原站页面参考与素材采集-阶段入口.md
+├── 03-catalog/
+│   ├── 3-1-商品采集清洗导入与分类-阶段入口.md
+│   ├── 3-2-商品CSV数据清洗.md
+│   ├── 3-3-导入商品.md
+│   ├── 3-4-创建分类.md
 │   └── shopify-catalog-collections/
+├── 04-theme/
+│   ├── 4-1-主题复刻与Draft验收-阶段入口.md
+│   ├── 4-2-页面粗调.md
+│   ├── 4-3-像素级精修.md
+│   ├── 4-4-原站素材复用.md
+│   └── pages/
+│       ├── 4-pages-1-首页.md
+│       ├── 4-pages-2-顶栏与分类展开.md
+│       ├── 4-pages-3-底栏.md
+│       ├── 4-pages-4-商品列表.md
+│       ├── 4-pages-5-商品详情页.md
+│       └── 4-pages-6-页面补齐.md
 ├── 05-customization/
-│   ├── 5-1-打折.md
+│   ├── 5-1-价格折扣与站点定制-阶段入口.md
 │   ├── 5-2-功能削减.md
 │   ├── 5-3-Cookie.md
 │   └── 5-4-粘性顶栏.md
 ├── 06-qa/
-│   ├── 6-1-交付评估.md
+│   ├── 6-1-全站验收修复与交付-阶段入口.md
 │   ├── 6-2-发布主题到Live.md
 │   ├── 6-3-设置商家地址并开放店铺.md
 │   ├── 6-4-购物车与结账入口测试.md
 │   ├── 6-5-全站入口NotFound扫描与修复.md
 │   └── 6-6-首页导航逐分类商品对照与修复.md
-├── tools/
-│   ├── 切换CLI账户.md
-│   └── 指定SunBrowser.md
-├── references/
-│   └── project-lessons-2026-10-12.md
-├── EXECUTION_RULES.md
-├── PROMPT_ROUTING.md
 ├── AGENTS.md
-├── README.md
-└── .gitignore
+├── EXECUTION_RULES.md
+├── STAGE_COMPLETION_CONTRACT.md
+├── PROMPT_ROUTING.md
+└── README.md
 ```
+
+其他技能、参考、归档文件保留在原有目录。
 
 ## 使用方式
 
@@ -103,14 +102,14 @@ Shopify-Prompts/
 
 ## 编号指令路由
 
-当用户发送“运行2-1”“运行3-pages-1”这类指令时，默认直接定位并执行本仓库中对应的 Prompt，不要求用户再次复制内容，也不把编号自行解释成其他流程。完整规则见 [PROMPT_ROUTING.md](PROMPT_ROUTING.md)。
+当用户发送“运行2-1”“运行4-pages-1”这类指令时，默认直接定位并执行本仓库中对应的 Prompt，不要求用户再次复制内容，也不把编号自行解释成其他流程。完整规则见 [PROMPT_ROUTING.md](PROMPT_ROUTING.md)。
 
 常用映射：
 
 - `运行2-1` -> `02-reference/2-1-原站页面参考与素材采集-阶段入口.md`
-- `运行3-1` -> `03-theme/3-1-主题复刻与Draft验收-阶段入口.md`
-- `运行3-pages-1` -> `03-theme/pages/3-pages-1-首页.md`
-- `运行4-1` -> `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md`
+- `运行4-1` -> `04-theme/4-1-主题复刻与Draft验收-阶段入口.md`
+- `运行4-pages-1` -> `04-theme/pages/4-pages-1-首页.md`
+- `运行3-1` -> `03-catalog/3-1-商品采集清洗导入与分类-阶段入口.md`
 - `运行5-1` -> `05-customization/5-1-价格折扣与站点定制-阶段入口.md`
 - `运行6-1` -> `06-qa/6-1-全站验收修复与交付-阶段入口.md`
 - `运行6-4` -> `06-qa/6-4-购物车与结账入口测试.md`
@@ -126,14 +125,14 @@ Shopify-Prompts/
 |---|---|---|---|
 | 1 | `运行1-1` | 创建项目、确认店铺、环境与适用授权 | `1-2` |
 | 2 | `运行2-1` | 参考页面、素材、截图、manifest 及自检 | 局部补抓 |
-| 3 | `运行3-1` | 先完成必需主题、素材、内容、响应式及 Draft QA；真实商品未导入时记录 `pending_catalog` | `3-2/3-3/3-pages-*` |
-| 4 | `运行4-1` | **抓取 + 4-2 清洗 + 4-3 导入 + 4-4 分类**及读回对账，再补验真实商品的主题/购物链路 | `4-2/4-3/4-4` |
+| 3 | `运行3-1` | **抓取 + 3-2 清洗 + 3-3 导入 + 3-4 分类**及读回对账 | `3-2/3-3/3-4` |
+| 4 | `运行4-1` | 必需主题、素材、内容、响应式、加购/购物车及 Draft QA | `4-2/4-3/4-pages-*` |
 | 5 | `运行5-1` | 折扣、5-2 功能削减、5-3 Cookie、按需粘性顶栏 | `5-2/5-3/5-4` |
 | 6 | `运行6-1` | 交付评估/修复、**全站入口 Not Found 扫描与集中修复复测（6-5）**、**获授权才发布/开放**、公开后购物车 → Checkout 实测 | `6-2/6-3/6-4` |
 
 **质量不能省：** 必须清洗并导入真实商品、逐项对账分类、修复明显视觉/功能缺陷，最终公开 Live 中真实加购并点进项目预期结账页面（不付款、不下单）。未获发布或开放授权时只能报告阻塞，不能擅自上线。
 
-显式 `EXECUTION_MODE=FULL` 可按细分 Prompt 手动运行；单独 `运行4-2` 等仅处理该专项，不会重新运行整个阶段。所有阶段沿用 `EXECUTION_RULES.md` 和项目 `PROJECT_MEMORY.md` 的读回验收、幂等续做与授权边界。
+显式 `EXECUTION_MODE=FULL` 可按细分 Prompt 手动运行；单独 `运行3-2` 等仅处理该专项，不会重新运行整个阶段。所有阶段沿用 `EXECUTION_RULES.md` 和项目 `PROJECT_MEMORY.md` 的读回验收、幂等续做与授权边界。
 
 ## 传统逐步执行顺序（FULL 模式）
 
@@ -145,43 +144,39 @@ Shopify-Prompts/
 2. **建站资源授权准备**
    预计需要导入商品、创建分类、管理 Metaobjects 或创建 Pages / Blogs / Articles 时，先运行 `01-project/1-2-建站授权准备.md`。对店铺自有资源，模板的 `connect:shopify` 会复用 CLI 已保存的授权，缺失或权限不足时申请完整建站权限包并读回核对；App 自有资源使用所属项目 App 的授权。授权通过后继续原任务，不重复创建应用。
 
-### 页面参考
+### 参考与商品
 
 3. **采集页面参考**  
    使用 `02-reference/2-1-原站页面参考与素材采集-阶段入口.md` 分析目标网站的信息架构，自动选择具有代表性的首页、集合页、商品页、内容页等页面，并保存 Desktop / Mobile 截图、SingleFile、页面结构和交互参考。
 
-### 主题复刻
+4. **抓取商品数据**
+   使用 `03-catalog/3-1-商品采集清洗导入与分类-阶段入口.md` 分析 sitemap、Collection、公开接口和商品页，获取商品、Variants、SKU、价格、图片等数据，并输出原始数据、规范化数据、Shopify CSV 和审计结果。
 
-4. **整理并复用原站素材**
-   使用 `03-theme/3-4-原站素材复用.md`，先盘点原站的视频、图片、文本、图案、SVG、图标和矢量资源，建立来源到 Shopify Section / 资源的映射，再实现和验证素材一致性。缺失素材要记录为阻塞，不要用生成内容或占位图填充。
+5. **清洗 Shopify CSV**
+   使用 `03-catalog/3-2-商品CSV数据清洗.md` 检查 Handle、Variant、Option、SKU、图片、价格等字段，修复无法导入或商品分组错误的问题。
 
-5. **开始复刻主题**
-   使用 `03-theme/3-1-主题复刻与Draft验收-阶段入口.md`，根据 reference 和现有可验证资料先实现 Shopify Theme；若尚无商品/分类则建立真实 Liquid 绑定并记录 `pending_catalog`，在 4-1 后做真实数据补验，先同步至 unpublished Draft Theme。
+6. **导入商品**
+   使用 `03-catalog/3-3-导入商品.md` 将验证后的商品数据导入目标 Shopify 店铺。全量导入前先使用少量商品验证结构和结果。
 
-6. **页面粗调与像素级精修**
-   依次使用 `03-theme/3-2-页面粗调.md` 和 `03-theme/3-3-像素级精修.md`，对照原站的桌面与移动端截图和交互逐轮验证。
+7. **创建分类和导航**
+   使用 `03-catalog/3-4-创建分类.md` 根据商品属性和目标网站结构创建 Collections、Menus 和相关 Shopify 原生内容结构。
 
-7. **页面专项修复**
-   视觉审计发现首页、商品列表、商品详情页、Footer 或顶栏与分类展开层的具体差异时，才使用 `03-theme/pages/` 下对应的专项 Prompt。分类导航的数据层问题先按 `04-catalog/4-4-创建分类.md` 处理，顶栏的视觉与交互问题使用 `03-theme/pages/3-pages-2-顶栏与分类展开.md`。
+8. **补齐内容资源**
+   默认只使用 `04-theme/pages/4-pages-6-页面补齐.md` 补齐固定八个 Footer 信息链接缺失的 Shopify Policies/Pages；不再自动批量复刻 Blog/Article/Stores 等额外独立页面。需有真实内容与有效授权。
 
-### 商品与分类
+### 页面复刻
 
-8. **抓取商品数据**
-   使用 `04-catalog/4-1-商品采集清洗导入与分类-阶段入口.md` 分析 sitemap、Collection、公开接口和商品页，获取商品、Variants、SKU、价格、图片等数据，并输出原始数据、规范化数据、Shopify CSV 和审计结果。
+9. **整理并复用原站素材**
+   使用 `04-theme/4-4-原站素材复用.md`，先盘点原站的视频、图片、文本、图案、SVG、图标和矢量资源，建立来源到 Shopify Section / 资源的映射，再实现和验证素材一致性。缺失素材要记录为阻塞，不要用生成内容或占位图填充。
 
-9. **清洗 Shopify CSV**
-   使用 `04-catalog/4-2-商品CSV数据清洗.md` 检查 Handle、Variant、Option、SKU、图片、价格等字段，修复无法导入或商品分组错误的问题。
+10. **开始复刻主题**
+   使用 `04-theme/4-1-主题复刻与Draft验收-阶段入口.md`，根据 reference 和已经导入的真实商品数据实现 Shopify Theme，先同步至 unpublished Draft Theme。
 
-10. **导入商品**
-   使用 `04-catalog/4-3-导入商品.md` 将验证后的商品数据导入目标 Shopify 店铺。全量导入前先使用少量商品验证结构和结果。
+11. **页面粗调与像素级精修**
+   依次使用 `04-theme/4-2-页面粗调.md` 和 `04-theme/4-3-像素级精修.md`，对照原站的桌面与移动端截图和交互逐轮验证。
 
-11. **创建分类和导航**
-   使用 `04-catalog/4-4-创建分类.md` 根据商品属性和目标网站结构创建 Collections、Menus 和相关 Shopify 原生内容结构。
-
-12. **补齐内容资源**
-   默认只使用 `03-theme/pages/3-pages-6-页面补齐.md` 补齐固定八个 Footer 信息链接缺失的 Shopify Policies/Pages；不再自动批量复刻 Blog/Article/Stores 等额外独立页面。需有真实内容与有效授权。
-
-**阶段依赖补验：** 3-1 发生 `pending_catalog` 时，4-1 导入真实商品和分类后必须完成 Draft 的真实 PLP/PDP/Cart、菜单和加购测试，并在 6-1 复核核心链路；未完成不允许宣称完整交付。
+12. **页面专项修复**
+   视觉审计发现首页、商品列表、商品详情页、Footer 或顶栏与分类展开层的具体差异时，才使用 `04-theme/pages/` 下对应的专项 Prompt。分类导航的数据层问题先按 `03-catalog/3-4-创建分类.md` 处理，顶栏的视觉与交互问题使用 `04-theme/pages/4-pages-2-顶栏与分类展开.md`。
 
 ### 项目定制
 
@@ -205,4 +200,4 @@ Shopify-Prompts/
 `tools/` 用于保存 Shopify CLI、浏览器和开发环境相关的操作说明，不属于主工作流。
 
 
-**文件名前缀约定：** Prompt 文件以完整的指令编号开头，例如 `1-1-创建项目.md`、`4-3-导入商品.md`、`3-pages-2-顶栏与分类展开.md`。Agent 依据完整编号唯一匹配文件，不按局部编号猜测。
+**文件名前缀约定：** Prompt 文件以完整的指令编号开头，例如 `1-1-创建项目.md`、`3-3-导入商品.md`、`4-pages-2-顶栏与分类展开.md`。Agent 依据完整编号唯一匹配文件，不按局部编号猜测。

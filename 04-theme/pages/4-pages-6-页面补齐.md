@@ -1,4 +1,4 @@
-# 3-pages-6：八个 Footer 信息页面补齐
+# 4-pages-6：八个 Footer 信息页面补齐
 
 > **Footer 文案复用：** 八页英文内容统一来自 `Shopify-Template/content/footer-pages/`，使用 `npm run footer:render`（真实品牌名、店铺 HTTPS URL、真实客服邮箱）生成 HTML；优先复用已存在的 Shopify Policy/Page，对缺失项幂等创建并读回，固定两栏八链接在 Draft Desktop/Mobile 逐项验收。内容技术生成不代表已通过法律/运营审阅，Page/Policy 为共享资源。
 
@@ -42,7 +42,7 @@ TARGET_PATHS={{TARGET_PATHS_OPTIONAL}}
 3. **允许并要求自主补全**：先读取 Shopify 现有 Policies/Pages、Contact 表单、公开且可信的品牌介绍与必要店铺配置；目标站不存在相应页面、目标店铺缺少现成文本时，直接撰写适合该站的完整原创页面正文，不向用户反复索要文案、批准稿、简介或原站页面。政策类页面可采用 Shopify 模板和通用中性文字，避免臆造具体退货天数、运费、发货时效、公司资质、地址、真实客服邮箱或个人数据处理承诺；不要复制原站商家身份/法律文件并冒充目标店铺事实。将自动生成来源与待运营/法律审阅事项记到项目文档，**不因缺少预先批准文案而停止技术建站**。
 4. 需要创建时优先复用现有 Shopify Policy/标准 Page，稳定 Handle，避免重复；通过可用 CLI/Admin API 写入后读回实际资源。CLI/API 不支持的 Policy 写入不要虚构 mutation，使用已授权 Admin UI 或记为阻塞。
 5. **不再逐页像素级复刻**八个信息页。采用统一、简单、可编辑、响应式的标题/正文 Shopify 模板，必要时复用一个标准 `page.json`；不用为 About/Contact 再做原站专属 Hero/Timeline/长图、为条款页制作多个独立 Theme 模板。
-6. 按 `03-theme/pages/3-pages-3-底栏.md` 将八个真实 URL 绑定页脚；全部不能是 `#`、空链接、错误 404、首页兜底或文不对题。单独核对 Terms Of Purchase 与 Terms Of Use 的正文与链接。
+6. 按 `04-theme/pages/4-pages-3-底栏.md` 将八个真实 URL 绑定页脚；全部不能是 `#`、空链接、错误 404、首页兜底或文不对题。单独核对 Terms Of Purchase 与 Terms Of Use 的正文与链接。
 7. 在 Admin 读回以及 Desktop 1440px / Mobile 390px 浏览器逐条验证正确 URL、页面标题、内容、公开访问和 Header/Footer 的正常显示。Draft 预览不等于 Live 公开访问，分开汇报。
 8. 写入 `PROJECT_MEMORY.md`，记录八行最终结果、改动的真实 Page/Policy ID、源文本版本、权限、`verified / failed / blocked / not_run / excluded` 状态和恢复命令。
 
