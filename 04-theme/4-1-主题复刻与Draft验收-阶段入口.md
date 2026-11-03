@@ -1,23 +1,27 @@
-# 4-1｜主题复刻与 Draft 验收（FAST 完整阶段）
+# 4-1｜主题复刻、视频动效、像素级精修与 Draft 验收（默认完整阶段）
 
-> 默认 FAST 必须先阅读 `STAGE_COMPLETION_CONTRACT.md`；该文件定义核心完成/P0-P2/省 Token/断点和授权。此入口**仅使用下述精简流程**。旧版详尽的页面样式/检查维度已迁移到 `archive/full-guidance/`，只有用户显式 FULL、像素级验收或遇到未解决的专项问题时才按需读取对应段落；不在 FAST 首轮全量读取归档。实际项目的 `PROJECT_MEMORY.md` 和已保存检查点优先，目标 Store/Theme 必须以现时真实资料为准。
+> 必读 `STAGE_COMPLETION_CONTRACT.md` v3、`VISUAL_FIDELITY_STANDARD.md` 与当前项目 `PROJECT_MEMORY.md`。默认 FAST 即完成范围内高保真工作：**4-4 素材复用 → 4-2 页面粗调 → 4-3 像素级精修**及实际适用的 `4-pages-*` 均在本阶段自动执行，**不得跳过 4-3、仅修首屏、只做两轮或把剩余视频/动画/像素差异放到 P2 后宣布完成**。FULL 只增加额外覆盖，不是精修开关。
 
-## 交付目标
+## 工作目标
 
-用现有 2-1 Reference 和 3-1/3-4 的真实商品、Collections、Menus 实现 **Home / PLP / PDP / Cart** 及必要通用 Header、Footer、响应式和真实交互。优先复用已存在 Theme，不重建已有功能；只在授权的准确 Draft/Development Theme ID 写主题文件。商品/菜单/Page/Files 是可能影响 Live 的共享资源，另记变更与权限。
+根据当前 2-1 的完整参考与 3-1 的真实产品/变体/分类/菜单，在已有主题基础上实现并实际验证 Home 全部有效 Sections、PLP、PDP、Cart、Header/导航/浮层、响应式、图片/字体/SVG、视频、精细动画与原站视觉。维持固定 Footer 两栏八个真实页面链接（不复刻已删原站 Footer/FAQ/Blog）；仅写准确的 unpublished Draft Theme。共享 Products/Collections/Menus/Files/Pages 另按权限和影响核对。
 
-## 必做顺序
+## 自动执行顺序（同一轮，不需用户再次发子命令）
 
-1. **读最少资料**：当前项目 Store/Draft/Live、源参考 manifest、商品与分类当前状态、已有主题及差异。阅读本入口与当下实际会实现的 `4-pages-1/2/3/4/5/6` 对应专项的小节；不默认先跑 4-2/4-3/4-4 的完整微调流程。需补素材时才按 4-4，出现严重视觉缺陷再按 4-2；4-3 像素级精修默认跳过，除非用户指定 FULL。
-2. **结构与数据**：Home 正确展示关键模块；PLP 读取 Shopify `collection.products`，过滤/排序/分页可操作；PDP 使用真正商品 variants/图片/价格/可用性；Cart 读取实际购物车。Header 桌面 Mega Menu 与移动菜单必须可导航，Footer 只保留两组八个真实页面链接，无社媒/Newsletter/额外列。
-3. **购买链路**：PDP/快速加购发起真实添加后自动显示 Cart Drawer、Cart Notification 或进入 Cart；显示正确规格/数量，失败给提示，移动端/键盘操作可用。保留 Cart → 当前项目批准 Checkout 入口；不复刻源站 Checkout/支付/订单完成页面。
-4. **统一呈现**：顶栏恰好 `Free Shipping on All Orders` 一条展示文案，不能据此修改实际运费配置。对**真实优惠**商品卡依据 `price/compare_at_price` 计算百分比 Badge，统一外观且不对无折扣项虚构优惠。合理复用原站图片及主要 Logo/fav，避免错误裁切/明显错图。
-5. **八页 Footer**：复用 `Shopify-Template/content/footer-pages/` 八份英文正文；读取真实品牌/店铺 HTTPS URL/客服邮箱并执行 `npm run footer:render`，优先保留已有合适 Policy/Page，只创建缺失真实资源；菜单全部绑定可点击 URL。正文用途不同、基础可读；待运营/法律核实的具体政策另记，不让技术完成卡在“待审批”。
-6. **第三方支付 Logo 素材**：从 2-1 的真实主 Logo 证据生成独立可访问资产、写 `docs/payment-branding-handoff.md`（来源/路径/SHA/MIME/当前或待定 URL）。有授权 Shopify Files 优先；不要拿 fav、banner 或商品图假冒。支付参数（含只在真实集成中出现的 `_z9`）需另获实际接入权限；本阶段仅交接素材，不因第三方尚未接入而阻塞主题交付。
-7. **一次验证闭环**：必要静态/Theme Check → 推送准确 Draft → 读回已变动的主题文件和本次变更的 Shopify 资源 → Desktop 1440 / Mobile 390 各走 Home→PLP→PDP→Add to Cart→Cart 代表性流程。对不同规格、折扣/无折扣商品做少量边界样本。只修影响使用的 P0/P1 和大面积视觉错位。
+1. **核实目标与参考覆盖**：当前 Store、Theme ID/角色、Live、授权、主题 diff、2-1 manifest、商品分类现状与保存的截图/媒体/交互/断点矩阵。按页面及 Section 补齐缺失参考；旧 `completed_core` 标签不能证明视觉参考完整。
+2. **实现全部范围内区块与真实数据**：Home/PLP/PDP/Cart 的 section 顺序、文案、图像/视频位置与链接真实对应；PLP 原生商品/筛选/排序/分页，PDP 实际 variants、图集、价钱、可售性，Cart 真实商品。公告栏文案按 `5-2` 唯一规范，折扣 Badge 只对有真实折扣商品显示。
+3. **自动执行 4-4：素材与视频**：逐项映射所有可见获授权的真实原站图片、字体、SVG、Logo、favicon、背景、poster、Desktop/Mobile 替代素材与视频。核对视频 URL/解码/播放、muted/autoplay/loop/playsinline、可视比例、poster 和移动限制；不能拿静态图/假视频替代。
+4. **自动执行 4-2：粗调交互与响应式**：对照原站完成 Header/Mega Menu、轮播、tabs、hover、scroll、sticky、颜色/规格联动、图库/购物车、动画时长/延迟/easing/方向、键盘与触屏。没有源站相应行为时不自行设计替代动效。
+5. **自动执行 4-3：像素级精修（硬门槛）**：源站/目标在相同 viewport、滚动和交互状态下，按各页面首屏→中部→底部逐 Section 比较 bounding boxes、字体和换行、图片裁切、区块比例、背景、边框/阴影、间距、响应式和交互态；生成截图叠图/差异清单，发现可修复差异则实际改代码、重新上传 Draft 并复测，直至当前范围内差异闭环。不得只写分析报告。
+6. **保留核心购物链路**：桌面和手机真实检验 PDP/快速加购 → Cart（包含正确变体、数量、缩略图、反馈、删除/更新）及项目批准的 Checkout **入口**；不复刻源站 Checkout，不下单/支付。Footer 八链接真实可用、无社媒。
+7. **静态、远端和浏览器三层验收**：JS/Theme Check、准确 Draft push 与本次改动文件 readback，Desktop 1440×900 和 Mobile 390×844 全页视觉/视频/动效/交互核验；补实际断点（如 320、768）并检查溢出。真实媒体必须加载/解码/播放（或记录浏览器/设备真实阻断）；`Theme Check 0 offenses` 不等于画面通过。远端同一 Store/Theme/版本证据必须可追踪。
+8. **收尾记录**：更新一份包含全部有效页面/Section、视频/动效/素材、像素差异、Desktop/Mobile、PDP/Cart 的检查矩阵，复用可验证的已有结果。更新项目 checkpoint、剩余差异与恢复入口。
 
-## 什么时候结束
+## 何时才能结束
 
-**核心页面和核心链路可用，真实商品渲染正确、明显视觉问题已解决，前后台读回有证据，报告 `completed_core` 并结束本阶段。** 细小字体/间距、轮播动效、未要求的额外尺寸、非核心布局差异和非范围页面记 deferred，不必无限 Screenshot→微调→Screenshot。每模板最多两轮有进展的视觉调整；核心不可用时仍需修复或诚实报告 partial。
+- `completed_full`：本阶段范围内全部应实现的区块、原站真实素材/视频、精细动画、响应式、像素级对照与购物链路均完成并有 Draft 证据；无已知可修复的范围内视觉差异。
+- `partial`：有能继续完成的页面、媒体、动画、像素校准或验证没做完，包括源站与 Draft 有可复现差异但功能正常。**不能以 `completed_core + P2` 结案或要求用户再发送“完成 P2”**。
+- `blocked_core`：真实素材/访问/授权/浏览器限制经有限有变化的恢复后仍阻断必需项。保留精确证据，继续不依赖该项的工作，绝不伪称完成。
+- `excluded` 只对已明确从范围移除的原站复杂 Footer、独立静态页、原站 Checkout 等内容，不得自行把难实现的视频/动效或首页区块排除。
 
-保留现有 `PROJECT_MEMORY.md`、`TASK_CHECKLIST.md` 和 stage-state，收尾只写一份短摘要。未授权发布 Live、关闭密码或修改第三方支付。需要 FULL / 1:1 像素级细节时才按需读取 `archive/full-guidance/theme-recreation-detailed.md` 并执行 4-2/4-3。
+**效率边界：**同样的有效截图、Store/Theme/输入无需重复采集；差异明确时针对性修复、复验受影响区域。但对有进展的精修**不设置两轮总上限**，中断则记 `partial` 和断点。不得越权发布 Live、关闭密码、修改第三方支付或冒用未经授权的品牌资源。
