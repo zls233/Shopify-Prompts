@@ -1,8 +1,8 @@
 # Shopify Prompt Routing
 
-## FAST 核心交付、商品 ACTIVE/9999、Footer 八页（新默认规则）
+## 默认完整视觉保真、商品 ACTIVE/9999、Footer 八页（2026-11-03）
 
-先读取 `STAGE_COMPLETION_CONTRACT.md` v2。FAST 先完成核心 P0/P1，非阻断 P1/P2 可 deferred；仅当有对应需要时读取子 Prompt 的适用章节，不在进入阶段时把全部长文件及所有专项一次性读入上下文。用批量与断点处理长任务；关键外部阻断时列失败清单，不无限重试。默认所有目标店铺商品 `ACTIVE`、可跟踪库存 9999；Footer 自动复用 Shopify-Template 八份页面内容模板。
+先读取 `STAGE_COMPLETION_CONTRACT.md` v3 和 `VISUAL_FIDELITY_STANDARD.md`。FAST 省重复 Token/扫描，不降低 2-1/4-1 范围内视频、细致动效、精确图片/裁切、全页面 Section、响应式、像素级对照和离线参考质量；4-1 自动运行 4-4/4-2/4-3。仅按需读相关子 Prompt 小节，不必预读全部长文档。用批量与断点处理长任务；关键外部阻断时列失败清单，不无限重试。默认所有目标店铺商品 `ACTIVE`、可跟踪库存 9999；Footer 自动复用 Shopify-Template 八份页面内容模板。
 
 
 ## 内容缺失自动补齐（默认行为）
@@ -12,9 +12,9 @@
 原创描述和文案可以合理补全缺失的展示内容；价格、商品属性、评论、商家法定身份、实际配送/退货条件、个人信息处理承诺等必须以真实数据为准。缺少具体业务事实时采用通用不作额外承诺的表达，把后续业务核定记录为备注，而非把页面技术实现整体标记 blocked。仍遵守既有 Draft/Live、写入权限、支付与凭据边界。
 
 
-## FAST 完成状态（高于旧严格验收语句）
+## 默认完成状态（覆盖旧版宽松验收）
 
-统一遵守 `STAGE_COMPLETION_CONTRACT.md` v2。默认 FAST 以核心交付完成为标准，可标 `completed_core`，将 P2 / 不影响核心交付的 P1 记 `deferred`；仅 P0/关键数据和当前用户明确要求尚未满足时为 `partial/blocked_core`。禁止为了表面 100% 把 `not_run` 写作 `verified`。小清单、一次验证、只处理差集；不再将所有子 Prompt 的增强性验收叠加为阶段硬门槛。
+统一遵守 `STAGE_COMPLETION_CONTRACT.md` v3 与 `VISUAL_FIDELITY_STANDARD.md`。2-1/4-1 默认必须完成所有当前范围内页面区块、视频/动效/素材、响应式与像素级实测后才可标 `completed_full`；可修复或未核验的视觉差异为 `partial`，真实外部阻断为 `blocked_core`。不能把它们改叫 P2、以 `completed_core` 结案或等待用户发“完成 P2”。FAST 在其他数据阶段沿用风险/差异驱动验证。`not_run` 不等于 `verified`；可复用同版本有效证据。
 
 ## 商品分类前台核验（强制闭环）
 
@@ -28,7 +28,7 @@ During FAST 1-1 initialization, automatically acquire an enabled store's current
 
 For end-to-end unattended stage orchestration, `运行0-1` resolves to `00-autopilot/0-1-全流程建站与断点续跑-总入口.md`. It runs the six existing FAST phase entry points sequentially with verification, checkpoint/resume and explicit authorization boundaries; it never grants Live publication or store opening authority.
 
-Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `3-1`, `4-1`, `5-1`, and `6-1` are complete phase entry points. Read only the relevant subordinate Prompt sections when the step is needed; perform and verify core scope in the same run; do not ask the user to issue each following substep. Run subordinate prompts separately only for actual failures, special precision, or explicit `FULL` mode. `3-1` includes CSV cleanup, full import and collections; `4-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes risk-based `6-6` programmatic catalog comparison plus sampled UI, and `6-5` core-link delta scan/fix/retest on the authorized Draft and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model or reasoning effort. For routine FAST tasks use an adequate efficient effort; reserve XHigh for complex bugs or deep architecture when needed, and respect the operator's chosen setting. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
+Default `EXECUTION_MODE=FAST`: `1-1`, `2-1`, `3-1`, `4-1`, `5-1`, and `6-1` are complete phase entry points, with full visual/media/animation fidelity required in stages 2-1 and 4-1. Read only the relevant subordinate Prompt sections when the step is needed; perform and verify core scope in the same run; do not ask the user to issue each following substep. 4-1 automatically executes its applicable 4-4, 4-2 and 4-3 plus relevant pages prompts; do not reserve pixel-level work for `FULL`. Run other subordinate prompts separately only when a special issue or additional coverage requires it. `3-1` includes CSV cleanup, full import and collections; `4-1` includes necessary Theme implementation and Draft browser QA; `5-1` includes removals and Cookie; `6-1` includes risk-based `6-6` programmatic catalog comparison plus sampled UI, and `6-5` core-link delta scan/fix/retest on the authorized Draft and checkout-entry test after separately authorized release/public opening. Prompt execution cannot select the model or reasoning effort. For routine FAST tasks use an adequate efficient effort; reserve XHigh for complex bugs or deep architecture when needed, and respect the operator's chosen setting. FAST does not authorize publishing Live, disabling password protection, changing merchant address, or modifying payments.
 
 
 When the user says `运行2-1`, `运行4-pages-2`, or another numbered command,
