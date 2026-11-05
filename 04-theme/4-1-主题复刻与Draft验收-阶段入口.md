@@ -8,6 +8,9 @@
 
 ## 自动执行顺序（同一轮，不需用户再次发子命令）
 
+**必须完成 `NAVIGATION_LINK_GATE.md` 双门禁**：依据 2-1 的层级、展开态、CTA 映射，以及 3-1 的真实 Product/Collection/Page/Publication，恢复原站 Desktop Products/Mega Menu、Mobile 抽屉并确保每个入口指向本站正确资源。严禁原官网回退、猜测 `/pages/<handle>` 或以无关介绍页充数；每次修链接均复验顶栏结构和交互。缺证据只能记 `partial/blocked_core`。
+
+
 1. **核实目标与参考覆盖**：当前 Store、Theme ID/角色、Live、授权、主题 diff、2-1 manifest、商品分类现状与保存的截图/媒体/交互/断点矩阵。按页面及 Section 补齐缺失参考；旧 `completed_core` 标签不能证明视觉参考完整。
 2. **实现全部范围内区块与真实数据**：Home/PLP/PDP/Cart 的 section 顺序、文案、图像/视频位置与链接真实对应；PLP 原生商品/筛选/排序/分页，PDP 实际 variants、图集、价钱、可售性，Cart 真实商品。公告栏文案按 `5-2` 唯一规范，折扣 Badge 只对有真实折扣商品显示。
 3. **自动执行 4-4：素材与视频**：逐项映射所有可见获授权的真实原站图片、字体、SVG、Logo、favicon、背景、poster、Desktop/Mobile 替代素材与视频。核对视频 URL/解码/播放、muted/autoplay/loop/playsinline、可视比例、poster 和移动限制；不能拿静态图/假视频替代。

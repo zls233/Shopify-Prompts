@@ -15,6 +15,9 @@
 
 ## 执行步骤：一次跑完
 
+**新增独立失败类别：源官网/错误外站跳转。** 对照 `NAVIGATION_LINK_GATE.md` 和 2-1 映射，扫描原官网 hostname（含 www/区域路径）、菜单 Admin 数据、Section Settings、Liquid/JSON/JS、3xx 和 JS redirect、`target=_blank`、桌面/手机展开态真实 href 和最终 URL。即使 HTTP 200 也算失败；只有逐条批准并说明用途的合法外链可白名单保留。修外链后必须同时回归 Header 展开结构和行为，禁止把 Mega Menu 简化成平铺链接。
+
+
 1. **建立入口清单**：读取 Theme Liquid/JSON/JS、Section Settings、Shopify Navigation Menus、Footer、实际产品/分类/Page/Policy 的 handle 与 publication；使用 1440px 桌面和 390px 移动端真实浏览器，遍历各范围内模板，展开 Mega Menu、移动抽屉、下拉菜单并抓取渲染后的链接和按钮跳转。包含隐藏在点击/悬停状态的二级、三级入口、动态生成的 URL 以及搜索结果/分页入口；去重但保留全部来源位置。对大量商品和分页，枚举**所有实际链接目标**并进行 URL/资源检查，浏览器交互则对每种模板和交互类型至少取代表样本；不得以只点首页几个链接代替全站扫描。
 2. **逐项核验**：内部链接先检查 URL 解析及落点路径，带登录/预览态实际跟随必要跳转，结合 HTTP 状态、最终 URL、页面 DOM 内容、资源存在与发布状态判断。捕获 404/410、Shopify 的 `404 Not Found` 模板及软 404（即使 HTTP 200）、跳转到首页/密码页/错误商店、循环重定向、无内容页面、JS 路由失败、`href="#"`、空 URL、`javascript:void(0)` 和本应导航却没有行为的按钮。对于预期锚点，验证目标元素真实存在；对于外部站点的 403/反爬/CAPTCHA/超时，标记 `blocked` 而不是断言 404。记录测试环境差异、最终 URL 和响应证据。
 3. **定位根因并集中分类**：把全部问题先汇总为机器可读清单，再按根因分组，包括错误 handle/path、已删除/未发布的 Product/Collection/Page/Policy、Menu 绑定错误、Theme 硬编码旧域名、动态链接拼接错误、Section 配置或分页/过滤失效、排除项残留、权限/密码拦截及外部站点失败。每个缺陷记录 `source page → visible label/element → source selector or code/config → target URL → final URL → status/evidence → root cause → proposed fix`；相同根因集中修一次。

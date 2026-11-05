@@ -40,6 +40,9 @@ TARGET_NAV_ITEMS={{TARGET_NAV_ITEMS}}
 
 ## 二、导航数据与链接
 
+**禁止源官网兜底**：执行 `NAVIGATION_LINK_GATE.md`，对照 2-1 的 `references/navigation-link-map.json`，逐个核对展开层、二三级菜单与首页 CTA 的真实 Shopify 资源和 Online Store 发布状态。缺分类不能自动退回原官网、猜测 Page URL 或用泛化说明页伪装原站功能；未具备真实资源时补齐或保留明确阻断。链接正确和原站布局/交互保真必须分别验收。
+
+
 按 `EXECUTION_RULES.md` 从桌面与手机实际菜单枚举所有分类入口，每条链接核对真实目的地；对每个去重 Collection 做完整成员差集，而非只抽查一类。分类成员问题按数据 Prompt 修复，不因不要求商品排列就省略分类 UI 对照。
 
 对每个可见分类和展开项记录标签、层级、原站 URL、目标 Shopify 资源与 URL、资源存在及发布状态、实际访问结果。不要因为路径形状正确、Menu item 存在或返回 HTTP 200，就认为目标 Collection 或页面内容正确。

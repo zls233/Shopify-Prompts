@@ -10,6 +10,9 @@
 
 ## 2. 2-1 必需参考清单（后续实现的输入门槛）
 
+**导航必采**：按 `NAVIGATION_LINK_GATE.md` 额外交付源站 Desktop/Mobile Products/Mega Menu 的打开、切换、关闭、二三级子项和 CTA 跳转映射，保留相应 DOM/截图及目标资源规划。视觉行为与链接正确性分开验收；修链接不能退化原站菜单布局。
+
+
 针对每种实际不同的核心页面模板和各个范围内可见 Section：
 1. 保存对应 URL、采集时间、Desktop 1440×900 与 Mobile 390×844 全页/分区截图，以及足以复测的 HTML/DOM、computed style 或可靠替代证据；记录首屏、中部、底部、滚动前后及对应断点。
 2. 建立页面与区块索引，记录真实顺序、文字、字体/字重、尺寸/间距、背景、阴影、位置、图片 `src/srcset` / 裁切 / mobile 变体、SVG、Logo、favicon、完整交互状态。

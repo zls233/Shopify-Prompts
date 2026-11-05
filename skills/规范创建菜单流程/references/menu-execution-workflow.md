@@ -61,6 +61,9 @@ Prefer resource-backed items for Shopify resources. Use direct URLs for external
 
 ## 4. Validate Before Write
 
+Mandatory source-link gate: follow repository `NAVIGATION_LINK_GATE.md`. Never use the reference brand website as a fallback for missing Collections/Pages; verify every intended Shopify resource, Online Store publication and the original desktop/mobile hierarchy before and after menu writes. Successful HTTP 200 alone does not prove a correct destination.
+
+
 Check:
 
 - target handles are unique

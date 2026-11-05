@@ -2,7 +2,7 @@
 
 ## FAST 核心交付优先规则（2026-10-29 修订）
 
-默认 FAST 按 `STAGE_COMPLETION_CONTRACT.md` v2：**P0 阻断才硬停，P1 依是否实质影响使用判定，P2 延期；可用 `completed_core` 报告阶段核心完成**。旧版文中提到“全部截图/全部子项 verified 才 completed/逐分类逐个点击/所有模板无限微调”的硬验收仅在用户显式 FULL 或特指任务时适用；不对同样已验证内容反复验收。商品全量目标、Active/9999、权限与核心交易交互仍是硬要求。
+默认 FAST 遵守 `STAGE_COMPLETION_CONTRACT.md` v3、`VISUAL_FIDELITY_STANDARD.md` 和 `NAVIGATION_LINK_GATE.md`：FAST 只减少重复操作，不降低范围内视频、精细动画、像素级、Header/Mega Menu 结构、Desktop/Mobile 交互及全部入口正确跳转的要求。原官网 fallback、错误资源落点和菜单失真必须修复；2-1/4-1/6-1 不得用旧版 v2 的 P2/`completed_core` 规则掩盖这些问题。商品 ACTIVE/9999、权限和购物链路要求不变。
 
 
 

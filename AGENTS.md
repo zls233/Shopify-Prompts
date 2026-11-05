@@ -1,5 +1,7 @@
 # Shopify Prompt Routing
 
+**导航和链接必须双重验收**：优先读取 `NAVIGATION_LINK_GATE.md`。范围内 Header/Products/Mega Menu、移动菜单结构与交互必须与获授权原站参考相符，全部入口须指向本站正确资源；严禁把原官网当成缺失目标的兜底。两项未分别实测通过，不得报告阶段完成。
+
 ## 默认完整视觉保真、商品 ACTIVE/9999、Footer 八页（2026-11-03）
 
 先读取 `STAGE_COMPLETION_CONTRACT.md` v3 和 `VISUAL_FIDELITY_STANDARD.md`。FAST 省重复 Token/扫描，不降低 2-1/4-1 范围内视频、细致动效、精确图片/裁切、全页面 Section、响应式、像素级对照和离线参考质量；4-1 自动运行 4-4/4-2/4-3。仅按需读相关子 Prompt 小节，不必预读全部长文档。用批量与断点处理长任务；关键外部阻断时列失败清单，不无限重试。默认所有目标店铺商品 `ACTIVE`、可跟踪库存 9999；Footer 自动复用 Shopify-Template 八份页面内容模板。
