@@ -1,5 +1,7 @@
 # Shopify-Prompts 编号路由与规范文件名
 
+> 执行编号任务时，先按 `EXECUTION_EFFICIENCY.md` 读取**最小必需文件集合**并优先调用 Shopify-Template 自带通用脚本。当前阶段已加载的规则在同一上下文/未变更时不重复 `cat`；阶段间依靠精简 checkpoint，而不是回放长日志。
+
 > **2026-11-03 高保真默认要求：** `运行2-1` 自动采集范围内全部视频/动效/响应式/素材和可离线核验参考；`运行4-1` 自动执行 4-4 素材复用、4-2 粗调、4-3 像素级精修与浏览器完整对照。不得将未完成范围内视觉事项归 P2、宣称 `completed_core` 后让用户再发“完成 P2”。旧 FAST 跳过精修条款被 v3 覆盖。
 
 **编号代表唯一命令。** `1-1,2-1,3-1,4-1,5-1,6-1` 为完整 FAST 阶段总入口，不是单一步骤；`0-1` 是完整建站总控。应先读 `STAGE_COMPLETION_CONTRACT.md` v3 和 `VISUAL_FIDELITY_STANDARD.md` 和当前阶段精简入口，再按需读取 `EXECUTION_RULES.md` 的相关部分与被实际执行的子 Prompt 小节；不在 FAST 起步全量读取所有归档/子 Prompt。

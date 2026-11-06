@@ -1,5 +1,7 @@
 # Shopify Prompt Routing
 
+> **执行效率专项（2026-11-06）：** 优先用可复用、幂等脚本完成批量采集/清洗/下载/审计；模型只处理规则、异常与最终验收。详见 [EXECUTION_EFFICIENCY.md](EXECUTION_EFFICIENCY.md)。该规范只改变工具使用方式，**不降低**本文件或 v3 验收标准。
+
 **导航和链接必须双重验收**：优先读取 `NAVIGATION_LINK_GATE.md`。范围内 Header/Products/Mega Menu、移动菜单结构与交互必须与获授权原站参考相符，全部入口须指向本站正确资源；严禁把原官网当成缺失目标的兜底。两项未分别实测通过，不得报告阶段完成。
 
 ## 默认完整视觉保真、商品 ACTIVE/9999、Footer 八页（2026-11-03）

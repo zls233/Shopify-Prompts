@@ -1,5 +1,7 @@
 # Shopify Prompt 执行与完成规则
 
+> **执行效率专项（2026-11-06）：** 全局必读、只需读取一次并复用同版本证据；大文件入磁盘，终端只输出摘要；采集/导入采用阶段门禁。详见 [EXECUTION_EFFICIENCY.md](EXECUTION_EFFICIENCY.md)。该规范只改变工具使用方式，**不降低**本文件或 v3 验收标准。
+
 ## FAST 核心交付优先规则（2026-10-29 修订）
 
 默认 FAST 遵守 `STAGE_COMPLETION_CONTRACT.md` v3、`VISUAL_FIDELITY_STANDARD.md` 和 `NAVIGATION_LINK_GATE.md`：FAST 只减少重复操作，不降低范围内视频、精细动画、像素级、Header/Mega Menu 结构、Desktop/Mobile 交互及全部入口正确跳转的要求。原官网 fallback、错误资源落点和菜单失真必须修复；2-1/4-1/6-1 不得用旧版 v2 的 P2/`completed_core` 规则掩盖这些问题。商品 ACTIVE/9999、权限和购物链路要求不变。
